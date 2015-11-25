@@ -7,10 +7,26 @@ public class Partie {
 	
 	public void initialisation(){
 		initCarteChance();
-		init...
-		 //com's
+		initCarteCaisseCom();
+		initPlateau();
+		 
 	}
 	
+	private void initPlateau() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void initCarteCaisseCom() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void initCarteChance() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public void debutTour(){
 		
 	}
