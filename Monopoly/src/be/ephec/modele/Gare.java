@@ -8,5 +8,4 @@ public class Gare extends Case{
 	public void action(){
 		
 	}
-
 }

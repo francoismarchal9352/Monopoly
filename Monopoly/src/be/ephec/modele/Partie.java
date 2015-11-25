@@ -21,6 +21,4 @@ public class Partie {
 		// TODO Auto-generated method stub
 
 	}
-
-
 }

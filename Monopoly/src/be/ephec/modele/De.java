@@ -6,5 +6,4 @@ public class De {
 	public int lancerDe(){
 		return valeur;
 	}
-
 }

@@ -14,5 +14,4 @@ public class Joueur {
 	public void seDeplacer(int x){
 		
 	}
-
 }
