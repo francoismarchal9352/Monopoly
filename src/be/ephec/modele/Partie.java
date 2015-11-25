@@ -6,8 +6,7 @@ public class Partie {
 	private int nbTour;
 	
 	public void initialisation(){
-		initCarteChance();
-		init...
+
 	}
 	
 	public void debutTour(){
