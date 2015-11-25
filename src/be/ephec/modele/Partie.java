@@ -8,7 +8,7 @@ public class Partie {
 	public void initialisation(){
 		initCarteChance();
 		init...
-		 com's
+		 //com's
 	}
 	
 	public void debutTour(){
