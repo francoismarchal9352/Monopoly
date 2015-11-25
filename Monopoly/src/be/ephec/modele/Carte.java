@@ -4,6 +4,5 @@ public class Carte {
 	private String type;
 	
 	public void action(){
-		a;
 	}
 }
