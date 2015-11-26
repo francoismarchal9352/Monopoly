@@ -23,6 +23,15 @@ public class Joueur {
 	}
 	
 	public void seDeplacer(int x){
-		
+		if(position + x >= 40){ position = (position + x) % 40;
+		} else { position += x;}
+	}
+	
+	public void allerA(int x){
+		position = x;
+	}
+	
+	public int getPosition(){
+		return position;
 	}
 }
