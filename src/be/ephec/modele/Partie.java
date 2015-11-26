@@ -4,7 +4,8 @@ public class Partie {
 	private int nbCarteChancePioche;
 	private int nbCarteCaisseComPioche;
 	private int nbTour;
-	private Joueur monopoles[];
+	private Joueur[] tabMonopoles;
+	private Joueur[] tabJoueurs = new Joueur[2];
 	
 	public void initialisation(){
 		initCarteChance();
@@ -19,8 +20,10 @@ public class Partie {
 	}
 
 	private void initJoueur() {
-		Joueur joueur1 = new Joueur("nom1");
-		Joueur joueur2 = new Joueur("nom2");
+		tabJoueurs[0] = new Joueur("nom1");
+		tabJoueurs[1] = new Joueur("nom2");
+		
+		
 		
 	}
 
@@ -37,61 +40,9 @@ public class Partie {
 	}
 
 	private void initCase() {
-		initPropriete();
-		initCaseCaisseCom(); // a voir
-		initCaseChance(); // a voir
-		initPrison(); // a voir
-		initService();
-		initTaxe();
-		initGare();
-		
-		
-		
-	}
-/*
-	private void initPrison() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	private void initCaseChance() {
-		// TODO Auto-generated method stub
 		
-	}
-
-	private void initCaseCaisseCom() {
-		// TODO Auto-generated method stub
 		
-	}
-*/
-	
-	private void initGare() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void initTaxe() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void initService() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void initPropriete() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void initCarteCaisseCom() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void initCarteChance() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -101,6 +52,11 @@ public class Partie {
 	
 	public void finTour(){
 		
+		
+	}
+	
+	public int getJoueurCurrent(){
+		return nbTour % tabJoueurs.length;
 	}
 	
 	public void main(String[] args) {
