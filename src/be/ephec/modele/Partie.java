@@ -11,7 +11,6 @@ public class Partie {
 		initCarteCaisseCom();
 		initPlateau();
 		initJoueur();
-		initMonopoles();
 	}
 	
 	private void initMonopoles() {
