@@ -9,7 +9,7 @@ public class Joueur {
 	private int nbTourPrison;
 	
 	public Joueur(String nom){
-		this.nom = nom;
+		this.nom = nom; // a faire
 		this.position = 0;
 		this.solde = 15000;
 		this.nbTourPrison = 0;
@@ -18,7 +18,8 @@ public class Joueur {
 	}
 	
 	public void acheter(Case x){
-		
+	
+		// a faire
 		
 	}
 	
