@@ -19,7 +19,8 @@ public class Partie {
 	}
 
 	private void initJoueur() {
-		// TODO Auto-generated method stub
+		Joueur joueur1 = new Joueur("nom1");
+		Joueur joueur2 = new Joueur("nom2");
 		
 	}
 
@@ -29,7 +30,9 @@ public class Partie {
 	}
 
 	private void initDe() {
-		// TODO Auto-generated method stub
+		De de1 = new De();
+		De de2 = new De();
+		
 		
 	}
 

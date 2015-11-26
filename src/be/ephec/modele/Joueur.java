@@ -12,11 +12,13 @@ public class Joueur {
 		this.nom = nom;
 		this.position = 0;
 		this.solde = 15000;
+		this.nbTourPrison = 0;
 		
 			
 	}
 	
-	public void acheter(Case x){ // /!\ case est un nom réservé /!\
+	public void acheter(Case x){
+		
 		
 	}
 	
