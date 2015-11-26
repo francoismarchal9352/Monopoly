@@ -9,7 +9,7 @@ public class Partie {
 		initCarteChance();
 		initCarteCaisseCom();
 		initPlateau();
-	test;	 
+		 
 	}
 	
 	private void initPlateau() {
