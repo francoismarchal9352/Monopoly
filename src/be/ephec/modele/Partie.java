@@ -60,7 +60,7 @@ public class Partie {
 		
 	}
 	
-	public int getJoueurCurrent(){
+	public int getJoueurCourant(){
 		return nbTour % tabJoueurs.length;
 	}
 	
