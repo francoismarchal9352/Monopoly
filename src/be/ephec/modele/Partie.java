@@ -23,6 +23,7 @@ public class Partie {
 		// TODO Auto-generated method stub
 		
 	}
+	prout;
 
 	private void initJoueur() {
 		tabJoueurs[0] = new Joueur("nom1");
