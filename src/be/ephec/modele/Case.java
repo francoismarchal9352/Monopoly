@@ -12,8 +12,13 @@ public class Case {
 	}
 	
 		
-	
-		
+	public String getType() {
+		return type;
+	}
+
+
+
+
 	public void action(){
 		
 	}

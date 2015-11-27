@@ -49,11 +49,12 @@ public class Partie {
 
 	}
 	
+	// methode getNumCase() et getProprietaire et getPrixTerrain indéfinie dans case /!\
 	public void acheter(Case x){
-		if(x.getType == "Propriété" || x.getType == "gare"  || x.getType == "service" && x.getProprietaire == null && x.getNumCase == this.getJoueurCurrent()){
-			if(this.tabJoueurs[this.getJoueurCourant()].solde - x.prixTerrain >= 0){
-				this.tabJoueurs[getJoueurCourant()].retraitSolde(x.prixTerrain);
-				this.tabJoueurs[getJoueurCourant()].tabProprietes.add(x);
+		if(x.getType() == "Propriété" || x.getType() == "gare"  || x.getType() == "service" && x.getProprietaire() == null && x.getNumCase() == this.tabJoueurs[getJoueurCourant()].getPosition()){
+			if(this.tabJoueurs[this.getJoueurCourant()].solde - x.getPrixTerrain() >= 0){
+				this.tabJoueurs[getJoueurCourant()].retraitSolde(x.getPrixTerrain());
+				this.tabJoueurs[getJoueurCourant()].getTabProprietes().add(x);
 			}
 		} else {
 			
@@ -63,7 +64,7 @@ public class Partie {
 	}
 	
 	public void vendre(Case x, int valeur){
-			// decision joueur + tests eventuels
+			// verif solde autre joueur
 			if(decision && /*verif solde autre joueur*/){
 				this.tabJoueurs[getJoueurCourant()].ajoutSolde(valeur);
 				this.tabJoueurs[getJoueurCourant()].tabProprietes.remove(x);
@@ -73,34 +74,20 @@ public class Partie {
 	
 	
 	public void avancer(int x){
-		int anciennePosition = position;
-		if(position + x >= 40){ position = (position + x) % 40;
-		} else { position += x;}
+		int anciennePosition = this.tabJoueurs[getJoueurCourant()].getPosition();
+		if(this.tabJoueurs[getJoueurCourant()].getPosition() + x >= 40){ this.tabJoueurs[getJoueurCourant()].setPosition((this.tabJoueurs[getJoueurCourant()].getPosition() + x)%40);
+		} else {this.tabJoueurs[getJoueurCourant()].setPosition(this.tabJoueurs[getJoueurCourant()].getPosition() + x);}
 		
-		if(position < anciennePosition){
-			this.tabJoueurs[getJoueurCurrent()].ajoutSolde(200);
+		if(this.tabJoueurs[getJoueurCourant()].getPosition() < anciennePosition){
+			this.tabJoueurs[getJoueurCourant()].ajoutSolde(200);
 		}
 	}
 	
 	public void allerA(int x){
-		position = x;
+		this.tabJoueurs[getJoueurCourant()].setPosition(x);
 	}
 	
-	public int getPosition(){
-		return position;
-	}
 	
-	public void retraitSolde(int x){
-		solde -= x;
-	}
-	
-	public void ajoutSolde(int x){
-		solde += x;
-	}
-	
-	public int getSolde(){
-		return solde;
-	}
 
 	public void debutTour(){
 		

@@ -22,6 +22,15 @@ public class Propriete extends Case{
 	public void action(){
 		
 	}
+	
+	public String getProprietaire() {
+		return proprietaire;
+	}
+	
+	public int getPrixTerrain() {
+		return prixTerrain;
+	}
+	
 	public static void main(String[] args) {
 		Propriete truc = new Propriete("Rue Truc", "brun", 60, 100, 12, 60, 180, 500, 700, 900);
 		System.out.println(truc.toString());
