@@ -4,8 +4,13 @@ public class Partie {
 	private int nbCarteChancePioche;
 	private int nbCarteCaisseComPioche;
 	private int nbTour;
-	private Joueur[] tabMonopoles;
+	private Joueur[] tabMonopoles = new Joueur[8];
 	private Joueur[] tabJoueurs = new Joueur[2];
+	
+	public Partie(){
+		
+	}
+	
 	
 	public void initialisation(){
 		initCarteChance();
