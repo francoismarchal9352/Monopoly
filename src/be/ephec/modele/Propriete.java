@@ -11,13 +11,13 @@ public class Propriete extends Case{
 	
 	
 	public Propriete(String nom, String couleur, int prixTerrain, int prixConstruction, int loyer1, int loyer2, int loyer3, int loyer4, int loyer5, int loyer6){
-	super("Propriété", nom);
-	this.couleur = couleur;
-	this.prixTerrain = prixTerrain;
-	this.nbMaison = 0;
-	this.nbHotel = 0;
-	this.prixConstruction = prixConstruction;
-	this.tabLoyers = new int[]{loyer1,loyer2,loyer3,loyer4,loyer5,loyer6};	
+		super("Propriété", nom);
+		this.couleur = couleur;
+		this.prixTerrain = prixTerrain;
+		this.nbMaison = 0;
+		this.nbHotel = 0;
+		this.prixConstruction = prixConstruction;
+		this.tabLoyers = new int[]{loyer1,loyer2,loyer3,loyer4,loyer5,loyer6};	
 	}
 	public void action(){
 		

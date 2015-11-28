@@ -1,11 +1,11 @@
 package be.ephec.modele;
 
-public class CaseChance extends Case {
+public class AllerPrison extends Case {
 	
-	public CaseChance(){
-		super("Chance", "Case Chance");
+	public AllerPrison(){
+		super("AllerPrison","Aller en prison");
 	}
-	
+
 	public void action(){
 		
 	}
@@ -22,3 +22,5 @@ public class CaseChance extends Case {
 		return 0;
 	}
 }
+
+

@@ -13,8 +13,8 @@ public class Partie {
 	
 	
 	public void initialisation(){
-		initCarteChance();
-		initCarteCaisseCom();
+		//initCarteChance();
+		//initCarteCaisseCom();
 		initPlateau();
 		initJoueur();
 	}
@@ -27,15 +27,12 @@ public class Partie {
 
 	private void initJoueur() {
 		tabJoueurs[0] = new Joueur("nom1");
-		tabJoueurs[1] = new Joueur("nom2");
-		
-		
-		
+		tabJoueurs[1] = new Joueur("nom2");	
 	}
 
 	private void initPlateau() {
-		initCase();
-		initDe();
+		//initCase();
+		//initDe();
 	}
 
 	private void initDe() {
@@ -45,14 +42,11 @@ public class Partie {
 		
 	}
 
-	private void initCase() {
-
-	}
 	
 	// methode getNumCase() et getProprietaire et getPrixTerrain indéfinie dans case /!\
 	public void acheter(Case x){
 		if(x.getType() == "Propriété" || x.getType() == "gare"  || x.getType() == "service" && x.getProprietaire() == null && x.getNumCase() == this.tabJoueurs[getJoueurCourant()].getPosition()){
-			if(this.tabJoueurs[this.getJoueurCourant()].solde - x.getPrixTerrain() >= 0){
+			if(this.tabJoueurs[this.getJoueurCourant()].getSolde() - x.getPrixTerrain() >= 0){
 				this.tabJoueurs[getJoueurCourant()].retraitSolde(x.getPrixTerrain());
 				this.tabJoueurs[getJoueurCourant()].getTabProprietes().add(x);
 			}
