@@ -43,7 +43,6 @@ public class Partie {
 	}
 
 	
-	// methode getNumCase() et getProprietaire et getPrixTerrain indéfinie dans case /!\
 	public void acheter(Case x){
 		if(x.getType() == "Propriété" || x.getType() == "gare"  || x.getType() == "service" && x.getProprietaire() == null && x.getNumCase() == this.tabJoueurs[getJoueurCourant()].getPosition()){
 			if(this.tabJoueurs[this.getJoueurCourant()].getSolde() - x.getPrixTerrain() >= 0){
@@ -58,10 +57,10 @@ public class Partie {
 	}
 	
 	public void vendre(Case x, int valeur){
-			// verif solde autre joueur
-			if(decision && /*verif solde autre joueur*/){
+			// verif solde autre joueur + decision 
+			if(decision && this.tabJoueurs[0].getSolde() >= valeur ){ // a verif
 				this.tabJoueurs[getJoueurCourant()].ajoutSolde(valeur);
-				this.tabJoueurs[getJoueurCourant()].tabProprietes.remove(x);
+				this.tabJoueurs[getJoueurCourant()].getTabProprietes().remove(x);
 			}
 	}
 	
