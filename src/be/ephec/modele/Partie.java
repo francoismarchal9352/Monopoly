@@ -1,6 +1,7 @@
 package be.ephec.modele;
 
 public class Partie {
+	private Plateau plateau;
 	private int nbCarteChancePioche;
 	private int nbCarteCaisseComPioche;
 	private int nbTour;
@@ -13,9 +14,7 @@ public class Partie {
 	
 	
 	public void initialisation(){
-		//initCarteChance();
-		//initCarteCaisseCom();
-		initPlateau();
+		this.plateau = new Plateau();
 		initJoueur();
 	}
 	
@@ -30,16 +29,6 @@ public class Partie {
 		tabJoueurs[1] = new Joueur("nom2");	
 	}
 
-	private void initPlateau() {
-		//initCase();
-		//initDe();
-	}
-
-	private void initDe() {
-		De de1 = new De();
-		De de2 = new De();
-		
-		
 	}
 
 	
@@ -91,8 +80,8 @@ public class Partie {
 		
 	}
 	
-	public int getJoueurCourant(){
-		return nbTour % tabJoueurs.length;
+	public Joueur getJoueurCourant(){
+		return TabJoueur[nbTour % tabJoueurs.length];
 	}
 	
 	public void main(String[] args) {
