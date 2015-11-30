@@ -24,22 +24,6 @@ public class Joueur{
 		
 	}
 	
-	/*
-	public void retraitSolde(int x){
-		solde -= x;
-		if (this.getSolde()<0){
-			Perdu(this);
-			if(tabJoueurs.size()<2){
-				tabJoueurs[0];
-			}
-		}
-	}
-	
-	public void ajoutSolde(int x){
-		solde += x;
-	}
-	*/
-	
 	public int getSolde(){
 		return solde;
 	}
