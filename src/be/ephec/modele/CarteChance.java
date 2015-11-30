@@ -9,6 +9,6 @@ public class CarteChance extends Carte {
 	}
 
 	public void action(){
-		
+	
 	}
 }
