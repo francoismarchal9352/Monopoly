@@ -26,6 +26,12 @@ public class Joueur{
 	
 	public void retraitSolde(int x){
 		solde -= x;
+		if (solde<0){
+			Perdu(this);
+			if(tabJoueur.size()<2){
+				tabJoueur[0] a gagné;
+			}
+		}
 	}
 	
 	public void ajoutSolde(int x){
