@@ -8,6 +8,10 @@ public class Partie {
 	private int nbTour = 0;
 	private Joueur[] tabMonopoles = new Joueur[8];
 	private ArrayList<Joueur> tabJoueurs = new ArrayList<Joueur>(2);
+	public ArrayList<Joueur> getTabJoueurs() {
+		return tabJoueurs;
+	}
+
 	private Plateau plateau = new Plateau(this);
 
 	

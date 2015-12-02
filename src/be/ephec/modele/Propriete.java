@@ -19,6 +19,12 @@ public class Propriete extends Case{
 		this.prixConstruction = prixConstruction;
 		this.tabLoyers = new int[]{loyer1,loyer2,loyer3,loyer4,loyer5,loyer6};	
 	}
+	public int getNbMaison() {
+		return nbMaison;
+	}
+	public int getNbHotel() {
+		return nbHotel;
+	}
 	public void action(){
 		
 	}

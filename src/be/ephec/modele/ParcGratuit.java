@@ -21,4 +21,16 @@ public class ParcGratuit extends Case {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int getNbMaison() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getNbHotel() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

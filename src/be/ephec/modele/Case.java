@@ -27,6 +27,8 @@ public abstract class Case {
 
 	public abstract String getProprietaire();
 	public abstract int getPrixTerrain();
+	public abstract int getNbMaison();
+	public abstract int getNbHotel();
 
 
 	public void action(){

@@ -22,4 +22,16 @@ public class Prison extends Case {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int getNbMaison() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getNbHotel() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

@@ -8,6 +8,7 @@ public class Joueur{
 	private int solde;
 	private int nbTourPrison;
 	private int nbTourSuite;
+	private int nbCarteSortezPrison;
 	private ArrayList<Case> tabProprietes;
 	
 	public ArrayList<Case> getTabProprietes() {
@@ -40,4 +41,39 @@ public class Joueur{
 	public void setPosition(int x){
 		position = x;
 	}
+	
+	public int calculNbMaison(){
+		int nbMaison = 0;
+		int i = 0;
+		while(this.tabProprietes.iterator().hasNext()){
+			if(this.tabProprietes.get(i).getType() == "Propriété"){
+				nbMaison += this.tabProprietes.get(i).getNbMaison();  
+			}
+			i++;
+		}
+		return nbMaison;
+	}
+	
+	public int calculNbHotel(){
+		int nbHotel = 0;
+		int i = 0;
+		while(this.tabProprietes.iterator().hasNext()){
+			if(this.tabProprietes.get(i).getType() == "Propriété"){
+				nbHotel += this.tabProprietes.get(i).getNbHotel();  
+			}
+			i++;
+		}
+		return nbHotel;
+		
+	}
+
+	public int getNbCarteSortezPrison() {
+		return nbCarteSortezPrison;
+	}
+
+	public void setNbCarteSortezPrison(int nbCarteSortezPrison) {
+		this.nbCarteSortezPrison = nbCarteSortezPrison;
+	}
+	
+	
 }
