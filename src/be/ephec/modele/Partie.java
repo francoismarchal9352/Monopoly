@@ -3,11 +3,12 @@ package be.ephec.modele;
 import java.util.ArrayList;
 
 public class Partie {
-	private int nbCarteChancePioche;
-	private int nbCarteCaisseComPioche;
-	private int nbTour;
+	private int nbCarteChancePioche = 0;
+	private int nbCarteCaisseComPioche = 0;
+	private int nbTour = 0;
 	private Joueur[] tabMonopoles = new Joueur[8];
 	private ArrayList<Joueur> tabJoueurs = new ArrayList<Joueur>(2);
+	private Plateau plateau = new Plateau(this);
 
 	
 	public Partie(){
@@ -21,8 +22,8 @@ public class Partie {
 	
 	
 	private void initJoueur() {
-		tabJoueurs.add(new Joueur("nom1"));
-		tabJoueurs.add(new Joueur("nom2"));
+		tabJoueurs.add(new Joueur("Joueur 1"));
+		tabJoueurs.add(new Joueur("Joueur 2"));
 	}
 
 	

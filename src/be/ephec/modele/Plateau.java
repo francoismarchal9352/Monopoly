@@ -6,10 +6,10 @@ public class Plateau {
 	private Carte[] tabCartesCaisseCom = new Carte[16];
 	private De de1;
 	private De de2;
-	private Partie jeu; // a verif
+	private Partie partie;
 	
-	public Plateau(Partie jeu){
-		this.jeu = jeu; // a verif
+	public Plateau(Partie partie){
+		this.partie = partie;
 		initCases();
 		initCartes();
 		initDes();
