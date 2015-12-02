@@ -3,7 +3,6 @@ package be.ephec.modele;
 import java.util.ArrayList;
 
 public class Partie {
-	private Plateau plateau;
 	private int nbCarteChancePioche;
 	private int nbCarteCaisseComPioche;
 	private int nbTour;
@@ -17,7 +16,6 @@ public class Partie {
 	
 	
 	public void initialisation(){
-		this.plateau = new Plateau();
 		initJoueur();
 	}
 	
@@ -27,14 +25,20 @@ public class Partie {
 		tabJoueurs.add(new Joueur("nom2"));
 	}
 
+
+	private void initDe() {
+		De de1 = new De();
+		De de2 = new De();
+		
+		
 	}
 
 	
 	public void acheter(Case x){
-		if(x.getType() == "Propriété" || x.getType() == "gare"  || x.getType() == "service" && x.getProprietaire() == null && x.getNumCase() == this.tabJoueurs.get(getJoueurCourant()).getPosition()){
-			if(this.tabJoueurs.get(getJoueurCourant()).getSolde() - x.getPrixTerrain() >= 0){
-				this.retraitSolde(x.getPrixTerrain(),this.tabJoueurs.get(getJoueurCourant()));
-				this.tabJoueurs.get(getJoueurCourant()).getTabProprietes().add(x);
+		if(x.getType() == "Propriété" || x.getType() == "gare"  || x.getType() == "service" && x.getProprietaire() == null && x.getNumCase() == this.tabJoueurs.get(getIndexJoueurCourant()).getPosition()){
+			if(this.tabJoueurs.get(getIndexJoueurCourant()).getSolde() - x.getPrixTerrain() >= 0){
+				this.retraitSolde(x.getPrixTerrain(),this.tabJoueurs.get(getIndexJoueurCourant()));
+				this.tabJoueurs.get(getIndexJoueurCourant()).getTabProprietes().add(x);
 			}
 		} else {
 			
@@ -46,25 +50,25 @@ public class Partie {
 	public void vendre(Case x, int valeur, Joueur acheteur){
 			// verif solde autre joueur + decision 
 			if(/*decision*/ && acheteur.getSolde() >= valeur ){ // a verif
-				this.ajoutSolde(valeur,this.tabJoueurs.get(getJoueurCourant()));
-				this.tabJoueurs.get(getJoueurCourant()).getTabProprietes().remove(x);
+				this.ajoutSolde(valeur,this.tabJoueurs.get(getIndexJoueurCourant()));
+				this.tabJoueurs.get(getIndexJoueurCourant()).getTabProprietes().remove(x);
 			}
 	}
 	
 	
 	
 	public void avancer(int x){
-		int anciennePosition = this.tabJoueurs.get(getJoueurCourant()).getPosition();
-		if(this.tabJoueurs.get(getJoueurCourant()).getPosition() + x >= 40){ this.tabJoueurs.get(getJoueurCourant()).setPosition((this.tabJoueurs.get(getJoueurCourant()).getPosition() + x)%40);
-		} else {this.tabJoueurs.get(getJoueurCourant()).setPosition(this.tabJoueurs.get(getJoueurCourant()).getPosition() + x);}
+		int anciennePosition = this.tabJoueurs.get(getIndexJoueurCourant()).getPosition();
+		if(this.tabJoueurs.get(getIndexJoueurCourant()).getPosition() + x >= 40){ this.tabJoueurs.get(getIndexJoueurCourant()).setPosition((this.tabJoueurs.get(getIndexJoueurCourant()).getPosition() + x)%40);
+		} else {this.tabJoueurs.get(getIndexJoueurCourant()).setPosition(this.tabJoueurs.get(getIndexJoueurCourant()).getPosition() + x);}
 		
-		if(this.tabJoueurs.get(getJoueurCourant()).getPosition() < anciennePosition){
-			this.ajoutSolde(200,this.tabJoueurs.get(getJoueurCourant()));
+		if(this.tabJoueurs.get(getIndexJoueurCourant()).getPosition() < anciennePosition){
+			this.ajoutSolde(200,this.tabJoueurs.get(getIndexJoueurCourant()));
 		}
 	}
 	
 	public void allerA(int x){
-		this.tabJoueurs.get(getJoueurCourant()).setPosition(x);
+		this.tabJoueurs.get(getIndexJoueurCourant()).setPosition(x);
 	}
 	
 	
@@ -78,9 +82,7 @@ public class Partie {
 		
 	}
 	
-	public Joueur getJoueurCourant(){
-		return TabJoueur[nbTour % tabJoueurs.length];
-	public int getJoueurCourant(){
+	public int getIndexJoueurCourant(){
 		return nbTour % tabJoueurs.size();
 	}
 	
@@ -89,7 +91,7 @@ public class Partie {
 		if (player.getSolde()<0){
 			Perdu(player);
 			if(tabJoueurs.size()<2){
-				Gagne(tabJoueurs[0]);
+				Gagne(tabJoueurs.get(index));
 			}
 		}
 	}
