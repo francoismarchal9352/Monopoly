@@ -25,14 +25,6 @@ public class Partie {
 		tabJoueurs.add(new Joueur("nom2"));
 	}
 
-
-	private void initDe() {
-		De de1 = new De();
-		De de2 = new De();
-		
-		
-	}
-
 	
 	public void acheter(Case x){
 		if(x.getType() == "Propriété" || x.getType() == "gare"  || x.getType() == "service" && x.getProprietaire() == null && x.getNumCase() == this.tabJoueurs.get(getIndexJoueurCourant()).getPosition()){
