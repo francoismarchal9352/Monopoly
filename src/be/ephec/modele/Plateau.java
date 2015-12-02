@@ -59,22 +59,22 @@ public class Plateau {
 		this.tabCases[39] = new Propriete("Rue de la Paix", "Bleu foncé", 400, 200, 50, 200, 600, 1400, 1700, 2000);
 	}
 	public void initCartes(){
-		this.tabCartesChance[0] = new CarteChance("Amende pour excès de vitesse.");
-		this.tabCartesChance[1] = new CarteChance("La banque vous verse un dividende de 50€.");
-		this.tabCartesChance[2] = new CarteChance("Vous êtes imposé pour les restaurations de voirie.\n40€ par maison et 115€ par hôtel.");
-		this.tabCartesChance[3] = new CarteChance("Avancez jusqu'à la case départ.");
-		this.tabCartesChance[4] = new CarteChance("Payez pour les frais de scolarité 150€");
-		this.tabCartesChance[5] = new CarteChance("Avancez jusqu'à la Rue de la Paix.");
-		this.tabCartesChance[6] = new CarteChance("Sortez de prison. Vous gardez cette carte jusqu'à ce qu'elle vous serve ou que vous la vendiez.");
-		this.tabCartesChance[7] = new CarteChance("Avancez jusqu'à l'Avenue Henri-Martin.\nSi vous passez par la case Départ, touchez 200€.");
-		this.tabCartesChance[8] = new CarteChance("Faites des réparations dans toutes vos propriétés.\n25€ par maison et 100€ par hôtel.");
-		this.tabCartesChance[9] = new CarteChance("Avancez jusqu'au Boulevard de la Vilette.\nSi vous passez par la case Départ, touchez 200€.");
-		this.tabCartesChance[10] = new CarteChance("Avancez jusqu'à la Garde de Lyon.\nSi vous passez par la case Départ, touchez 200€.");
-		this.tabCartesChance[11] = new CarteChance("Votre immeuble et votre prêt rapportent 150€.");
-		this.tabCartesChance[12] = new CarteChance("Allez en Prison. Ne franchissez pas la case Départ, ne touchez pas 200€.");
-		this.tabCartesChance[13] = new CarteChance("Reculez de 3 cases.");
-		this.tabCartesChance[14] = new CarteChance("Amende pour ivresse.");
-		this.tabCartesChance[15] = new CarteChance("Vous avez gagné le prix de mots croisés");
+		this.tabCartesChance[0] = new CarteChance("Amende pour excès de vitesse.",1);
+		this.tabCartesChance[1] = new CarteChance("La banque vous verse un dividende de 50€.",2);
+		this.tabCartesChance[2] = new CarteChance("Vous êtes imposé pour les restaurations de voirie.\n40€ par maison et 115€ par hôtel.",3);
+		this.tabCartesChance[3] = new CarteChance("Avancez jusqu'à la case départ.",4);
+		this.tabCartesChance[4] = new CarteChance("Payez pour les frais de scolarité 150€",5);
+		this.tabCartesChance[5] = new CarteChance("Avancez jusqu'à la Rue de la Paix.",6);
+		this.tabCartesChance[6] = new CarteChance("Sortez de prison. Vous gardez cette carte jusqu'à ce qu'elle vous serve ou que vous la vendiez.",7);
+		this.tabCartesChance[7] = new CarteChance("Avancez jusqu'à l'Avenue Henri-Martin.\nSi vous passez par la case Départ, touchez 200€.",8);
+		this.tabCartesChance[8] = new CarteChance("Faites des réparations dans toutes vos propriétés.\n25€ par maison et 100€ par hôtel.",9);
+		this.tabCartesChance[9] = new CarteChance("Avancez jusqu'au Boulevard de la Vilette.\nSi vous passez par la case Départ, touchez 200€.",10);
+		this.tabCartesChance[10] = new CarteChance("Avancez jusqu'à la Garde de Lyon.\nSi vous passez par la case Départ, touchez 200€.",11);
+		this.tabCartesChance[11] = new CarteChance("Votre immeuble et votre prêt rapportent 150€.",12);
+		this.tabCartesChance[12] = new CarteChance("Allez en Prison. Ne franchissez pas la case Départ, ne touchez pas 200€.",13);
+		this.tabCartesChance[13] = new CarteChance("Reculez de 3 cases.",14);
+		this.tabCartesChance[14] = new CarteChance("Amende pour ivresse.",15);
+		this.tabCartesChance[15] = new CarteChance("Vous avez gagné le prix de mots croisés",16);
 	}
 	
 	private void initDes() {
