@@ -90,12 +90,16 @@ public class Partie {
 	}
 	
 	public void Perdu(Joueur player) {
-		// TODO Auto-generated method stub
+		// envoyer un msg au joueur 
+		//supprimer le joueur perdant
+		tabJoueurs.remove(player);
 		
 	}
 	
 	public void Gagne(Joueur player) {
-		// TODO Auto-generated method stub
+		//envoyer un msg au joueur 
+		// terminer la partie
+		
 		
 	}
 	
