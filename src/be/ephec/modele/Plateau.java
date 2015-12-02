@@ -6,15 +6,18 @@ public class Plateau {
 	private Carte[] tabCartesCaisseCom = new Carte[16];
 	private De de1;
 	private De de2;
+	private Partie jeu; // a verif
 	
-	public Plateau(){
+	public Plateau(Partie jeu){
+		this.jeu = jeu; // a verif
 		initCases();
 		initCartes();
 		initDes();
 	}
 	
+	
 	public void initCases(){
-		this.tabCases[0] = new Depart(); // type départ
+		this.tabCases[0] = new Depart(); 
 		this.tabCases[1] = new Propriete("Boulevard de Belleville", "Brun", 60, 50, 2, 10, 30, 90, 160, 250);
 		this.tabCases[2] = new CaseCaisseCom();
 		this.tabCases[3] = new Propriete("Rue Lecourbe", "Brun", 60, 50, 4, 20, 60, 180, 320, 450);
@@ -34,7 +37,7 @@ public class Plateau {
 		this.tabCases[17] = new CaseCaisseCom();
 		this.tabCases[18] = new Propriete("Boulevard Saint-Michel", "Orange", 180, 100, 14, 70, 200, 550, 750, 950);
 		this.tabCases[19] = new Propriete("Place Pigalle", "Orange", 200, 100, 16, 80, 220, 600, 800, 1000);
-		this.tabCases[20] = new ParcGratuit(); // type parc 
+		this.tabCases[20] = new ParcGratuit();
 		this.tabCases[21] = new Propriete("Avenue Matignon", "Rouge", 220, 150, 18, 90, 250, 700, 875, 1050);
 		this.tabCases[22] = new CaseChance();
 		this.tabCases[23] = new Propriete("Boulevard Malesherbes", "Rouge", 220, 150, 18, 90, 250, 700, 875, 1050);
@@ -44,7 +47,7 @@ public class Plateau {
 		this.tabCases[27] = new Propriete("Place de la Bourse", "Jaune", 260, 150, 22, 110, 330, 800, 750, 1150);
 		this.tabCases[28] = new Service("Compagnie de Distribution des Eaux");
 		this.tabCases[29] = new Propriete("Rue la Fayette", "Jaune", 280, 150, 24, 120, 360, 850, 1025, 1200);
-		this.tabCases[30] = new AllerPrison(); // a voir
+		this.tabCases[30] = new AllerPrison();
 		this.tabCases[31] = new Propriete("Avenue du Breteuil", "Vert", 300, 200, 26, 130, 390, 900, 1100, 1275);
 		this.tabCases[32] = new Propriete("Avenue Foch", "Vert", 300, 200, 26, 130, 390, 900, 1100, 1275);
 		this.tabCases[33] = new CaseCaisseCom();
