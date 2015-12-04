@@ -88,7 +88,7 @@ public class Partie {
 		if (player.getSolde()<0){
 			Perdu(player);
 			if(tabJoueurs.size()<2){
-				Gagne(tabJoueurs.get(index));
+				Gagne(tabJoueurs.get(index)); // index => le joueur gagnant -- a faire
 			}
 		}
 	}
