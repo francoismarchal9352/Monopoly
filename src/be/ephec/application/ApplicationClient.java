@@ -34,7 +34,7 @@ public class ApplicationClient {
 		socket.ecrire(o);
 	}
 	
-	// Les getteurs et les setteurs
+	// Les getters et les setters
 	public InterfaceGraphiqueClient getInterfaceGraphiqueClient() {
 		return interfaceGraphiqueClient;
 	}

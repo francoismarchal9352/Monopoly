@@ -64,7 +64,7 @@ public class Plateau {
 		this.tabCartesChance[2] = new CarteChance(partie,"Vous êtes imposé pour les restaurations de voirie.\n40€ par maison et 115€ par hôtel.",3);
 		this.tabCartesChance[3] = new CarteChance(partie,"Avancez jusqu'à la case départ.",4);
 		this.tabCartesChance[4] = new CarteChance(partie,"Payez pour les frais de scolarité 150€",5);
-		this.tabCartesChance[5] = new CarteChance(partie,"Avancez jusqu'à la Rue de la Paix.",6);
+		this.tabCartesChance[5] = new CarteChance(partie,"Avancez jusqu'à la Rue de la Paix.",6); //Ne passe forcément pas par la case Départ.
 		this.tabCartesChance[6] = new CarteChance(partie,"Sortez de prison. Vous gardez cette carte jusqu'à ce qu'elle vous serve ou que vous la vendiez.",7);
 		this.tabCartesChance[7] = new CarteChance(partie,"Avancez jusqu'à l'Avenue Henri-Martin.\nSi vous passez par la case Départ, touchez 200€.",8);
 		this.tabCartesChance[8] = new CarteChance(partie,"Faites des réparations dans toutes vos propriétés.\n25€ par maison et 100€ par hôtel.",9);
@@ -80,11 +80,11 @@ public class Plateau {
 		this.tabCartesCaisseCom[1] = new CarteCaisseCom(partie,"Payez la note du médecin.\n50€",2);
 		this.tabCartesCaisseCom[2] = new CarteCaisseCom(partie,"Erreur de la banque en votre faveur.\nRecevez 200€.",3);
 		this.tabCartesCaisseCom[3] = new CarteCaisseCom(partie,"Allez en prison. Ne passez pas par la case Départ et ne touchez pas 200€.",4);
-		this.tabCartesCaisseCom[4] = new CarteCaisseCom(partie,"Retournez au Boulevard de Belleville.",5);
+		this.tabCartesCaisseCom[4] = new CarteCaisseCom(partie,"Avancez jusqu'au Boulevard de Belleville.",5); // Passe forcément par la case Départ.
 		this.tabCartesCaisseCom[5] = new CarteCaisseCom(partie,"Recevez votre intérêt sur l'emprunt à 7%.\n250€",6);
 		this.tabCartesCaisseCom[6] = new CarteCaisseCom(partie,"Payez à l'hôtpital 100€.",7);
 		this.tabCartesCaisseCom[7] = new CarteCaisseCom(partie,"C'est votre anniversaire.\nChaque joueur doit vous donner 10€.",8);
-		this.tabCartesCaisseCom[8] = new CarteCaisseCom(partie,"Vous recevez votre annuel: 100€.",9);
+		this.tabCartesCaisseCom[8] = new CarteCaisseCom(partie,"Vous recevez votre revenu annuel: 100€.",9);
 		this.tabCartesCaisseCom[9] = new CarteCaisseCom(partie,"Vous héritez 100€.",10);
 		this.tabCartesCaisseCom[10] = new CarteCaisseCom(partie,"La vente de votre stock vous rapporte 50€.",11);
 		this.tabCartesCaisseCom[11] = new CarteCaisseCom(partie,"Payez une amende de 10€ ou bien tirez une carte chance.",12);
