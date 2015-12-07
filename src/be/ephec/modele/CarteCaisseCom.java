@@ -14,9 +14,7 @@ public class CarteCaisseCom extends Carte {
 				break;
 			case 3: partie.ajoutSolde(200,partie.getJoueurCourant());
 				break;
-			case 4:
-				partie.allerA(10);
-				partie.getJoueurCourant().entreEnPrison(); //Besoin de créer la méthode dans Joueur
+			case 4: partie.getJoueurCourant().entreEnPrison();
 				break;
 			case 5: partie.allerA(1);
 				break;
@@ -32,7 +30,7 @@ public class CarteCaisseCom extends Carte {
 				break;
 			case 11: partie.ajoutSolde(50,partie.getJoueurCourant());
 				break;
-			case 12: this.payerOuPiocher();
+			case 12: partie.retraitSolde(10,partie.getJoueurCourant());
 				break;
 			case 13: partie.getJoueurCourant().setNbCarteSortezPrison(partie.getJoueurCourant().getNbCarteSortezPrison() + 1);
 				break;
@@ -54,14 +52,5 @@ public class CarteCaisseCom extends Carte {
 			}
 		}
 		partie.ajoutSolde(somme, partie.getJoueurCourant());
-	}
-	
-	private void payerOuPiocher() {
-		if(/*décision du joueur*/){
-			partie.retraitSolde(10,partie.getJoueurCourant());
-		}
-		else{
-			partie.piocheChance(); //à créer ainsi que piocheCaisseCom()
-		}
 	}
 }

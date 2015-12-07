@@ -2,8 +2,8 @@ package be.ephec.modele;
 
 public class ParcGratuit extends Case {
 
-	public ParcGratuit(){
-		super("ParcGratuit","Parc Gratuit");
+	public ParcGratuit(Partie partie){
+		super(partie,"ParcGratuit","Parc Gratuit");
 	}
 
 	public void action(){

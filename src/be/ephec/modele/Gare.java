@@ -5,8 +5,8 @@ public class Gare extends Case{
 	private int prixGare;
 	private int tabLoyers[];
 	
-	public Gare(String nom){
-		super("Gare", nom);
+	public Gare(Partie partie, String nom){
+		super(partie,"Gare", nom);
 		this.prixGare = 200;
 		this.tabLoyers = new int[]{25,50,100,200};
 	}

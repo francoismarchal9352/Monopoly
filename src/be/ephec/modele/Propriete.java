@@ -10,8 +10,8 @@ public class Propriete extends Case{
 	private int[] tabLoyers = new int[6];
 	
 	
-	public Propriete(String nom, String couleur, int prixTerrain, int prixConstruction, int loyer1, int loyer2, int loyer3, int loyer4, int loyer5, int loyer6){
-		super("Propriété", nom);
+	public Propriete(Partie partie, String nom, String couleur, int prixTerrain, int prixConstruction, int loyer1, int loyer2, int loyer3, int loyer4, int loyer5, int loyer6){
+		super(partie,"Propriété", nom);
 		this.couleur = couleur;
 		this.prixTerrain = prixTerrain;
 		this.nbMaison = 0;
@@ -36,10 +36,4 @@ public class Propriete extends Case{
 	public int getPrixTerrain() {
 		return prixTerrain;
 	}
-	
-	public static void main(String[] args) {
-		Propriete truc = new Propriete("Rue Truc", "brun", 60, 100, 12, 60, 180, 500, 700, 900);
-		System.out.println(truc.toString());
-	}
-
 }

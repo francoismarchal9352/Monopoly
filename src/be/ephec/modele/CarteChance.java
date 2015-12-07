@@ -20,10 +20,7 @@ public class CarteChance extends Carte {
 			case 10: partie.allerA(11); break;
 			case 11: partie.allerA(15); break;
 			case 12: partie.ajoutSolde(150,partie.getJoueurCourant()); break;
-			case 13:
-				partie.getJoueurCourant().setPosition(10);
-				partie.getJoueurCourant().entreEnPrison(); //Besoin de créer la méthode dans Joueur
-				break;
+			case 13: partie.getJoueurCourant().entreEnPrison(); break;
 			case 14: partie.getJoueurCourant().setPosition(partie.getJoueurCourant().getPosition()-3); break;
 			case 15: partie.retraitSolde(20,partie.getJoueurCourant());break;
 			case 16: partie.ajoutSolde(100,partie.getJoueurCourant());break;

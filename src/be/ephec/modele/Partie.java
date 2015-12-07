@@ -3,31 +3,41 @@ package be.ephec.modele;
 import java.util.ArrayList;
 
 public class Partie {
-	private int nbCarteChancePioche = 0;
-	private int nbCarteCaisseComPioche = 0;
+	private ArrayList<Joueur> tabJoueurs = new ArrayList<Joueur>(2);
+	private Plateau plateau = new Plateau(this);
 	private int nbTour = 0;
 	private Joueur[] tabMonopoles = new Joueur[8];
-	private ArrayList<Joueur> tabJoueurs = new ArrayList<Joueur>(2);
-	
-	public ArrayList<Joueur> getTabJoueurs() {
-		return tabJoueurs;
-	}
-
-	private Plateau plateau = new Plateau(this);
-
+	private int nbCarteChancePioche = 0;
+	private int nbCarteCaisseComPioche = 0;
 	
 	public Partie(){
 		
 	}
 	
-	
 	public void initialisation(){
 		initJoueur();
 	}
 	
+	public void debutTour(){
+		if(this.getJoueurCourant().getNbTourPrison()>0){
+			if(this.getJoueurCourant().getNbTourPrison()>3){
+				this.avancer(plateau.getSommeDe());
+			}
+		}
+	}
+	
+	public void finTour(){	//Note: Bouton "fin de tour" uniquement cliquable après avoir lancé les dés.
+		
+		
+	}
+	
+	public ArrayList<Joueur> getTabJoueurs() {
+		return tabJoueurs;
+	}
+	
 	private void initJoueur() {
-		tabJoueurs.add(new Joueur("Joueur 1"));
-		tabJoueurs.add(new Joueur("Joueur 2"));
+		tabJoueurs.add(new Joueur(this, "Joueur 1"));
+		tabJoueurs.add(new Joueur(this, "Joueur 2"));
 	}
 
 	public int getIndexJoueurCourant(){
@@ -39,7 +49,7 @@ public class Partie {
 	}
 	
 	public void acheter(Case x){
-		if(x.getType() == "Propriété" || x.getType() == "gare"  || x.getType() == "service" && x.getProprietaire() == null && x.getNumCase() == getJoueurCourant().getPosition()){
+		if((x.getType() == "Propriété" || x.getType() == "gare"  || x.getType() == "service") && x.getProprietaire() == null && x.getNumCase() == getJoueurCourant().getPosition()){
 			if(getJoueurCourant().getSolde() - x.getPrixTerrain() >= 0){
 				this.retraitSolde(x.getPrixTerrain(),getJoueurCourant());
 				getJoueurCourant().getTabProprietes().add(x);
@@ -78,15 +88,6 @@ public class Partie {
 	}
 	
 
-	public void debutTour(){
-		
-	}
-	
-	public void finTour(){
-		
-		
-	}
-	
 	
 	public void retraitSolde(int x, Joueur player){
 		player.setSolde(-x);
@@ -120,7 +121,7 @@ public class Partie {
 	}
 	
 	public void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Partie truc = new Partie();
+		System.out.println("truc");
 	}
 }

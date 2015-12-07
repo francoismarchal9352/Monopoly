@@ -3,6 +3,7 @@ package be.ephec.modele;
 import java.util.ArrayList;
 
 public class Joueur{
+	private Partie partie;
 	private String nom;
 	private int position;
 	private int solde;
@@ -15,12 +16,13 @@ public class Joueur{
 		return tabProprietes;
 	}
 
-	public Joueur(String nom){
-		this.nom = nom; // a faire
+	public Joueur(Partie partie, String nom){
+		this.partie = partie;
+		this.nom = nom;
 		this.position = 0;
 		this.solde = 15000;
 		this.nbTourPrison = 0;
-		this.nbTourSuite = 0; 
+		this.nbTourSuite = 0;
 		this.tabProprietes = new ArrayList<Case>(0);
 		
 	}
@@ -46,7 +48,7 @@ public class Joueur{
 		int nbMaison = 0;
 		for(Case possession : this.tabProprietes){
 			if(possession.getType() == "Propriété"){
-				nbMaison += possession.getNbMaison();  
+				nbMaison += possession.getNbMaison();
 			}
 		}
 		return nbMaison;
@@ -56,7 +58,7 @@ public class Joueur{
 		int nbHotel = 0;
 		for(Case possession : this.tabProprietes){
 			if(possession.getType() == "Propriété"){
-				nbHotel += possession.getNbHotel();  
+				nbHotel += possession.getNbHotel();
 			}
 		}
 		return nbHotel;
@@ -77,6 +79,17 @@ public class Joueur{
 
 	public void setNbTourPrison(int nbTourPrison) {
 		this.nbTourPrison = nbTourPrison;
+	}
+
+	public void entreEnPrison() {	//Désactiver les boutons pour acheter et vendre des propriétés
+		this.position=10;
+		this.nbTourSuite=0;
+		this.nbTourPrison=1;
+		if(this.nbCarteSortezPrison>0){
+			this.nbCarteSortezPrison--;
+			this.nbTourPrison=0;
+		}
+		partie.finTour();
 	}
 	
 	

@@ -4,8 +4,8 @@ public class Service extends Case {
 	private String proprietaire;
 	private int prixService;
 	
-	public Service(String nom){
-		super("Service", nom);
+	public Service(Partie partie, String nom){
+		super(partie,"Service", nom);
 		this.prixService = 150;
 	}	
 	

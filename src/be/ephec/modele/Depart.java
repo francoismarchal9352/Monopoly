@@ -2,8 +2,8 @@ package be.ephec.modele;
 
 public class Depart extends Case{
 	
-	public Depart(){
-		super("Depart","Case Depart");
+	public Depart(Partie partie){
+		super(partie,"Depart","Case Depart");
 	}
 
 	public void action(){

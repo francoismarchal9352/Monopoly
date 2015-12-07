@@ -2,8 +2,8 @@ package be.ephec.modele;
 
 public class CaseCaisseCom extends Case{
 	
-	public CaseCaisseCom(){
-		super("CaisseCom", "Case Caisse de Communeauté");
+	public CaseCaisseCom(Partie partie){
+		super(partie,"CaisseCom", "Case Caisse de Communeauté");
 	}
 	
 	
