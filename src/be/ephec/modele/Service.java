@@ -9,36 +9,28 @@ public class Service extends Case {
 		this.prixService = 150;
 	}
 	
-	
 	public void action(){
-		
+		//Rien à mettre dans cette méthode.
 	}
-
-
+	
 	@Override
 	public String getProprietaire() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
+	
 	@Override
 	public int getPrixTerrain() {
-		// TODO Auto-generated method stub
-		return 0;
+		return prixService;
 	}
-
-
+	
 	@Override
 	public int getNbMaison() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
+	
 	@Override
 	public int getNbHotel() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }

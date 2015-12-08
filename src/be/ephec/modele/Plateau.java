@@ -13,6 +13,7 @@ public class Plateau {
 		initCases();
 		initCartes();
 		initDes();
+		/*méthodes pour mélanger les cartes*/
 	}
 	
 	
@@ -103,6 +104,11 @@ public class Plateau {
 		return tabCases;
 	}
 	
+	public void lancerDes(){
+		this.de1.lancerDe();
+		this.de2.lancerDe();
+	}
+	
 	public De getDe1(){
 		return de1;
 	}
@@ -111,10 +117,10 @@ public class Plateau {
 		return de2;
 	}
 	
-	public int getSommeDe(){
+	public int getSommeDes(){
 		return de1.getValeur() + de2.getValeur();
 	}
-	
+		
 	public Carte getCarte(String typeCarte, int numCarte){
 		if(typeCarte=="Chance")
 			return tabCartesChance[numCarte];

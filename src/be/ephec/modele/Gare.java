@@ -11,36 +11,27 @@ public class Gare extends Case{
 		this.tabLoyers = new int[]{25,50,100,200};
 	}
 	
-	
 	public void action(){
-		
+		//Rien à mettre dans cette méthode.
 	}
-
-
+	
 	@Override
 	public String getProprietaire() {
-		// TODO Auto-generated method stub
-		return null;
+		return proprietaire;
 	}
-
-
+	
 	@Override
 	public int getPrixTerrain() {
-		// TODO Auto-generated method stub
-		return 0;
+		return prixGare;
 	}
-
-
+	
 	@Override
 	public int getNbMaison() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
+	
 	@Override
 	public int getNbHotel() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }

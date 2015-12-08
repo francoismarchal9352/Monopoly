@@ -8,7 +8,6 @@ public class Joueur{
 	private int position;
 	private int solde;
 	private int nbTourPrison;
-	private int nbTourSuite;
 	private int nbCarteSortezPrison;
 	private ArrayList<Case> tabPossessions;
 	
@@ -22,7 +21,6 @@ public class Joueur{
 		this.position = 0;
 		this.solde = 15000;
 		this.nbTourPrison = 0;
-		this.nbTourSuite = 0;
 		this.tabPossessions = new ArrayList<Case>(0);
 		
 	}
@@ -46,7 +44,7 @@ public class Joueur{
 	
 	public int getNbMaison(){
 		int nbMaison = 0;
-		for(Case possession : this.tabPossessions){
+		for(Case possession : tabPossessions){
 			if(possession.getType() == "Propriété"){
 				nbMaison += possession.getNbMaison();
 			}
@@ -56,7 +54,7 @@ public class Joueur{
 	
 	public int getNbHotel(){
 		int nbHotel = 0;
-		for(Case possession : this.tabPossessions){
+		for(Case possession : tabPossessions){
 			if(possession.getType() == "Propriété"){
 				nbHotel += possession.getNbHotel();
 			}
@@ -82,12 +80,12 @@ public class Joueur{
 	}
 
 	public void entreEnPrison() {	//Désactiver les boutons pour acheter et vendre des propriétés
-		this.position=10;
-		this.nbTourSuite=0;
-		this.nbTourPrison=1;
-		if(this.nbCarteSortezPrison>0){
-			this.nbCarteSortezPrison--;
-			this.nbTourPrison=0;
+		position=10;
+		partie.setNbTourSuite(0);
+		nbTourPrison=1;
+		if(nbCarteSortezPrison>0){
+			nbCarteSortezPrison--;
+			nbTourPrison=0;
 		}
 		partie.finTour();
 	}

@@ -7,7 +7,7 @@ public class Depart extends Case{
 	}
 
 	public void action(){
-		
+		//Rien à mettre dans cette méthode.
 	}
 
 	@Override

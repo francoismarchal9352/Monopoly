@@ -1,6 +1,6 @@
 package be.ephec.modele;
 
-public class Carte {
+public abstract class Carte {
 	protected Partie partie;
 	protected String texte;
 	protected int methodeNum;
@@ -11,6 +11,9 @@ public class Carte {
 		this.methodeNum = methodeNum;
 	}
 
-	public void action(){
+	public abstract void action(int methodeNum);
+	
+	public int getMethodeNum(){
+		return this.methodeNum;
 	}
 }

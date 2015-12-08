@@ -15,4 +15,8 @@ public class De {
 		return valeur;
 	}
 	
+	public void setZero(){
+		valeur=0;
+	}
+	
 }

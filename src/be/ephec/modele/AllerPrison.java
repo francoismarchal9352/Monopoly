@@ -34,5 +34,3 @@ public class AllerPrison extends Case {
 		return 0;
 	}
 }
-
-

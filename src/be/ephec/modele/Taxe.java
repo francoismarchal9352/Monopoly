@@ -9,7 +9,7 @@ public class Taxe extends Case {
 	}
 	
 	public void action(){
-		
+		partie.retraitSolde(100, partie.getJoueurCourant());
 	}
 
 	@Override
