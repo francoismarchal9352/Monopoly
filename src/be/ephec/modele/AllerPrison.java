@@ -3,12 +3,11 @@ package be.ephec.modele;
 public class AllerPrison extends Case {
 	
 	public AllerPrison(Partie partie){
-		super(partie,"AllerPrison","Aller en prison");
+		super(partie, "AllerPrison","Aller en prison");
 	}
 
 	public void action(){
 		partie.getJoueurCourant().entreEnPrison(); //Besoin de créer la méthode dans Joueur
-
 	}
 
 	@Override

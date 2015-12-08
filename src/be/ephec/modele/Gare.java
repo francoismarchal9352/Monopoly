@@ -20,14 +20,14 @@ public class Gare extends Case{
 	@Override
 	public String getProprietaire() {
 		// TODO Auto-generated method stub
-		return proprietaire;
+		return null;
 	}
 
 
 	@Override
 	public int getPrixTerrain() {
 		// TODO Auto-generated method stub
-		return prixGare;
+		return 0;
 	}
 
 

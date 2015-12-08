@@ -19,6 +19,15 @@ public class Propriete extends Case{
 		this.prixConstruction = prixConstruction;
 		this.tabLoyers = new int[]{loyer1,loyer2,loyer3,loyer4,loyer5,loyer6};	
 	}
+	
+	public String getProprietaire() {
+		return proprietaire;
+	}
+	
+	public int getPrixTerrain() {
+		return prixTerrain;
+	}
+	
 	public int getNbMaison() {
 		return nbMaison;
 	}
@@ -29,11 +38,4 @@ public class Propriete extends Case{
 		
 	}
 	
-	public String getProprietaire() {
-		return proprietaire;
-	}
-	
-	public int getPrixTerrain() {
-		return prixTerrain;
-	}
 }

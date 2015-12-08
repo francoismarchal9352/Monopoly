@@ -115,4 +115,9 @@ public class Plateau {
 		return de1.getValeur() + de2.getValeur();
 	}
 	
+	public Carte getCarte(String typeCarte, int numCarte){
+		if(typeCarte=="Chance")
+			return tabCartesChance[numCarte];
+		return tabCartesCaisseCom[numCarte];
+	}
 }

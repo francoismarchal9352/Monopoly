@@ -10,10 +10,10 @@ public class Joueur{
 	private int nbTourPrison;
 	private int nbTourSuite;
 	private int nbCarteSortezPrison;
-	private ArrayList<Case> tabProprietes;
+	private ArrayList<Case> tabPossessions;
 	
-	public ArrayList<Case> getTabProprietes() {
-		return tabProprietes;
+	public ArrayList<Case> getTabPossessions() {
+		return tabPossessions;
 	}
 
 	public Joueur(Partie partie, String nom){
@@ -23,7 +23,7 @@ public class Joueur{
 		this.solde = 15000;
 		this.nbTourPrison = 0;
 		this.nbTourSuite = 0;
-		this.tabProprietes = new ArrayList<Case>(0);
+		this.tabPossessions = new ArrayList<Case>(0);
 		
 	}
 	
@@ -46,7 +46,7 @@ public class Joueur{
 	
 	public int getNbMaison(){
 		int nbMaison = 0;
-		for(Case possession : this.tabProprietes){
+		for(Case possession : this.tabPossessions){
 			if(possession.getType() == "Propriété"){
 				nbMaison += possession.getNbMaison();
 			}
@@ -56,7 +56,7 @@ public class Joueur{
 	
 	public int getNbHotel(){
 		int nbHotel = 0;
-		for(Case possession : this.tabProprietes){
+		for(Case possession : this.tabPossessions){
 			if(possession.getType() == "Propriété"){
 				nbHotel += possession.getNbHotel();
 			}

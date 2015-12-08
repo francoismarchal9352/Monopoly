@@ -7,7 +7,7 @@ public class Service extends Case {
 	public Service(Partie partie, String nom){
 		super(partie,"Service", nom);
 		this.prixService = 150;
-	}	
+	}
 	
 	
 	public void action(){
@@ -18,14 +18,14 @@ public class Service extends Case {
 	@Override
 	public String getProprietaire() {
 		// TODO Auto-generated method stub
-		return proprietaire;
+		return null;
 	}
 
 
 	@Override
 	public int getPrixTerrain() {
 		// TODO Auto-generated method stub
-		return prixService;
+		return 0;
 	}
 
 

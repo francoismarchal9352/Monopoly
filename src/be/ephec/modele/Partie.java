@@ -52,7 +52,7 @@ public class Partie {
 		if((x.getType() == "Propriété" || x.getType() == "gare"  || x.getType() == "service") && x.getProprietaire() == null && x.getNumCase() == getJoueurCourant().getPosition()){
 			if(getJoueurCourant().getSolde() - x.getPrixTerrain() >= 0){
 				this.retraitSolde(x.getPrixTerrain(),getJoueurCourant());
-				getJoueurCourant().getTabProprietes().add(x);
+				getJoueurCourant().getTabPossessions().add(x);
 			}
 		} else {
 			// si c'est pas le bon type ou déjà acheté => envoie msg au joueur 
@@ -64,7 +64,7 @@ public class Partie {
 			// verif solde autre joueur + decision 
 			if(/*decision*/ && acheteur.getSolde() >= valeur ){ // a verif
 				this.ajoutSolde(valeur,getJoueurCourant());
-				getJoueurCourant().getTabProprietes().remove(x);
+				getJoueurCourant().getTabPossessions().remove(x);
 			}
 	}
 	
@@ -113,15 +113,21 @@ public class Partie {
 		
 	}
 	
-	
-
-
 	public void ajoutSolde(int x, Joueur player){
 		player.setSolde(x);
 	}
 	
-	public void main(String[] args) {
-		Partie truc = new Partie();
-		System.out.println("truc");
+	public void piocheCarte() {
+		this.plateau.getCarteChance(numCarte)
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

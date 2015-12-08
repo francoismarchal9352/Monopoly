@@ -8,7 +8,7 @@ public class CaseCaisseCom extends Case{
 	
 	
 	public void action(){
-		
+		partie.piocheCarte();
 	}
 
 
