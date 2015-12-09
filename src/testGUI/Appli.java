@@ -19,6 +19,8 @@ import javax.swing.JTextPane;
 import javax.swing.JSeparator;
 import java.awt.Color;
 import java.awt.Window.Type;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Appli extends JFrame {
 
@@ -85,7 +87,7 @@ public class Appli extends JFrame {
 		gbc_textArea.gridy = 6;
 		contentPane.add(textArea, gbc_textArea);
 		
-		JButton btnNewButton_1 = new JButton("Lancer les dés");
+		JButton btnNewButton_1 = new JButton("Lancer les des");
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.gridwidth = 6;
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
@@ -101,7 +103,11 @@ public class Appli extends JFrame {
 		gbc_btnAcheterMaison.gridy = 13;
 		contentPane.add(btnAcheterMaison, gbc_btnAcheterMaison);
 		
-		JButton btnAcheterHtel = new JButton("Acheter hôtel");
+		JButton btnAcheterHtel = new JButton("Acheter hotel");
+		btnAcheterHtel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		GridBagConstraints gbc_btnAcheterHtel = new GridBagConstraints();
 		gbc_btnAcheterHtel.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnAcheterHtel.insets = new Insets(0, 0, 5, 5);
