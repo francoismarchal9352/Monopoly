@@ -25,10 +25,21 @@ public class Joueur{
 		
 	}
 	
+	public void entreEnPrison() {	//Désactiver les boutons pour acheter et vendre des propriétés
+		System.out.println(partie.getJoueurCourant().getNom()+" PRISOOOOOOOOOOOOOOOOOOOOOOOOOOOOOON !");
+		position=10;
+		partie.setNbTourSuite(0);
+		nbTourPrison=1;
+		if(nbCarteSortezPrison>0){
+			nbCarteSortezPrison--;
+			nbTourPrison=0;
+		}
+		partie.finTour();
+	}
+	
 	public int getSolde(){
 		return solde;
 	}
-	
 	
 	public void setSolde(int solde) {
 		this.solde = solde;
@@ -79,16 +90,8 @@ public class Joueur{
 		this.nbTourPrison = nbTourPrison;
 	}
 
-	public void entreEnPrison() {	//Désactiver les boutons pour acheter et vendre des propriétés
-		position=10;
-		partie.setNbTourSuite(0);
-		nbTourPrison=1;
-		if(nbCarteSortezPrison>0){
-			nbCarteSortezPrison--;
-			nbTourPrison=0;
-		}
-		partie.finTour();
+	public String getNom(){
+		return nom;
 	}
-	
 	
 }

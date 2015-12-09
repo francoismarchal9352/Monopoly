@@ -18,16 +18,18 @@ public class Partie {
 	
 	public static void main(String[] args) { //Méthode de test.
 		Partie truc = new Partie();
-		System.out.println(truc.plateau.getCarte("Chance", 0).texte+" carte 1");
+		truc.debutTour();
 	}
 	
 	public void debutTour(){
-		while(plateau.getSommeDes() == 0){
+		//while(plateau.getSommeDes() == 0){
 			/*le programme attend que le joueur lance les dés.
 			 * Pendant ce temps, le joueur peut acheter des maisons/hotels, demander des loyers et vendre des biens.*/
 			// La méthode LancerDes() est liée au bouton dans la GUI.
-			}
+		//	}
 		/*Le vient de lancer les dés*/
+		this.plateau.lancerDes();
+		System.out.println(getJoueurCourant().getNom()+": Les dés ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur());
 		if(plateau.getDe1().getValeur()==plateau.getDe2().getValeur())
 			flagDesDouble=true;
 		if(getJoueurCourant().getNbTourPrison()>0){
@@ -63,8 +65,8 @@ public class Partie {
 	}
 	
 	private void initJoueur() {
-		tabJoueurs.add(new Joueur(this, "Joueur 1"));
-		tabJoueurs.add(new Joueur(this, "Joueur 2"));
+		tabJoueurs.add(new Joueur(this, "AAAAAAAAAAA"));
+		tabJoueurs.add(new Joueur(this, "BBBBBBBBBBB"));
 	}
 
 	public void acheter(Case terrain){ //L'argument est la case sur laquelle le joueur qui appelle la méthode se trouve.
@@ -91,6 +93,7 @@ public class Partie {
 		int anciennePosition = getJoueurCourant().getPosition();
 		getJoueurCourant().setPosition((getJoueurCourant().getPosition() + x)%40);
 		checkPasseCaseDepart(anciennePosition);
+		System.out.println(getJoueurCourant().getNom()+" arrive sur la case "+plateau.getTabCases()[getJoueurCourant().getPosition()].getNom());
 		plateau.getTabCases()[getJoueurCourant().getPosition()].action();
 	}
 	
@@ -99,6 +102,7 @@ public class Partie {
 		getJoueurCourant().setPosition(x);
 		checkPasseCaseDepart(anciennePosition);
 		plateau.getTabCases()[getJoueurCourant().getPosition()].action();
+		System.out.println(getJoueurCourant().getNom()+"Le joueur arrive sur la case "+plateau.getTabCases()[getJoueurCourant().getPosition()].getNom());
 	}
 	
 	public void checkPasseCaseDepart(int anciennePosition){
@@ -106,30 +110,33 @@ public class Partie {
 			ajoutSolde(200,getJoueurCourant());
 	}
 	
-
-	
-	public void retraitSolde(int x, Joueur player){
-		player.setSolde(-x);
-		if (player.getSolde()<0)
-			Perdu(player);
+	public void ajoutSolde(int x, Joueur joueur){
+		System.out.println(getJoueurCourant().getNom()+" reçoit "+x+" euros. Il lui reste "+(getJoueurCourant().getSolde()+x));
+		joueur.setSolde(getJoueurCourant().getSolde()+x);
 	}
 	
-	public void Perdu(Joueur player) {
+	public void retraitSolde(int x, Joueur joueur){
+		System.out.println(getJoueurCourant().getNom()+" paye "+x+" euros. Il lui reste "+(getJoueurCourant().getSolde()-x));
+		joueur.setSolde(joueur.getSolde()-x);
+		if (joueur.getSolde()<0)
+			Perdu(joueur);
+	}
+	
+	public void Perdu(Joueur joueur) {
 		// envoyer un msg au joueur 
 		//supprimer le joueur perdant
-		tabJoueurs.remove(player);
+		System.out.println("Le joueur "+getJoueurCourant().getNom()+" a perdu");
+		tabJoueurs.remove(joueur);
 		if(tabJoueurs.size()<2)
 			Gagne(tabJoueurs.get(0));		
 	}
 	
-	public void Gagne(Joueur player) {
+	public void Gagne(Joueur joueur) {
 		//envoyer un msg au joueur 
 		// terminer la partie
+		System.out.println("Le joueur "+tabJoueurs.get(0).getNom()+" a gagné !");
 	}
 	
-	public void ajoutSolde(int x, Joueur player){
-		player.setSolde(x);
-	}
 
 	public ArrayList<Joueur> getTabJoueurs() {
 		return tabJoueurs;

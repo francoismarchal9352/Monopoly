@@ -8,6 +8,7 @@ public class CaseCaisseCom extends Case{
 	
 	public void action(){
 		/*Affiche le texte de la carte au joueur*/
+		System.out.println(partie.getJoueurCourant().getNom()+" pioche carte CAISSE COM");
 		partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).action(partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).getMethodeNum());
 		partie.setNbCarteCaisseComPioche(partie.getNbCarteCaisseComPioche()+1);
 	}

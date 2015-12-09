@@ -4,7 +4,7 @@ public abstract class Case {
 	protected Partie partie;
 	private String type;
 	private String nom;
-	private int numCase;
+	private int numCase; // Encore besoin de numCase ?
 	private static int cptInitCase=0;
 	
 	public Case(Partie partie, String type, String nom){
@@ -17,6 +17,10 @@ public abstract class Case {
 		
 	public String getType() {
 		return type;
+	}
+	
+	public String getNom(){
+		return nom;
 	}
 	
 	//On pourrait faire mieux en créant une classe "achetable" qui serait mère de Propriété, Gare et Service mais on n'a pas le temps.
