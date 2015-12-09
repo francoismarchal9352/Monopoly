@@ -103,8 +103,8 @@ public class Partie {
 				retraitSolde(terrain.getPrixTerrain(),getJoueurCourant());
 				getJoueurCourant().getTabPossessions().add(terrain);
 			}
-		} else {
-			// si c'est pas le bon type ou déjà acheté => envoie msg au joueur 
+		}
+		else { // si c'est pas le bon type ou déjà acheté => envoie msg au joueur 
 			System.out.println("achat impossible !");
 		}
 	}
@@ -116,8 +116,6 @@ public class Partie {
 				getJoueurCourant().getTabPossessions().remove(x);
 			}
 	}
-	
-	
 	
 	public void avancer(int x){ //Sert à avancer de X cases.
 		int anciennePosition = getJoueurCourant().getPosition();

@@ -22,7 +22,7 @@ public class CarteCaisseCom extends Carte {
 				break;
 			case 7: partie.retraitSolde(100,partie.getJoueurCourant());
 				break;
-			case 8: this.anniversaire();
+			case 8: anniversaire();
 				break;
 			case 9: partie.ajoutSolde(100,partie.getJoueurCourant());
 				break;

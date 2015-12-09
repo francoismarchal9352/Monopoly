@@ -14,6 +14,6 @@ public abstract class Carte {
 	public abstract void action(int methodeNum);
 	
 	public int getMethodeNum(){
-		return this.methodeNum;
+		return methodeNum;
 	}
 }

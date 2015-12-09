@@ -10,13 +10,13 @@ public class CarteChance extends Carte {
 		switch (methodeNum) { //peut mieux faire en stackant les fonctions similaires mais pas urgent.
 			case 1: partie.retraitSolde(10,partie.getJoueurCourant()); break;
 			case 2: partie.ajoutSolde(50,partie.getJoueurCourant()); break;
-			case 3: this.reparations(40,115); break;
+			case 3: reparations(40,115); break;
 			case 4: partie.allerA(0); break;
 			case 5: partie.retraitSolde(150,partie.getJoueurCourant()); break;
 			case 6: partie.allerA(39); break;
 			case 7: partie.getJoueurCourant().setNbCarteSortezPrison(partie.getJoueurCourant().getNbCarteSortezPrison() + 1); break;
 			case 8: partie.allerA(24); break;
-			case 9: this.reparations(25,100); break;
+			case 9: reparations(25,100); break;
 			case 10: partie.allerA(11); break;
 			case 11: partie.allerA(15); break;
 			case 12: partie.ajoutSolde(150,partie.getJoueurCourant()); break;
