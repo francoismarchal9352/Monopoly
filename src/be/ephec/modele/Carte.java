@@ -13,7 +13,7 @@ public abstract class Carte {
 
 	public abstract void action(int methodeNum);
 	
-	public int getMethodeNum(){
+	public int getNumMethode(){
 		return numMethode;
 	}
 }

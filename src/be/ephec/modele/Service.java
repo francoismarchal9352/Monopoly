@@ -19,6 +19,10 @@ public class Service extends Case {
 		return null;
 	}
 	
+	public void setProprietaire(String nom){
+		proprietaire = nom;
+	}
+	
 	@Override
 	public int getPrixTerrain() {
 		return prixService;
