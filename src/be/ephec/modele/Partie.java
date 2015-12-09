@@ -1,6 +1,7 @@
 package be.ephec.modele;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Partie {
 	private ArrayList<Joueur> tabJoueurs = new ArrayList<Joueur>(2);
@@ -12,13 +13,27 @@ public class Partie {
 	private int nbCarteCaisseComPioche = 0;
 	private boolean flagDesDouble = false;
 	
+	private int nbJoueurs = 2;
+	
 	public Partie(){
 		initJoueur();
 	}
 	
 	public static void main(String[] args) { //Méthode de test.
 		Partie truc = new Partie();
-		truc.debutTour();
+		while(truc.getTabJoueurs().size()>1){
+			truc.debutTour();
+			System.out.println("");
+			truc.finTour();
+			System.out.println("Tour n°"+truc.nbTour);
+			try {
+				TimeUnit.MILLISECONDS.sleep(250);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println("La partie a duré "+truc.nbTour+" tours.");
 	}
 	
 	public void debutTour(){
@@ -29,7 +44,7 @@ public class Partie {
 		//	}
 		/*Le vient de lancer les dés*/
 		this.plateau.lancerDes();
-		System.out.println(getJoueurCourant().getNom()+": Les dés ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur());
+/*TEST*/System.out.println(getJoueurCourant().getNom()+": Les dés ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur());
 		if(plateau.getDe1().getValeur()==plateau.getDe2().getValeur())
 			flagDesDouble=true;
 		if(getJoueurCourant().getNbTourPrison()>0){
@@ -50,7 +65,6 @@ public class Partie {
 		//while(/*quelque chose*/){
 			/*le programme attend que le joueur clique sur le bouton "Fin de tour".
 			 * Pendant ce temps, le joueur peut acheter des maisons/hotels, demander des loyers et vendre des biens.*/
-		finTour();
 	}
 	
 	public void finTour(){	//Note: Bouton "fin de tour" uniquement cliquable après avoir lancé les dés.
@@ -61,19 +75,20 @@ public class Partie {
 		plateau.getDe1().setZero();
 		plateau.getDe2().setZero();
 		flagDesDouble=false;
-		debutTour();
 	}
 	
 	private void initJoueur() {
-		tabJoueurs.add(new Joueur(this, "AAAAAAAAAAA"));
-		tabJoueurs.add(new Joueur(this, "BBBBBBBBBBB"));
+		tabJoueurs.add(new Joueur(this, "1"));
+		tabJoueurs.add(new Joueur(this, "2"));
 	}
 
 	public void acheter(Case terrain){ //L'argument est la case sur laquelle le joueur qui appelle la méthode se trouve.
-		if((terrain.getType() == "Propriété" || terrain.getType() == "gare"  || terrain.getType() == "service") && terrain.getProprietaire() == null){
+		if((terrain.getType()=="Propriété"  || terrain.getType().compareToIgnoreCase("Gare")==0 || terrain.getType().compareToIgnoreCase("Service")==0) && terrain.getProprietaire() == null){
 			if(getJoueurCourant().getSolde() - terrain.getPrixTerrain() >= 0){
 				retraitSolde(terrain.getPrixTerrain(),getJoueurCourant());
 				getJoueurCourant().getTabPossessions().add(terrain);
+				terrain.setProprietaire(getJoueurCourant().getNom());
+/*TEST*/		System.out.println(getJoueurCourant().getNom()+" achète sa case.");
 			}
 		}
 		else { // si c'est pas le bon type ou déjà acheté => envoie msg au joueur 
@@ -95,6 +110,8 @@ public class Partie {
 		checkPasseCaseDepart(anciennePosition);
 		System.out.println(getJoueurCourant().getNom()+" arrive sur la case "+plateau.getTabCases()[getJoueurCourant().getPosition()].getNom());
 		plateau.getTabCases()[getJoueurCourant().getPosition()].action();
+/*TEST*/if(getJoueurCourant().getSolde()>500)
+			acheter(plateau.getTabCases()[getJoueurCourant().getPosition()]);
 	}
 	
 	public void allerA(int x){ //Sert à placer le joueurCourant à l'indice X du plateau.
@@ -111,12 +128,12 @@ public class Partie {
 	}
 	
 	public void ajoutSolde(int x, Joueur joueur){
-		System.out.println(getJoueurCourant().getNom()+" reçoit "+x+" euros. Il lui reste "+(getJoueurCourant().getSolde()+x));
+/*TEST*/System.out.println(getJoueurCourant().getNom()+" reçoit "+x+" euros. Il lui reste "+(getJoueurCourant().getSolde()+x));
 		joueur.setSolde(getJoueurCourant().getSolde()+x);
 	}
 	
 	public void retraitSolde(int x, Joueur joueur){
-		System.out.println(getJoueurCourant().getNom()+" paye "+x+" euros. Il lui reste "+(getJoueurCourant().getSolde()-x));
+/*TEST*/System.out.println(getJoueurCourant().getNom()+" paye "+x+" euros. Il lui reste "+(getJoueurCourant().getSolde()-x));
 		joueur.setSolde(joueur.getSolde()-x);
 		if (joueur.getSolde()<0)
 			Perdu(joueur);
@@ -125,10 +142,17 @@ public class Partie {
 	public void Perdu(Joueur joueur) {
 		// envoyer un msg au joueur 
 		//supprimer le joueur perdant
-		System.out.println("Le joueur "+getJoueurCourant().getNom()+" a perdu");
+/*TEST*/System.out.println("Le joueur "+getJoueurCourant().getNom()+" a perdu");
+		//On set à null le propriétaire de ses possession.
+		for(Case possession : joueur.getTabPossessions()){
+/*TEST*/	System.out.println(possession.getNom()+" n'appartient plus à "+joueur.getNom());
+			possession.setProprietaire(null);
+		}
 		tabJoueurs.remove(joueur);
-		if(tabJoueurs.size()<2)
-			Gagne(tabJoueurs.get(0));		
+		tabJoueurs.add(1, new Joueur(this, ""+nbJoueurs++));
+		System.out.println("La partie dure depuis "+nbTour+" tours.");
+		if(tabJoueurs.size()==1)
+			Gagne(tabJoueurs.get(0));
 	}
 	
 	public void Gagne(Joueur joueur) {

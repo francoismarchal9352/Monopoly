@@ -20,6 +20,10 @@ public class Gare extends Case{
 		return proprietaire;
 	}
 	
+	public void setProprietaire(String nom){
+		proprietaire = nom;
+	}
+	
 	@Override
 	public int getPrixTerrain() {
 		return prixGare;

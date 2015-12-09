@@ -27,6 +27,10 @@ public class Propriete extends Case{
 		return proprietaire;
 	}
 	
+	public void setProprietaire(String nom){
+		proprietaire = nom;
+	}
+	
 	public int getPrixTerrain() {
 		return prixTerrain;
 	}

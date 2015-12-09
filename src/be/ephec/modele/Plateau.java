@@ -16,8 +16,8 @@ public class Plateau {
 		initCases();
 		initCartes();
 		initDes();
-		Collections.shuffle(tabCartesChance);
-		Collections.shuffle(tabCartesCaisseCom);
+		//Collections.shuffle(tabCartesChance);
+		//Collections.shuffle(tabCartesCaisseCom);
 	}
 	
 	
@@ -64,7 +64,7 @@ public class Plateau {
 		tabCases[39] = new Propriete(partie,"Rue de la Paix", "Bleu foncé", 400, 200, 50, 200, 600, 1400, 1700, 2000);
 	}
 	public void initCartes(){
-		tabCartesChance.add(new CarteChance(partie,"Amende pour excès de vitesse.",1));
+		tabCartesChance.add(new CarteChance(partie,"Amende pour excès de vitesse: 10€.",1));
 		tabCartesChance.add(new CarteChance(partie,"La banque vous verse un dividende de 50€.",2));
 		tabCartesChance.add(new CarteChance(partie,"Vous êtes imposé pour les restaurations de voirie.\n40€ par maison et 115€ par hôtel.",3));
 		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'à la case départ.",4));
@@ -78,8 +78,8 @@ public class Plateau {
 		tabCartesChance.add(new CarteChance(partie,"Votre immeuble et votre prêt rapportent 150€.",12));
 		tabCartesChance.add(new CarteChance(partie,"Allez en Prison. Ne franchissez pas la case Départ, ne touchez pas 200€.",13));
 		tabCartesChance.add(new CarteChance(partie,"Reculez de 3 cases.",14));
-		tabCartesChance.add(new CarteChance(partie,"Amende pour ivresse.",15));
-		tabCartesChance.add(new CarteChance(partie,"Vous avez gagné le prix de mots croisés",16));
+		tabCartesChance.add(new CarteChance(partie,"Amende pour ivresse: 20€.",15));
+		tabCartesChance.add(new CarteChance(partie,"Vous avez gagné le prix de mots croisés: 100€.",16));
 		
 		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez votre police d'assurance s'élevant à 50€.",1));
 		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez la note du médecin.\n50€",2));
@@ -100,8 +100,8 @@ public class Plateau {
 	}
 	
 	private void initDes() {
-		de1 = new De();
-		de2 = new De();
+		de1 = new De(1);
+		de2 = new De(2);
 	}
 
 	public Case[] getTabCases() {
@@ -126,7 +126,7 @@ public class Plateau {
 	}
 		
 	public Carte getCarte(String typeCarte, int numCarte){
-		if(typeCarte=="Chance")
+		if(typeCarte.compareToIgnoreCase("Chance")==0)
 			return tabCartesChance.get(numCarte);
 		return tabCartesCaisseCom.get(numCarte);
 	}

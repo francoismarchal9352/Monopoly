@@ -18,6 +18,12 @@ public class Prison extends Case {
 	}
 
 	@Override
+	public void setProprietaire(String nom) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public int getPrixTerrain() {
 		// TODO Auto-generated method stub
 		return 0;
