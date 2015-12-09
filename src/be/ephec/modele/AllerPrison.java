@@ -7,7 +7,7 @@ public class AllerPrison extends Case {
 	}
 
 	public void action(){
-		partie.getJoueurCourant().entreEnPrison(); //Besoin de créer la méthode dans Joueur
+		partie.getJoueurCourant().entreEnPrison();
 	}
 
 	@Override

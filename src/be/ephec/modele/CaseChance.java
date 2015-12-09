@@ -8,7 +8,7 @@ public class CaseChance extends Case {
 	
 	public void action(){
 		/*Affiche le texte de la carte au joueur*/
-		partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()).action(partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()).getMethodeNum());
+		partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()%16).action(partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()%16).getMethodeNum());
 		partie.setNbCarteChancePioche(partie.getNbCarteChancePioche()+1);
 	}
 		

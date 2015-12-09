@@ -21,7 +21,7 @@ public class Joueur{
 		this.position = 0;
 		this.solde = 15000;
 		this.nbTourPrison = 0;
-		this.tabPossessions = new ArrayList<Case>(0);
+		this.tabPossessions = new ArrayList<Case>(); // défault size d'un ArrayList est 10. Autant laisser cette valeur pour gagner un peu en perf lors de l'exec.
 		
 	}
 	

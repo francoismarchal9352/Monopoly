@@ -13,11 +13,30 @@ public class Partie {
 	private boolean flagDesDouble = false;
 	
 	public Partie(){
-		
+		initJoueur();
 	}
 	
-	public void initialisation(){ // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! à check si la moindre utilité.
-		initJoueur();
+	public static void main(String[] args) {
+		Partie truc = new Partie();
+		System.out.println(truc.plateau.getCarte("Chance", 0).texte+" carte 1");
+		System.out.println(truc.plateau.getCarte("Chance", 1).texte+" carte 2");
+		System.out.println(truc.plateau.getCarte("Chance", 2).texte+" carte 3");
+		System.out.println(truc.plateau.getCarte("Chance", 3).texte+" carte 4");
+		System.out.println(truc.plateau.getCarte("Chance", 4).texte+" carte 5");
+		System.out.println(truc.plateau.getCarte("Chance", 5).texte+" carte 6");
+		System.out.println(truc.plateau.getCarte("Chance", 6).texte+" carte 7");
+		System.out.println(truc.plateau.getCarte("Chance", 7).texte+" carte 8");
+		System.out.println(truc.plateau.getCarte("Chance", 8).texte+" carte 9");
+		System.out.println(truc.plateau.getCarte("Chance", 9).texte+" carte 10");
+		System.out.println(truc.plateau.getCarte("Chance", 10).texte+" carte 11");
+		System.out.println(truc.plateau.getCarte("Chance", 11).texte+" carte 12");
+		System.out.println(truc.plateau.getCarte("Chance", 12).texte+" carte 13");
+		System.out.println(truc.plateau.getCarte("Chance", 13).texte+" carte 14");
+		System.out.println(truc.plateau.getCarte("Chance", 14).texte+" carte 15");
+		System.out.println(truc.plateau.getCarte("Chance", 15).texte+" carte 16");
+		System.out.println(truc.plateau.getCarte("Chance", 0).texte+" carte 17");
+
+		
 	}
 	
 	public void debutTour(){
@@ -41,7 +60,7 @@ public class Partie {
 		}
 		else{
 			if((nbTourSuite==2) && (flagDesDouble==true))
-					getJoueurCourant().entreEnPrison(); //Besoin de créer la méthode dans Joueur
+					getJoueurCourant().entreEnPrison();
 			avancer(plateau.getSommeDes());
 		}
 		//while(/*quelque chose*/){
@@ -53,7 +72,7 @@ public class Partie {
 	public void finTour(){	//Note: Bouton "fin de tour" uniquement cliquable après avoir lancé les dés.
 		if( (!flagDesDouble) || (getJoueurCourant().getNbTourPrison()>0))
 			nbTour++; //nbTour++ que si le joueur n'a pas fait un double OU si le joueur est en prison en fin de tour.
-		else
+		else //Sinon, ça veut dire que le joueur a fait un double et n'a pas fini son tour en prison.
 			nbTourSuite++;
 		plateau.getDe1().setZero();
 		plateau.getDe2().setZero();
@@ -61,42 +80,11 @@ public class Partie {
 		debutTour();
 	}
 	
-	public ArrayList<Joueur> getTabJoueurs() {
-		return tabJoueurs;
-	}
-	
 	private void initJoueur() {
 		tabJoueurs.add(new Joueur(this, "Joueur 1"));
 		tabJoueurs.add(new Joueur(this, "Joueur 2"));
 	}
 
-	public int getIndiceJoueurCourant(){
-		return nbTour % tabJoueurs.size();
-	}
-
-	public Joueur getJoueurCourant(){
-		return tabJoueurs.get(getIndiceJoueurCourant());
-	}
-	
-	public Plateau getPlateau(){
-		return plateau;
-	}
-	
-	public int getNbCarteChancePioche(){
-		return nbCarteChancePioche;
-	}
-	public void setNbCarteChancePioche(int nb){
-		nbCarteChancePioche=nb;
-	}
-	
-	public int getNbCarteCaisseComPioche(){
-		return nbCarteCaisseComPioche;
-	}
-	
-	public void setNbCarteCaisseComPioche(int nb){
-		nbCarteCaisseComPioche=nb;
-	}
-	
 	public void acheter(Case terrain){ //L'argument est la case sur laquelle le joueur qui appelle la méthode se trouve.
 		if((terrain.getType() == "Propriété" || terrain.getType() == "gare"  || terrain.getType() == "service") && terrain.getProprietaire() == null){
 			if(getJoueurCourant().getSolde() - terrain.getPrixTerrain() >= 0){
@@ -140,41 +128,55 @@ public class Partie {
 	
 	public void retraitSolde(int x, Joueur player){
 		player.setSolde(-x);
-		if (player.getSolde()<0){
+		if (player.getSolde()<0)
 			Perdu(player);
-			if(tabJoueurs.size()<2){
-				Gagne(tabJoueurs.get(0));
-			}
-		}
 	}
 	
 	public void Perdu(Joueur player) {
 		// envoyer un msg au joueur 
 		//supprimer le joueur perdant
 		tabJoueurs.remove(player);
-		
+		if(tabJoueurs.size()<2)
+			Gagne(tabJoueurs.get(0));		
 	}
 	
 	public void Gagne(Joueur player) {
 		//envoyer un msg au joueur 
 		// terminer la partie
-		
 	}
 	
 	public void ajoutSolde(int x, Joueur player){
 		player.setSolde(x);
 	}
 
+	public ArrayList<Joueur> getTabJoueurs() {
+		return tabJoueurs;
+	}
+	
+	public Joueur getJoueurCourant(){
+		return tabJoueurs.get(nbTour % tabJoueurs.size());
+	}
+	
+	public Plateau getPlateau(){
+		return plateau;
+	}
+	
+	public int getNbCarteChancePioche(){
+		return nbCarteChancePioche;
+	}
+	public void setNbCarteChancePioche(int nb){
+		nbCarteChancePioche=nb;
+	}
+	
+	public int getNbCarteCaisseComPioche(){
+		return nbCarteCaisseComPioche;
+	}
+	
+	public void setNbCarteCaisseComPioche(int nb){
+		nbCarteCaisseComPioche=nb;
+	}
+	
 	public void setNbTourSuite(int nb) {
 		nbTourSuite=nb;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
