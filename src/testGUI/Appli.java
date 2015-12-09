@@ -87,7 +87,7 @@ public class Appli extends JFrame {
 		gbc_textArea.gridy = 6;
 		contentPane.add(textArea, gbc_textArea);
 		
-		JButton btnNewButton_1 = new JButton("Lancer les des");
+		JButton btnNewButton_1 = new JButton("Lancer les dés");
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.gridwidth = 6;
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
@@ -103,7 +103,7 @@ public class Appli extends JFrame {
 		gbc_btnAcheterMaison.gridy = 13;
 		contentPane.add(btnAcheterMaison, gbc_btnAcheterMaison);
 		
-		JButton btnAcheterHtel = new JButton("Acheter hotel");
+		JButton btnAcheterHtel = new JButton("Acheter hôtel");
 		btnAcheterHtel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
