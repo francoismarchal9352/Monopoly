@@ -6,8 +6,8 @@ import java.util.Collections;
 public class Plateau {
 	private Partie partie;
 	private Case[] tabCases = new Case[40];
-	private ArrayList<Carte> tabCartesChance = new ArrayList<>(0);
-	private ArrayList<Carte> tabCartesCaisseCom = new ArrayList<>(0);
+	private ArrayList<Carte> tabCartesChance = new ArrayList<>(16);
+	private ArrayList<Carte> tabCartesCaisseCom = new ArrayList<>(16);
 	private De de1;
 	private De de2;
 	
@@ -96,7 +96,7 @@ public class Plateau {
 		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Sortez de prison. Vous gardez cette carte jusqu'à ce qu'elle vous serve ou que vous la vendiez.",13));
 		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Les contributions vous remboursent la somme de 20€.",14));
 		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous avez gagné le deuxième prix de beauté, vous touchez 10€.",15));
-		tabCartesChance.add(new CarteCaisseCom(partie,"Avancez jusqu'à la case départ.",16));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Avancez jusqu'à la case départ.",16));
 	}
 	
 	private void initDes() {

@@ -16,27 +16,9 @@ public class Partie {
 		initJoueur();
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) { //Méthode de test.
 		Partie truc = new Partie();
 		System.out.println(truc.plateau.getCarte("Chance", 0).texte+" carte 1");
-		System.out.println(truc.plateau.getCarte("Chance", 1).texte+" carte 2");
-		System.out.println(truc.plateau.getCarte("Chance", 2).texte+" carte 3");
-		System.out.println(truc.plateau.getCarte("Chance", 3).texte+" carte 4");
-		System.out.println(truc.plateau.getCarte("Chance", 4).texte+" carte 5");
-		System.out.println(truc.plateau.getCarte("Chance", 5).texte+" carte 6");
-		System.out.println(truc.plateau.getCarte("Chance", 6).texte+" carte 7");
-		System.out.println(truc.plateau.getCarte("Chance", 7).texte+" carte 8");
-		System.out.println(truc.plateau.getCarte("Chance", 8).texte+" carte 9");
-		System.out.println(truc.plateau.getCarte("Chance", 9).texte+" carte 10");
-		System.out.println(truc.plateau.getCarte("Chance", 10).texte+" carte 11");
-		System.out.println(truc.plateau.getCarte("Chance", 11).texte+" carte 12");
-		System.out.println(truc.plateau.getCarte("Chance", 12).texte+" carte 13");
-		System.out.println(truc.plateau.getCarte("Chance", 13).texte+" carte 14");
-		System.out.println(truc.plateau.getCarte("Chance", 14).texte+" carte 15");
-		System.out.println(truc.plateau.getCarte("Chance", 15).texte+" carte 16");
-		System.out.println(truc.plateau.getCarte("Chance", 0).texte+" carte 17");
-
-		
 	}
 	
 	public void debutTour(){
