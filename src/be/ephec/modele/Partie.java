@@ -27,7 +27,7 @@ public class Partie {
 			truc.finTour();
 			System.out.println("Tour n°"+truc.nbTour);
 			try {
-				TimeUnit.MILLISECONDS.sleep(250);
+				TimeUnit.MILLISECONDS.sleep(1);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

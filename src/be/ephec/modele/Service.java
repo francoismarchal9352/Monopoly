@@ -15,8 +15,7 @@ public class Service extends Case {
 	
 	@Override
 	public String getProprietaire() {
-		// TODO Auto-generated method stub
-		return null;
+		return proprietaire;
 	}
 	
 	public void setProprietaire(String nom){
