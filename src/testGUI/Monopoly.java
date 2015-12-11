@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import java.awt.GridLayout;
+import javax.swing.ImageIcon;
 
 public class Monopoly extends JFrame {
 
@@ -44,7 +45,7 @@ public class Monopoly extends JFrame {
 	 */
 	public Monopoly() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1100, 750);
+		setBounds(100, 100, 1300, 885);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -222,6 +223,10 @@ public class Monopoly extends JFrame {
 		JPanel panel = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		contentPane.add(panel, BorderLayout.WEST);
+		
+		JLabel lblBoardGame = new JLabel("");
+		lblBoardGame.setIcon(new ImageIcon("/Users/francois/github/Monopoly/boardgame4.jpg"));
+		panel.add(lblBoardGame);
 	}
 
 }
