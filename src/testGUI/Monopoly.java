@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import java.awt.GridLayout;
 
 public class Monopoly extends JFrame {
 
@@ -48,11 +49,6 @@ public class Monopoly extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
-		flowLayout.setHgap(150);
-		contentPane.add(panel, BorderLayout.WEST);
 		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
@@ -222,6 +218,10 @@ public class Monopoly extends JFrame {
 		gbc_btnFinTour.gridx = 22;
 		gbc_btnFinTour.gridy = 25;
 		panel_1.add(btnFinTour, gbc_btnFinTour);
+		
+		JPanel panel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+		contentPane.add(panel, BorderLayout.WEST);
 	}
 
 }
