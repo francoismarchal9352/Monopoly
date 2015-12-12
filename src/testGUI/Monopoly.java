@@ -221,12 +221,23 @@ public class Monopoly extends JFrame {
 		panel_1.add(btnFinTour, gbc_btnFinTour);
 		
 		JPanel panel = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		contentPane.add(panel, BorderLayout.WEST);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{850, 0};
+		gbl_panel.rowHeights = new int[]{850, 0, 0};
+		gbl_panel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
 		
 		JLabel lblBoardGame = new JLabel("");
-		lblBoardGame.setIcon(new ImageIcon("/Users/francois/github/Monopoly/boardgame4.jpg"));
-		panel.add(lblBoardGame);
+		lblBoardGame.setIcon(new ImageIcon("./boardgame4.jpg"));
+		GridBagConstraints gbc_lblBoardGame = new GridBagConstraints();
+		gbc_lblBoardGame.insets = new Insets(0, 0, 5, 0);
+		gbc_lblBoardGame.anchor = GridBagConstraints.NORTHWEST;
+		gbc_lblBoardGame.gridx = 0;
+		gbc_lblBoardGame.gridy = 0;
+		panel.add(lblBoardGame, gbc_lblBoardGame);
+		
 	}
 
 }
