@@ -19,6 +19,7 @@ public class Partie {
 		initJoueur();
 	}
 	
+	/*
 	public static void main(String[] args) { //Méthode de test.
 		Partie truc = new Partie();
 		while(truc.getTabJoueurs().size()>1){
@@ -35,6 +36,7 @@ public class Partie {
 		}
 		System.out.println("La partie a duré "+truc.nbTour+" tours.");
 	}
+	*/
 	
 	public void debutTour(){
 		//while(plateau.getSommeDes() == 0){
@@ -174,6 +176,16 @@ public class Partie {
 		return plateau;
 	}
 	
+	
+	
+	public int getNbTour() {
+		return nbTour;
+	}
+
+	public void setNbTour(int nbTour) {
+		this.nbTour = nbTour;
+	}
+
 	public int getNbCarteChancePioche(){
 		return nbCarteChancePioche;
 	}

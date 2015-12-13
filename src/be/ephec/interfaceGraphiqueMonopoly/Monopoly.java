@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.ImageIcon;
@@ -17,8 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
-public class Monopoly extends JFrame implements ActionListener {
 
+public class Monopoly extends JFrame implements ActionListener {
+	
 	private JPanel contentPane;
 	private JButton buttonLancerDes;
 	private JButton buttonAcheter;
@@ -46,9 +49,11 @@ public class Monopoly extends JFrame implements ActionListener {
 	private JLabel labelValPositionJ2;
 	private JLabel labelJoueur;
 
+	
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -61,11 +66,13 @@ public class Monopoly extends JFrame implements ActionListener {
 			}
 		});
 	}
+	
+	*/
 
 	/**
 	 * Create the frame.
 	 */
-	public Monopoly() {
+	public Monopoly(String nom) {
 		setResizable(false);
 		setTitle("Monopoly");
 		setSize(1500,900);
@@ -104,7 +111,7 @@ public class Monopoly extends JFrame implements ActionListener {
 		buttonLancerDes = new JButton("Lancer les Dés");
 		buttonLancerDes.addActionListener(this);
 		
-		labelJoueur = new JLabel("Joueur X");
+		labelJoueur = new JLabel(nom);
 		GridBagConstraints gbc_labelJoueur = new GridBagConstraints();
 		gbc_labelJoueur.gridwidth = 2;
 		gbc_labelJoueur.insets = new Insets(0, 0, 5, 5);
@@ -298,10 +305,16 @@ public class Monopoly extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-				oos.writeSring(e.getActionCommand());
+				oos.write(e.getActionCommand());
 				if(this.get)
 				TimeUnit.MILLISECONDS.sleep(250);
 				ois.readObject(partie);
 				
+				
 		}
+
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
 }
