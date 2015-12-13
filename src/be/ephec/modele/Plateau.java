@@ -48,7 +48,7 @@ public class Plateau {
 		tabCases[23] = new Propriete(partie,"Boulevard Malesherbes", "Rouge", 220, 150, 18, 90, 250, 700, 875, 1050);
 		tabCases[24] = new Propriete(partie,"Avenue Henri-Martin", "Rouge", 240, 150, 20, 100, 300, 750, 925, 1100);
 		tabCases[25] = new Gare(partie,"Garde du Nord");
-		tabCases[26] = new Propriete(partie,"Faubourg Seint-Honoré", "Jaune", 260, 150, 22, 110, 330, 800, 750, 1150);
+		tabCases[26] = new Propriete(partie,"Faubourg Saint-Honoré", "Jaune", 260, 150, 22, 110, 330, 800, 750, 1150);
 		tabCases[27] = new Propriete(partie,"Place de la Bourse", "Jaune", 260, 150, 22, 110, 330, 800, 750, 1150);
 		tabCases[28] = new Service(partie,"Compagnie de Distribution des Eaux");
 		tabCases[29] = new Propriete(partie,"Rue la Fayette", "Jaune", 280, 150, 24, 120, 360, 850, 1025, 1200);
@@ -100,8 +100,8 @@ public class Plateau {
 	}
 	
 	private void initDes() {
-		de1 = new De(1);
-		de2 = new De(2);
+		de1 = new De(/*1*/);
+		de2 = new De(/*2*/);
 	}
 
 	public Case[] getTabCases() {

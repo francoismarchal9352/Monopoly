@@ -13,7 +13,6 @@ public class ClientSocket extends Socket implements Runnable {
 	private ObjectInputStream ois;
 	private ApplicationClient appliClient;
 	
-	
 	public ClientSocket(ApplicationClient appliClient) throws UnknownHostException, IOException{
 		super(Param.IP_SERVEUR,Param.NUM_PORT_DE_BASE);
 		this.appliClient = appliClient;

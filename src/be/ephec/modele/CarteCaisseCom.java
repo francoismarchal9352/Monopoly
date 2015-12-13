@@ -15,7 +15,7 @@ public class CarteCaisseCom extends Carte {
 			case 5: partie.allerA(1); break;
 			case 6: partie.ajoutSolde(50,partie.getJoueurCourant()); break;
 			case 7: partie.retraitSolde(100,partie.getJoueurCourant()); break;
-			case 8: anniversaire(); break;
+			case 8: anniversaire();	break;
 			case 9: partie.ajoutSolde(100,partie.getJoueurCourant()); break;
 			case 10: partie.ajoutSolde(100,partie.getJoueurCourant()); break;
 			case 11: partie.ajoutSolde(50,partie.getJoueurCourant()); break;
@@ -27,10 +27,10 @@ public class CarteCaisseCom extends Carte {
 		}
 	}
 	
-	private void anniversaire(){
+	private void anniversaire(){ //Méthode bug si un joueur à 0€.
 		int somme = 0;
 		for(Joueur J : partie.getTabJoueurs()){
-			if(J!=partie.getJoueurCourant()){
+			if(!(J.equals(partie.getJoueurCourant()))){
 				partie.retraitSolde(10, J);
 				somme+=10;
 			}

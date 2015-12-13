@@ -27,7 +27,7 @@ public class Partie {
 			truc.finTour();
 			System.out.println("Tour n°"+truc.nbTour);
 			try {
-				TimeUnit.MILLISECONDS.sleep(1);
+				TimeUnit.MILLISECONDS.sleep(0);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -111,7 +111,7 @@ public class Partie {
 		System.out.println(getJoueurCourant().getNom()+" arrive sur la case "+plateau.getTabCases()[getJoueurCourant().getPosition()].getNom());
 		plateau.getTabCases()[getJoueurCourant().getPosition()].action();
 /*TEST*/if(getJoueurCourant().getSolde()>500)
-			acheter(plateau.getTabCases()[getJoueurCourant().getPosition()]);
+/*TEST*/	acheter(plateau.getTabCases()[getJoueurCourant().getPosition()]);
 	}
 	
 	public void allerA(int x){ //Sert à placer le joueurCourant à l'indice X du plateau.
@@ -127,14 +127,14 @@ public class Partie {
 			ajoutSolde(200,getJoueurCourant());
 	}
 	
-	public void ajoutSolde(int x, Joueur joueur){
-/*TEST*/System.out.println(getJoueurCourant().getNom()+" reçoit "+x+" euros. Il lui reste "+(getJoueurCourant().getSolde()+x));
-		joueur.setSolde(getJoueurCourant().getSolde()+x);
+	public void ajoutSolde(int montant, Joueur joueur){
+/*TEST*/System.out.println(getJoueurCourant().getNom()+" reçoit "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()+montant));
+		joueur.setSolde(joueur.getSolde()+montant);
 	}
 	
-	public void retraitSolde(int x, Joueur joueur){
-/*TEST*/System.out.println(getJoueurCourant().getNom()+" paye "+x+" euros. Il lui reste "+(getJoueurCourant().getSolde()-x));
-		joueur.setSolde(joueur.getSolde()-x);
+	public void retraitSolde(int montant, Joueur joueur){
+/*TEST*/System.out.println(getJoueurCourant().getNom()+" paye "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()-montant));
+		joueur.setSolde(joueur.getSolde()-montant);
 		if (joueur.getSolde()<0)
 			Perdu(joueur);
 	}

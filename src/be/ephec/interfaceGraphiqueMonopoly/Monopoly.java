@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -100,7 +101,7 @@ public class Monopoly extends JFrame implements ActionListener {
 		gbc_textAreaConsole.gridy = 1;
 		getContentPane().add(textAreaConsole, gbc_textAreaConsole);
 		
-		buttonLancerDes = new JButton("Lancer les Des");
+		buttonLancerDes = new JButton("Lancer les Dés");
 		buttonLancerDes.addActionListener(this);
 		
 		labelJoueur = new JLabel("Joueur X");
@@ -286,6 +287,7 @@ public class Monopoly extends JFrame implements ActionListener {
 		getContentPane().add(labelNbTourSuite, gbc_labelNbTourSuite);
 		
 		buttonFinirTour = new JButton("Finir Tour");
+		buttonFinirTour.setEnabled(false);
 		buttonFinirTour.addActionListener(this);
 		GridBagConstraints gbc_buttonFinirTour = new GridBagConstraints();
 		gbc_buttonFinirTour.insets = new Insets(0, 0, 5, 5);
@@ -296,25 +298,10 @@ public class Monopoly extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		switch (e.getActionCommand()) {
-			case "Lancer les Des":
-			
-				break;
-			case "Finir Tour":
-				
-				break;
-			case "Acheter":
-				
-				break;
-			case "Vendre":
-				
-				break;
-			case "Demander Loyer":
-				
-				break;
+				oos.writeSring(e.getActionCommand());
+				if(this.get)
+				TimeUnit.MILLISECONDS.sleep(250);
+				ois.readObject(partie);
 				
 		}
-		
-	}
-
 }
