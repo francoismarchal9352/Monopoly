@@ -1,15 +1,13 @@
 package be.ephec.modele;
 
-public class Taxe extends Case {
-	private int prixTaxe;
-	
-	public Taxe(Partie partie, String nom){
-		super(partie,"Taxe", nom);
-		this.prixTaxe = 200;
+public class ParcGratuit extends Case {
+
+	public ParcGratuit(Partie partie){
+		super(partie,"ParcGratuit","Parc Gratuit");
 	}
-	
+
 	public void action(){
-		partie.retraitSolde(100, partie.getJoueurCourant());
+		//Rien à mettre dans cette méthode.
 	}
 
 	@Override
