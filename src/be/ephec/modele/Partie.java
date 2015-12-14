@@ -16,7 +16,7 @@ public class Partie {
 	private int nbJoueurs = 2;
 	
 	public Partie(){
-		initJoueur();
+		initJoueur(); 
 	}
 	
 	/*
