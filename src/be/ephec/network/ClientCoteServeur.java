@@ -6,7 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import be.ephec.application.ApplicationServeur;
+import be.ephec.network.*;;
 
 public class ClientCoteServeur implements Runnable{
 	private Socket socket;

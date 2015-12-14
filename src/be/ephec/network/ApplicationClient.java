@@ -13,7 +13,7 @@ public class ApplicationClient {
 	private static int nbClients = 0;
 	public ApplicationClient(){
 		this.nom = JOptionPane.showInputDialog("Merci de saisir ton nom");	
-		interfaceGraphiqueClient = new Monopoly(this);
+		interfaceGraphiqueClient = new Monopoly();
 		nbClients++;
 	}
 
