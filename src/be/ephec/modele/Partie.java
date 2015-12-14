@@ -37,8 +37,8 @@ public class Partie {
 			}
 		}
 		System.out.println("La partie a duré "+truc.nbTour+" tours.");
+	 */
 	}
-	*/
 	
 	public void debutTour(){
 		//while(plateau.getSommeDes() == 0){
