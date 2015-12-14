@@ -19,8 +19,6 @@ public class Partie {
 		initJoueur();
 	}
 	
-	public void initialisation(){
-
 	/*
 	public static void main(String[] args) { //Méthode de test.
 		Partie truc = new Partie();
@@ -37,8 +35,8 @@ public class Partie {
 			}
 		}
 		System.out.println("La partie a duré "+truc.nbTour+" tours.");
-	 */
 	}
+	*/
 	
 	public void debutTour(){
 		//while(plateau.getSommeDes() == 0){
