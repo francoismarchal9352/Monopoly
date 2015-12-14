@@ -5,9 +5,6 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import be.ephec.application.ApplicationClient;
-import be.ephec.application.Param;
-
 public class ClientSocket extends Socket implements Runnable {
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;

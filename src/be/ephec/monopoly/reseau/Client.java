@@ -2,6 +2,7 @@ package be.ephec.monopoly.reseau;
 
 import be.ephec.modele.*;
 import be.ephec.network.*;
+import be.ephec.GUI.GuiClient;
 import be.ephec.interfaceGraphiqueMonopoly.*;
 
 import java.io.IOException;
@@ -76,7 +77,7 @@ public class Client extends Socket {
 	
 	public void run() {
 		try {
-			GuiMonopoly frame = new GuiMonopoly(nom);
+			GuiClient frame = new GuiClient(nom);
 			frame.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package be.ephec.interfaceGraphique.serveur;
+package be.ephec.GUI;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;

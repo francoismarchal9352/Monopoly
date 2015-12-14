@@ -1,14 +1,13 @@
-package be.ephec.interfaceGraphique.serveur;
+package be.ephec.GUI;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import be.ephec.network.*;
-import be.ephec.interfaceGraphique.serveur.*;
 
-public class InterfaceGraphiqueServeur extends JFrame {
+public class GuiServeur extends JFrame {
 	private JPanel jpanelServer;
 	private ApplicationServeur ma;
-	public InterfaceGraphiqueServeur(ApplicationServeur ma) {
+	public GuiServeur(ApplicationServeur ma) {
 		this.ma = ma;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Serveur");

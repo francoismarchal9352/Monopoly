@@ -1,10 +1,10 @@
 package be.ephec.network;
 import javax.swing.JOptionPane;
 
-import be.ephec.interfaceGraphiqueMonopoly.*;
+import be.ephec.GUI.GuiClient;
 
 public class ApplicationClient {
-	private GuiMonopoly interfaceGraphiqueClient;
+	private GuiClient GuiClient;
 	private ClientSocket socket;
 	private int num;
 	private String nom;
@@ -12,6 +12,7 @@ public class ApplicationClient {
 	public ApplicationClient(){
 		this.nom = JOptionPane.showInputDialog("Merci de saisir ton nom");	
 		interfaceGraphiqueClient = new GuiMonopoly(nom);
+		GuiClient = new GuiClient();
 		nbClients++;
 	}
 
@@ -21,16 +22,16 @@ public class ApplicationClient {
 	/*
 	// Les méthodes utiles
 	public void traiteConnexionRéussieAuServeur(){
-		interfaceGraphiqueClient.ajouteDansLaConsole(Console.getInviteDeCommande()+
+		GuiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+
 				"Le client est connecté au serveur\n");
 	}
 	
 	public void traiteObjetRecu(Object o){
-		interfaceGraphiqueClient.ajouteDansLaConsole(Console.getInviteDeCommande()+o.toString()+"\n");
+		GuiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+o.toString()+"\n");
 	}
 	*/
 	public void setTitle(String s){
-		interfaceGraphiqueClient.setTitle(s);
+		GuiClient.setTitle(s);
 	}
 	
 	public void traiteObjetAEnvoyer(Object o){
@@ -40,9 +41,14 @@ public class ApplicationClient {
 	// Les getters et les setters
 	public GuiMonopoly getInterfaceGraphiqueClient() {
 		return interfaceGraphiqueClient;
+	public GuiClient getGuiClient() {
+		return GuiClient;
 	}
 	public void setInterfaceGraphiqueClient(GuiMonopoly interfaceGraphiqueClient) {
 		this.interfaceGraphiqueClient = interfaceGraphiqueClient;
+	public void setGuiClient
+	 (GuiClient GuiClient) {
+		this.GuiClient = GuiClient;
 	}
 
 	public ClientSocket getSocket() {
