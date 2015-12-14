@@ -17,6 +17,7 @@ public class Serveur extends ServerSocket implements Runnable {
 	public void acceptePlusieurClients(){
 		Thread t = new Thread(this);
 		t.start();
+		
 	}
 	
 /*
