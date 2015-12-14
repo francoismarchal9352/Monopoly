@@ -1,4 +1,4 @@
-package be.ephec.interfaceGraphiqueMonopoly;
+package be.ephec.GUI;
 
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
@@ -20,7 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 
-public class GuiMonopoly extends JFrame implements ActionListener {
+public class GuiClient extends JFrame implements ActionListener {
 	
 	private JPanel contentPane;
 	private JButton buttonLancerDes;
@@ -72,7 +72,7 @@ public class GuiMonopoly extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public GuiMonopoly(String nom) {
+	public GuiClient(String nom) {
 		setResizable(false);
 		setTitle("Monopoly");
 		setSize(1500,900);

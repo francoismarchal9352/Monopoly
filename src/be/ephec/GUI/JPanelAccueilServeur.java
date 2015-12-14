@@ -1,4 +1,4 @@
-package be.ephec.interfaceGraphique.serveur;
+package be.ephec.GUI;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -63,9 +63,9 @@ public class JPanelAccueilServeur extends JPanel implements ActionListener {
 							applicationServeur, Integer.parseInt(
 									jTextFieldNumPort.getText())));
 			JPanelPrincipalServeur jps = new JPanelPrincipalServeur(applicationServeur);
-			applicationServeur.getInterfaceGraphiqueServeur().setJpanelServer(jps);
-			applicationServeur.getInterfaceGraphiqueServeur().setContentPane(jps);	
-			applicationServeur.getInterfaceGraphiqueServeur().setSize(Param.LARGEUR_JFRAME_PRINC_SERVEUR,Param.HAUTEUR_JFRAME_PRINC_SERVEUR);
+			applicationServeur.getGuiServeur().setJpanelServer(jps);
+			applicationServeur.getGuiServeur().setContentPane(jps);	
+			applicationServeur.getGuiServeur().setSize(Param.LARGEUR_JFRAME_PRINC_SERVEUR,Param.HAUTEUR_JFRAME_PRINC_SERVEUR);
 		} catch (NumberFormatException e1) {
 			e1.printStackTrace();
 		} 

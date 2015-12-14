@@ -2,30 +2,30 @@ package be.ephec.network;
 
 import java.util.Calendar;
 
-import be.ephec.interfaceGraphique.serveur.InterfaceGraphiqueServeur;
+import be.ephec.GUI.GuiServeur;
 import be.ephec.network.ClientCoteServeur;
 import be.ephec.network.ServeurSocket;
 
 public class ApplicationServeur {
-	private InterfaceGraphiqueServeur interfaceGraphiqueServeur;
+	private GuiServeur GuiServeur;
 	private ServeurSocket serveurSocket;
 	public ApplicationServeur(){
-		interfaceGraphiqueServeur = new InterfaceGraphiqueServeur(this);
+		GuiServeur = new GuiServeur(this);
 	}
 	public static void main(String[] args) {
 		ApplicationServeur ma = new ApplicationServeur();
 	}
 	// Les méthodes utiles
 	public void traiteClientConnecte(ClientCoteServeur ccs){
-		getInterfaceGraphiqueServeur().ajouteDansLaConsole(
+		getGuiServeur().ajouteDansLaConsole(
 				Console.getInviteDeCommande()+"On a reçu le client numéro "+
 				ccs.getNum()+"\n");
-		getInterfaceGraphiqueServeur().ajouteClientJComboBox(ccs);
+		getGuiServeur().ajouteClientJComboBox(ccs);
 	}
 
 	public void traiteObjetRecu(ClientCoteServeur ccs,Object object){
 		Calendar cal = Calendar.getInstance();
-		getInterfaceGraphiqueServeur().ajouteDansLaConsole(
+		getGuiServeur().ajouteDansLaConsole(
 				Console.getInviteDeCommande()+"> Reçu du client "+ 
 				ccs.getNum()+" : "+object.toString()+"\n");
 	}
@@ -39,15 +39,15 @@ public class ApplicationServeur {
 	}
 
 	public void traiteClientDeconnecte(ClientCoteServeur ccs){
-		getInterfaceGraphiqueServeur().supprimeClientJComboBox(ccs);
+		getGuiServeur().supprimeClientJComboBox(ccs);
 	}
 
 	// Les getteurs et les setteurs
-	public InterfaceGraphiqueServeur getInterfaceGraphiqueServeur() {
-		return interfaceGraphiqueServeur;
+	public GuiServeur getGuiServeur() {
+		return GuiServeur;
 	}
-	public void setInterfaceGraphiqueServeur(InterfaceGraphiqueServeur interfaceGraphiqueServeur) {
-		this.interfaceGraphiqueServeur = interfaceGraphiqueServeur;
+	public void setGuiServeur(GuiServeur GuiServeur) {
+		this.GuiServeur = GuiServeur;
 	}
 	public ServeurSocket getServeurSocket() {
 		return serveurSocket;
