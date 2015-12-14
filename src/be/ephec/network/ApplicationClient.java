@@ -13,7 +13,7 @@ public class ApplicationClient {
 	private static int nbClients = 0;
 	public ApplicationClient(){
 		this.nom = JOptionPane.showInputDialog("Merci de saisir ton nom");	
-		GuiClient = new GuiClient();
+		GuiClient = new GuiClient(nom);
 		nbClients++;
 	}
 
@@ -43,8 +43,7 @@ public class ApplicationClient {
 	public GuiClient getGuiClient() {
 		return GuiClient;
 	}
-	public void setGuiClient
-	 (GuiClient GuiClient) {
+	public void setGuiClient(GuiClient GuiClient) {
 		this.GuiClient = GuiClient;
 	}
 
