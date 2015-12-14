@@ -3,8 +3,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
-import be.ephec.application.ApplicationServeur;
-import be.ephec.application.Param;
 
 public class ServeurSocket extends ServerSocket implements Runnable {
 	private ApplicationServeur ma;

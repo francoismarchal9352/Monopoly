@@ -303,6 +303,7 @@ public class Monopoly extends JFrame implements ActionListener {
 		getContentPane().add(buttonFinirTour, gbc_buttonFinirTour);
 	}
 
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 				oos.write(e.getActionCommand());

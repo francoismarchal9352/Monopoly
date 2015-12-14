@@ -17,7 +17,7 @@ public class Client extends Socket {
 	private Socket socket;
 	private ObjectInputStream ois;
 	private ObjectOutputStream oos;
-	private int num;
+
 
 	public String getNom() {
 		return nom;

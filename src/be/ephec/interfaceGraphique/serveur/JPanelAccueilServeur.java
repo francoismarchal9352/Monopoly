@@ -5,14 +5,14 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 
-import be.ephec.application.ApplicationServeur;
-import be.ephec.application.Param;
 import be.ephec.network.ServeurSocket;
 
 import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import be.ephec.network.*;
 
 public class JPanelAccueilServeur extends JPanel implements ActionListener {
 	private ApplicationServeur applicationServeur;

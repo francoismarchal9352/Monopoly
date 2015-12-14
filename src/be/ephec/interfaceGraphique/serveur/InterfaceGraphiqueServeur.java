@@ -2,9 +2,8 @@ package be.ephec.interfaceGraphique.serveur;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import be.ephec.application.ApplicationServeur;
-import be.ephec.application.Param;
-import be.ephec.network.ClientCoteServeur;
+import be.ephec.network.*;
+import be.ephec.interfaceGraphique.serveur.*;
 
 public class InterfaceGraphiqueServeur extends JFrame {
 	private JPanel jpanelServer;

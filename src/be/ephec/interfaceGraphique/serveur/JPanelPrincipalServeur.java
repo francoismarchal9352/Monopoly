@@ -5,9 +5,8 @@ import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 
-import be.ephec.application.ApplicationServeur;
-import be.ephec.application.Console;
-import be.ephec.network.ClientCoteServeur;
+
+import be.ephec.network.*;
 
 import java.awt.Insets;
 import javax.swing.JLabel;
