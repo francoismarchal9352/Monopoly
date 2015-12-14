@@ -76,7 +76,7 @@ public class Client extends Socket {
 	
 	public void run() {
 		try {
-			Monopoly frame = new Monopoly(nom);
+			GuiMonopoly frame = new GuiMonopoly(nom);
 			frame.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();

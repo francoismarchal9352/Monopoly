@@ -1,19 +1,19 @@
 package be.ephec.network;
 import javax.swing.JOptionPane;
 
-import be.ephec.interfaceGraphique.client.InterfaceGraphiqueClient;
+
 import be.ephec.network.ClientSocket;
 import be.ephec.interfaceGraphiqueMonopoly.*;
 
 public class ApplicationClient {
-	private Monopoly interfaceGraphiqueClient;
+	private GuiMonopoly interfaceGraphiqueClient;
 	private ClientSocket socket;
 	private int num;
 	private String nom;
 	private static int nbClients = 0;
 	public ApplicationClient(){
 		this.nom = JOptionPane.showInputDialog("Merci de saisir ton nom");	
-		interfaceGraphiqueClient = new Monopoly();
+		interfaceGraphiqueClient = new GuiMonopoly();
 		nbClients++;
 	}
 

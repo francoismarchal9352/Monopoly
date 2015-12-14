@@ -20,7 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 
-public class Monopoly extends JFrame implements ActionListener {
+public class GuiMonopoly extends JFrame implements ActionListener {
 	
 	private JPanel contentPane;
 	private JButton buttonLancerDes;
@@ -72,7 +72,7 @@ public class Monopoly extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public Monopoly(String nom) {
+	public GuiMonopoly(String nom) {
 		setResizable(false);
 		setTitle("Monopoly");
 		setSize(1500,900);
