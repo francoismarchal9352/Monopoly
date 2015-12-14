@@ -1,19 +1,43 @@
 package be.ephec.monopoly.reseau;
 
-import java.util.concurrent.TimeUnit;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.util.ArrayList;
+import be.ephec.network.*;
 
-import be.ephec.modele.Partie;
-
-public class Serveur {
+public class Serveur extends ServerSocket implements Runnable {
+	private ArrayList<Client> listeClients = new ArrayList<Client>();
 	
+	public Serveur() throws IOException {
+		super(62900);
+		System.out.println("le serveur est à l'écoute sur le port "+ this.getLocalPort());
+		acceptePlusieurClients();
+	}
+	
+	public void acceptePlusieurClients(){
+		Thread t = new Thread(this);
+		t.start();
+	}
+	
+/*
+	public static void main(String[] args) throws IOException {
 
-	public static void main(String[] args) {
-		Serveur s1 = new Serveur();
-		s1.run();
 		
 	}
-
-	private void run() {
+*/
+	public void run() {
+		while(!this.isClosed()){
+			try {
+				System.out.println("on attend un client...");
+				this.listeClients.add(new Client(this.accept()));
+				
+				System.out.println("on a reçu un client...");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		/*
 		Partie truc = new Partie();
 		
 		while(truc.getTabJoueurs().size()>1){
@@ -29,7 +53,6 @@ public class Serveur {
 			}
 		}
 		System.out.println("La partie a duré "+truc.getNbTour()+" tours.");
-		
+		*/
 	}
-
 }
