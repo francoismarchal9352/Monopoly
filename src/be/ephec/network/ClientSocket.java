@@ -5,6 +5,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import be.ephec.application.ApplicationClient;
+
 public class ClientSocket extends Socket implements Runnable {
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;
@@ -25,7 +27,7 @@ public class ClientSocket extends Socket implements Runnable {
 			oos = new ObjectOutputStream(this.getOutputStream());
 			ois = new ObjectInputStream(this.getInputStream());
 			appliClient.setNum((int)ois.readObject());
-			appliClient.setTitle("Client numéro "+appliClient.getNum());
+			appliClient.setTitle("Joueur "+appliClient.getNum());
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (NumberFormatException e) {
@@ -62,7 +64,7 @@ public class ClientSocket extends Socket implements Runnable {
 		} catch (IOException e) {
 			try {
 				this.close(); 
-				// si on ne sait pas lire c'est que le serveur est fermé
+				// si on ne sait pas lire c'est que le serveur est fermï¿½
 				//TODO Trouver une solution moins radicale
 			} catch (IOException e1) {
 				e1.printStackTrace();
