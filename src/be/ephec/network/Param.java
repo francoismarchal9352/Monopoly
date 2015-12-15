@@ -24,7 +24,7 @@ public class Param {
 	
 	public static final int NB_CLIENTS = 2;
 	
-	public static final int NB_COLONNES_AFFICHAGE = 4;
+	public static final int NB_COLONNES_AFFICHAGE = 6;
 }
 
 

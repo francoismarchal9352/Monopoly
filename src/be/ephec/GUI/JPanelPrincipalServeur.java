@@ -61,7 +61,7 @@ public class JPanelPrincipalServeur extends JPanel implements ActionListener {
 		add(jTextFieldMessage, gbc_jTextFieldMessage);
 		jTextFieldMessage.setColumns(10);
 
-		JButton btnEnvoyerAuClient = new JButton("Envoyer au client");
+		JButton btnEnvoyerAuClient = new JButton("Envoyer au joueur");
 		btnEnvoyerAuClient.addActionListener(this);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -84,7 +84,7 @@ public class JPanelPrincipalServeur extends JPanel implements ActionListener {
 		add(btnEnvoyerAuClient, gbc_btnEnvoyerAuClient);
 
 		comboBox = new JComboBox();
-		comboBox.addItem("Tous les clients");
+		comboBox.addItem("Tous les joueurs");
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.anchor = GridBagConstraints.NORTH;
 		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
@@ -97,7 +97,7 @@ public class JPanelPrincipalServeur extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String message = jTextFieldMessage.getText();
-		if (comboBox.getSelectedItem().toString().compareToIgnoreCase("Tous les clients") == 0){
+		if (comboBox.getSelectedItem().toString().compareToIgnoreCase("Tous les joueurs") == 0){
 			ma.traiteObjetAEnvoyerATousLesClients(message);		
 		} else{
 			ClientCoteServeur ccs = (ClientCoteServeur)(comboBox.getSelectedItem());

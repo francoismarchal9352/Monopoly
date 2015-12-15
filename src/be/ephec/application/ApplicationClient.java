@@ -26,7 +26,7 @@ public class ApplicationClient{
 	// Les méthodes utiles
 	public void traiteConnexionRéussieAuServeur(){
 		guiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+
-				"Le client est connecté au serveur\n");
+				"Le joueur est connecté au serveur\n");
 	}
 	
 	public void traiteObjetRecu(Object o){

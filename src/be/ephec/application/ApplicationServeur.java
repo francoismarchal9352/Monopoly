@@ -18,7 +18,7 @@ public class ApplicationServeur {
 	// Les méthodes utiles
 	public void traiteClientConnecte(ClientCoteServeur ccs){
 		getGuiServeur().ajouteDansLaConsole(
-				Console.getInviteDeCommande()+"On a reçu le client numéro "+
+				Console.getInviteDeCommande()+"On a reçu le joueur numéro "+
 				ccs.getNum()+"\n");
 		getGuiServeur().ajouteClientJComboBox(ccs);
 	}
@@ -26,7 +26,7 @@ public class ApplicationServeur {
 	public void traiteObjetRecu(ClientCoteServeur ccs,Object object){
 		Calendar cal = Calendar.getInstance();
 		getGuiServeur().ajouteDansLaConsole(
-				Console.getInviteDeCommande()+"> Reçu du client "+ 
+				Console.getInviteDeCommande()+"> Reçu du joueur "+ 
 				ccs.getNum()+" : "+object.toString()+"\n");
 	}
 
