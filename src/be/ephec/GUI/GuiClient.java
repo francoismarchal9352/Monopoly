@@ -93,7 +93,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
-		JLabel background=new JLabel(new ImageIcon("./boardgame4.jpg"));
+		JLabel background=new JLabel(new ImageIcon("./PlateauFinal.png"));
 		GridBagConstraints gbc_background = new GridBagConstraints();
 		gbc_background.gridheight = 21;
 		gbc_background.anchor = GridBagConstraints.WEST;
