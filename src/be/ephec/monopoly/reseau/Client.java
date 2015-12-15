@@ -3,8 +3,6 @@ package be.ephec.monopoly.reseau;
 import be.ephec.modele.*;
 import be.ephec.network.*;
 import be.ephec.GUI.GuiClient;
-import be.ephec.interfaceGraphiqueMonopoly.*;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

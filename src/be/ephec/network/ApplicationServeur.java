@@ -1,7 +1,6 @@
 package be.ephec.network;
 
 import java.util.Calendar;
-
 import be.ephec.GUI.GuiServeur;
 import be.ephec.network.ClientCoteServeur;
 import be.ephec.network.ServeurSocket;

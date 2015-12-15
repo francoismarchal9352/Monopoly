@@ -1,6 +1,6 @@
 package be.ephec.network;
-import javax.swing.JOptionPane;
 
+import javax.swing.JOptionPane;
 import be.ephec.network.ClientSocket;
 import be.ephec.GUI.GuiClient;
 
@@ -19,6 +19,10 @@ public class ApplicationClient{
 	public static void main(String[] args) {
 		ApplicationClient appliClient = new ApplicationClient();
 	}
+	
+	
+	
+	
 	
 	// Les méthodes utiles
 	public void traiteConnexionRéussieAuServeur(){

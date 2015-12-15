@@ -12,7 +12,7 @@ public class ClientCoteServeur implements Runnable{
 	private Socket socket;
 	private ObjectInputStream ois;
 	private ObjectOutputStream oos;
-	private int num;
+	private int num =0;
 	private ApplicationServeur appliServeur;
 	
 	public String toString(){
@@ -29,7 +29,7 @@ public class ClientCoteServeur implements Runnable{
 		this.num = num;
 		ois = new ObjectInputStream(socket.getInputStream());
 		oos = new ObjectOutputStream(socket.getOutputStream());
-		oos.writeObject(num); // on envoie son numéro au client
+		oos.writeObject(++num); // on envoie son numéro au client
 		new Thread(this).start();
 	}
 	
@@ -62,11 +62,8 @@ public class ClientCoteServeur implements Runnable{
 				e.printStackTrace();
 			} catch (IOException e) {
 				try {
-					//TODO à améliorer
 					socket.close();
-					//TODO
 					appliServeur.traiteClientDeconnecte(this);
-					e.printStackTrace();
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}

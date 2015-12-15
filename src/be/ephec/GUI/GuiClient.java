@@ -23,9 +23,7 @@ import javax.swing.SwingConstants;
 import be.ephec.network.ApplicationClient;
 import be.ephec.network.Param;
 
-
 public class GuiClient extends JFrame implements ActionListener {
-	
 	private JPanel contentPane;
 	private JButton buttonLancerDes;
 	private JButton buttonAcheter;
@@ -83,7 +81,7 @@ public class GuiClient extends JFrame implements ActionListener {
 	 * @param applicationClient 
 	 */
 	public GuiClient(String nom, ApplicationClient applicationClient) {
-		setResizable(false);
+		setResizable(true);
 		setTitle("Monopoly");
 		setSize(1500,900);
 		setLocationRelativeTo(null);
