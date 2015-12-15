@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -90,6 +91,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		background.setLayout(new FlowLayout());
 		
 		textAreaConsole = new JTextArea();
+		JScrollPane scroll = new JScrollPane(textAreaConsole, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		textAreaConsole.setEditable(false);
 		textAreaConsole.setTabSize(10);
 		textAreaConsole.setRows(6);
@@ -100,7 +102,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_textAreaConsole.fill = GridBagConstraints.BOTH;
 		gbc_textAreaConsole.gridx = 3;
 		gbc_textAreaConsole.gridy = 1;
-		getContentPane().add(textAreaConsole, gbc_textAreaConsole);
+		getContentPane().add(scroll, gbc_textAreaConsole);
 		
 		buttonLancerDes = new JButton("Lancer les Dés");
 		buttonLancerDes.addActionListener(this);
@@ -374,7 +376,7 @@ public class GuiClient extends JFrame implements ActionListener {
 				afficheInfo("Le serveur ne répond pas. Essayez plus tard.");
 			}
 			break;
-		case "
+//		case "
 		}
 	}
 
