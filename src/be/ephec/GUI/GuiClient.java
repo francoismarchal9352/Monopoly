@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import be.ephec.network.ApplicationClient;
 import be.ephec.network.Param;
 
 
@@ -79,8 +80,9 @@ public class GuiClient extends JFrame implements ActionListener {
 
 	/**
 	 * Create the frame.
+	 * @param applicationClient 
 	 */
-	public GuiClient(String nom) {
+	public GuiClient(String nom, ApplicationClient applicationClient) {
 		setResizable(false);
 		setTitle("Monopoly");
 		setSize(1500,900);

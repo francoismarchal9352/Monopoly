@@ -4,15 +4,15 @@ import javax.swing.JOptionPane;
 import be.ephec.network.ClientSocket;
 import be.ephec.GUI.GuiClient;
 
-public class ApplicationClient {
-	private GuiClient GuiClient;
+public class ApplicationClient{
+	private GuiClient guiClient;
 	private ClientSocket socket;
 	private int num;
 	private String nom;
 	private static int nbClients = 0;
 	public ApplicationClient(){
 		this.nom = JOptionPane.showInputDialog("Merci de saisir ton nom");	
-		GuiClient = new GuiClient(nom);
+		guiClient = new GuiClient(nom,this);
 		nbClients++;
 	}
 
@@ -22,16 +22,16 @@ public class ApplicationClient {
 	
 	// Les méthodes utiles
 	public void traiteConnexionRéussieAuServeur(){
-		GuiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+
+		guiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+
 				"Le client est connecté au serveur\n");
 	}
 	
 	public void traiteObjetRecu(Object o){
-		GuiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+o.toString()+"\n");
+		guiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+o.toString()+"\n");
 	}
 
 	public void setTitle(String s){
-		GuiClient.setTitle(s);
+		guiClient.setTitle(s);
 	}
 	
 	public void traiteObjetAEnvoyer(Object o){
@@ -40,10 +40,10 @@ public class ApplicationClient {
 	
 	// Les getters et les setters
 	public GuiClient getGuiClient() {
-		return GuiClient;
+		return guiClient;
 	}
 	public void setGuiClient(GuiClient GuiClient) {
-		this.GuiClient = GuiClient;
+		this.guiClient = GuiClient;
 	}
 
 	public ClientSocket getSocket() {
