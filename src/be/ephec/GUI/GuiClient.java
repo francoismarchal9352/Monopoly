@@ -17,7 +17,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import be.ephec.network.Param;
 
 
 public class GuiClient extends JFrame implements ActionListener {
@@ -48,6 +51,11 @@ public class GuiClient extends JFrame implements ActionListener {
 	private JLabel labelValPositionJ1;
 	private JLabel labelValPositionJ2;
 	private JLabel labelJoueur;
+	private JTextField jTextFieldPort;
+	private JLabel JLabelInfo;
+	private JTextField jTextFieldIP;
+	private JLabel jLabelAdrIP;
+	
 
 	
 	/**
@@ -58,7 +66,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Monopoly frame = new Monopoly();
+					GuiClient frame = new GuiClient("test");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -81,13 +89,13 @@ public class GuiClient extends JFrame implements ActionListener {
 		setVisible(true);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{22, 653, 32, 90, 130, 146, 96, 26, 0};
-		gridBagLayout.rowHeights = new int[]{23, 341, 56, 32, 0, 21, 22, 0, 0, 15, 48, 0, 0, 51, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowHeights = new int[]{23, 341, 56, 32, 0, 21, 22, 0, 0, 15, 29, 0, 0, 51, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		JLabel background=new JLabel(new ImageIcon("./boardgame4.jpg"));
 		GridBagConstraints gbc_background = new GridBagConstraints();
-		gbc_background.gridheight = 20;
+		gbc_background.gridheight = 21;
 		gbc_background.anchor = GridBagConstraints.WEST;
 		gbc_background.insets = new Insets(0, 0, 5, 5);
 		gbc_background.gridx = 1;
@@ -153,38 +161,6 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_buttonLoyer.gridy = 3;
 		getContentPane().add(buttonLoyer, gbc_buttonLoyer);
 		
-		labelSoldeJ1 = new JLabel("Solde Joueur 1");
-		GridBagConstraints gbc_labelSoldeJ1 = new GridBagConstraints();
-		gbc_labelSoldeJ1.anchor = GridBagConstraints.NORTH;
-		gbc_labelSoldeJ1.insets = new Insets(0, 0, 5, 5);
-		gbc_labelSoldeJ1.gridx = 4;
-		gbc_labelSoldeJ1.gridy = 6;
-		getContentPane().add(labelSoldeJ1, gbc_labelSoldeJ1);
-		
-		labelSoldeJ2 = new JLabel("Solde Joueur 2");
-		GridBagConstraints gbc_labelSoldeJ2 = new GridBagConstraints();
-		gbc_labelSoldeJ2.anchor = GridBagConstraints.NORTH;
-		gbc_labelSoldeJ2.insets = new Insets(0, 0, 5, 5);
-		gbc_labelSoldeJ2.gridx = 6;
-		gbc_labelSoldeJ2.gridy = 6;
-		getContentPane().add(labelSoldeJ2, gbc_labelSoldeJ2);
-		
-		labelValSoldeJ1 = new JLabel("X");
-		GridBagConstraints gbc_labelValSoldeJ1 = new GridBagConstraints();
-		gbc_labelValSoldeJ1.anchor = GridBagConstraints.NORTH;
-		gbc_labelValSoldeJ1.insets = new Insets(0, 0, 5, 5);
-		gbc_labelValSoldeJ1.gridx = 4;
-		gbc_labelValSoldeJ1.gridy = 7;
-		getContentPane().add(labelValSoldeJ1, gbc_labelValSoldeJ1);
-		
-		labelValSoldeJ2 = new JLabel("X");
-		GridBagConstraints gbc_labelValSoldeJ2 = new GridBagConstraints();
-		gbc_labelValSoldeJ2.anchor = GridBagConstraints.NORTH;
-		gbc_labelValSoldeJ2.insets = new Insets(0, 0, 5, 5);
-		gbc_labelValSoldeJ2.gridx = 6;
-		gbc_labelValSoldeJ2.gridy = 7;
-		getContentPane().add(labelValSoldeJ2, gbc_labelValSoldeJ2);
-		
 		labelD1 = new JLabel("de1");
 		GridBagConstraints gbc_labelD1 = new GridBagConstraints();
 		gbc_labelD1.anchor = GridBagConstraints.NORTH;
@@ -193,19 +169,23 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_labelD1.gridy = 8;
 		getContentPane().add(labelD1, gbc_labelD1);
 		
-		labelPositionJ1 = new JLabel("Position Joueur 1");
-		GridBagConstraints gbc_labelPositionJ1 = new GridBagConstraints();
-		gbc_labelPositionJ1.insets = new Insets(0, 0, 5, 5);
-		gbc_labelPositionJ1.gridx = 4;
-		gbc_labelPositionJ1.gridy = 8;
-		getContentPane().add(labelPositionJ1, gbc_labelPositionJ1);
+		jLabelAdrIP = new JLabel("Adresse IP du serveur :");
+		GridBagConstraints gbc_jLabelAdrIP = new GridBagConstraints();
+		gbc_jLabelAdrIP.insets = new Insets(0, 0, 5, 5);
+		gbc_jLabelAdrIP.anchor = GridBagConstraints.EAST;
+		gbc_jLabelAdrIP.gridx = 4;
+		gbc_jLabelAdrIP.gridy = 8;
+		getContentPane().add(jLabelAdrIP, gbc_jLabelAdrIP);
 		
-		labelPositionJ2 = new JLabel("Position Joueur 2");
-		GridBagConstraints gbc_labelPositionJ2 = new GridBagConstraints();
-		gbc_labelPositionJ2.insets = new Insets(0, 0, 5, 5);
-		gbc_labelPositionJ2.gridx = 6;
-		gbc_labelPositionJ2.gridy = 8;
-		getContentPane().add(labelPositionJ2, gbc_labelPositionJ2);
+		jTextFieldIP = new JTextField();
+		jTextFieldIP.setText("127.0.0.1");
+		GridBagConstraints gbc_jTextFieldIP = new GridBagConstraints();
+		gbc_jTextFieldIP.insets = new Insets(0, 0, 5, 5);
+		gbc_jTextFieldIP.fill = GridBagConstraints.HORIZONTAL;
+		gbc_jTextFieldIP.gridx = 5;
+		gbc_jTextFieldIP.gridy = 8;
+		getContentPane().add(jTextFieldIP, gbc_jTextFieldIP);
+		jTextFieldIP.setColumns(10);
 		
 		labelValD1 = new JLabel("X");
 		GridBagConstraints gbc_labelValD1 = new GridBagConstraints();
@@ -215,19 +195,31 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_labelValD1.gridy = 9;
 		getContentPane().add(labelValD1, gbc_labelValD1);
 		
-		labelValPositionJ1 = new JLabel("X");
-		GridBagConstraints gbc_labelValPositionJ1 = new GridBagConstraints();
-		gbc_labelValPositionJ1.insets = new Insets(0, 0, 5, 5);
-		gbc_labelValPositionJ1.gridx = 4;
-		gbc_labelValPositionJ1.gridy = 9;
-		getContentPane().add(labelValPositionJ1, gbc_labelValPositionJ1);
+		JLabel jLabelPortTCP = new JLabel("Numéro de port TCP :");
+		GridBagConstraints gbc_jLabelPortTCP = new GridBagConstraints();
+		gbc_jLabelPortTCP.anchor = GridBagConstraints.EAST;
+		gbc_jLabelPortTCP.insets = new Insets(0, 0, 5, 5);
+		gbc_jLabelPortTCP.gridx = 4;
+		gbc_jLabelPortTCP.gridy = 9;
+		getContentPane().add(jLabelPortTCP, gbc_jLabelPortTCP);
 		
-		labelValPositionJ2 = new JLabel("X");
-		GridBagConstraints gbc_labelValPositionJ2 = new GridBagConstraints();
-		gbc_labelValPositionJ2.insets = new Insets(0, 0, 5, 5);
-		gbc_labelValPositionJ2.gridx = 6;
-		gbc_labelValPositionJ2.gridy = 9;
-		getContentPane().add(labelValPositionJ2, gbc_labelValPositionJ2);
+		jTextFieldPort = new JTextField();
+		jTextFieldPort.setText(Param.NUM_PORT_DE_BASE+"");
+		GridBagConstraints gbc_jTextFieldPort = new GridBagConstraints();
+		gbc_jTextFieldPort.insets = new Insets(0, 0, 5, 5);
+		gbc_jTextFieldPort.fill = GridBagConstraints.HORIZONTAL;
+		gbc_jTextFieldPort.gridx = 5;
+		gbc_jTextFieldPort.gridy = 9;
+		getContentPane().add(jTextFieldPort, gbc_jTextFieldPort);
+		jTextFieldPort.setColumns(10);
+		
+		JLabelInfo = new JLabel("");
+		GridBagConstraints gbc_JLabelInfo = new GridBagConstraints();
+		gbc_JLabelInfo.gridwidth = 3;
+		gbc_JLabelInfo.insets = new Insets(0, 0, 5, 5);
+		gbc_JLabelInfo.gridx = 4;
+		gbc_JLabelInfo.gridy = 10;
+		getContentPane().add(JLabelInfo, gbc_JLabelInfo);
 		
 		labelD2 = new JLabel("de2");
 		GridBagConstraints gbc_labelD2 = new GridBagConstraints();
@@ -236,6 +228,15 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_labelD2.gridx = 3;
 		gbc_labelD2.gridy = 11;
 		getContentPane().add(labelD2, gbc_labelD2);
+		
+		JButton jButtonConnecter = new JButton("Se connecter");
+		jButtonConnecter.setEnabled(false);
+		jButtonConnecter.addActionListener(this);
+		GridBagConstraints gbc_jButtonConnecter = new GridBagConstraints();
+		gbc_jButtonConnecter.insets = new Insets(0, 0, 5, 5);
+		gbc_jButtonConnecter.gridx = 6;
+		gbc_jButtonConnecter.gridy = 11;
+		getContentPane().add(jButtonConnecter, gbc_jButtonConnecter);
 		
 		labelValD2 = new JLabel("X");
 		GridBagConstraints gbc_labelValD2 = new GridBagConstraints();
@@ -261,12 +262,42 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_labelNbCartePrison.gridy = 14;
 		getContentPane().add(labelNbCartePrison, gbc_labelNbCartePrison);
 		
+		labelSoldeJ1 = new JLabel("Solde Joueur 1");
+		GridBagConstraints gbc_labelSoldeJ1 = new GridBagConstraints();
+		gbc_labelSoldeJ1.anchor = GridBagConstraints.NORTH;
+		gbc_labelSoldeJ1.insets = new Insets(0, 0, 5, 5);
+		gbc_labelSoldeJ1.gridx = 5;
+		gbc_labelSoldeJ1.gridy = 14;
+		getContentPane().add(labelSoldeJ1, gbc_labelSoldeJ1);
+		
+		labelPositionJ1 = new JLabel("Position Joueur 1");
+		GridBagConstraints gbc_labelPositionJ1 = new GridBagConstraints();
+		gbc_labelPositionJ1.insets = new Insets(0, 0, 5, 5);
+		gbc_labelPositionJ1.gridx = 6;
+		gbc_labelPositionJ1.gridy = 14;
+		getContentPane().add(labelPositionJ1, gbc_labelPositionJ1);
+		
+		labelValSoldeJ1 = new JLabel("X");
+		GridBagConstraints gbc_labelValSoldeJ1 = new GridBagConstraints();
+		gbc_labelValSoldeJ1.anchor = GridBagConstraints.NORTH;
+		gbc_labelValSoldeJ1.insets = new Insets(0, 0, 5, 5);
+		gbc_labelValSoldeJ1.gridx = 5;
+		gbc_labelValSoldeJ1.gridy = 15;
+		getContentPane().add(labelValSoldeJ1, gbc_labelValSoldeJ1);
+		
+		labelValPositionJ1 = new JLabel("X");
+		GridBagConstraints gbc_labelValPositionJ1 = new GridBagConstraints();
+		gbc_labelValPositionJ1.insets = new Insets(0, 0, 5, 5);
+		gbc_labelValPositionJ1.gridx = 6;
+		gbc_labelValPositionJ1.gridy = 15;
+		getContentPane().add(labelValPositionJ1, gbc_labelValPositionJ1);
+		
 		labelTourPrison = new JLabel("Tours en Prison");
 		GridBagConstraints gbc_labelTourPrison = new GridBagConstraints();
 		gbc_labelTourPrison.anchor = GridBagConstraints.NORTH;
 		gbc_labelTourPrison.insets = new Insets(0, 0, 5, 5);
 		gbc_labelTourPrison.gridx = 3;
-		gbc_labelTourPrison.gridy = 16;
+		gbc_labelTourPrison.gridy = 17;
 		getContentPane().add(labelTourPrison, gbc_labelTourPrison);
 		
 		labelNbTourPrison = new JLabel("X");
@@ -274,15 +305,45 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_labelNbTourPrison.anchor = GridBagConstraints.NORTH;
 		gbc_labelNbTourPrison.insets = new Insets(0, 0, 5, 5);
 		gbc_labelNbTourPrison.gridx = 4;
-		gbc_labelNbTourPrison.gridy = 16;
+		gbc_labelNbTourPrison.gridy = 17;
 		getContentPane().add(labelNbTourPrison, gbc_labelNbTourPrison);
+		
+		labelSoldeJ2 = new JLabel("Solde Joueur 2");
+		GridBagConstraints gbc_labelSoldeJ2 = new GridBagConstraints();
+		gbc_labelSoldeJ2.anchor = GridBagConstraints.NORTH;
+		gbc_labelSoldeJ2.insets = new Insets(0, 0, 5, 5);
+		gbc_labelSoldeJ2.gridx = 5;
+		gbc_labelSoldeJ2.gridy = 17;
+		getContentPane().add(labelSoldeJ2, gbc_labelSoldeJ2);
+		
+		labelPositionJ2 = new JLabel("Position Joueur 2");
+		GridBagConstraints gbc_labelPositionJ2 = new GridBagConstraints();
+		gbc_labelPositionJ2.insets = new Insets(0, 0, 5, 5);
+		gbc_labelPositionJ2.gridx = 6;
+		gbc_labelPositionJ2.gridy = 17;
+		getContentPane().add(labelPositionJ2, gbc_labelPositionJ2);
+		
+		labelValSoldeJ2 = new JLabel("X");
+		GridBagConstraints gbc_labelValSoldeJ2 = new GridBagConstraints();
+		gbc_labelValSoldeJ2.anchor = GridBagConstraints.NORTH;
+		gbc_labelValSoldeJ2.insets = new Insets(0, 0, 5, 5);
+		gbc_labelValSoldeJ2.gridx = 5;
+		gbc_labelValSoldeJ2.gridy = 18;
+		getContentPane().add(labelValSoldeJ2, gbc_labelValSoldeJ2);
+		
+		labelValPositionJ2 = new JLabel("X");
+		GridBagConstraints gbc_labelValPositionJ2 = new GridBagConstraints();
+		gbc_labelValPositionJ2.insets = new Insets(0, 0, 5, 5);
+		gbc_labelValPositionJ2.gridx = 6;
+		gbc_labelValPositionJ2.gridy = 18;
+		getContentPane().add(labelValPositionJ2, gbc_labelValPositionJ2);
 		
 		labelTourSuite = new JLabel("Tours de Suite");
 		GridBagConstraints gbc_labelTourSuite = new GridBagConstraints();
 		gbc_labelTourSuite.anchor = GridBagConstraints.NORTH;
 		gbc_labelTourSuite.insets = new Insets(0, 0, 5, 5);
 		gbc_labelTourSuite.gridx = 3;
-		gbc_labelTourSuite.gridy = 18;
+		gbc_labelTourSuite.gridy = 19;
 		getContentPane().add(labelTourSuite, gbc_labelTourSuite);
 		
 		labelNbTourSuite = new JLabel("X");
@@ -290,7 +351,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_labelNbTourSuite.anchor = GridBagConstraints.NORTH;
 		gbc_labelNbTourSuite.insets = new Insets(0, 0, 5, 5);
 		gbc_labelNbTourSuite.gridx = 4;
-		gbc_labelNbTourSuite.gridy = 18;
+		gbc_labelNbTourSuite.gridy = 19;
 		getContentPane().add(labelNbTourSuite, gbc_labelNbTourSuite);
 		
 		buttonFinirTour = new JButton("Finir Tour");
@@ -299,8 +360,13 @@ public class GuiClient extends JFrame implements ActionListener {
 		GridBagConstraints gbc_buttonFinirTour = new GridBagConstraints();
 		gbc_buttonFinirTour.insets = new Insets(0, 0, 5, 5);
 		gbc_buttonFinirTour.gridx = 6;
-		gbc_buttonFinirTour.gridy = 20;
+		gbc_buttonFinirTour.gridy = 21;
 		getContentPane().add(buttonFinirTour, gbc_buttonFinirTour);
+		
+	}
+	
+	public void ajouteDansLaConsole(String s){
+		textAreaConsole.append(s);
 	}
 
 
