@@ -73,7 +73,6 @@ public class GuiClient extends JFrame implements ActionListener {
 		setSize(1500,900);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{22, 653, 32, 90, 130, 146, 96, 26, 0};
 		gridBagLayout.rowHeights = new int[]{23, 341, 56, 32, 0, 21, 22, 0, 0, 15, 29, 0, 0, 51, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -350,6 +349,8 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_buttonFinirTour.gridy = 21;
 		getContentPane().add(buttonFinirTour, gbc_buttonFinirTour);
 		
+		setVisible(true); // Mettre ça en fin de déclaration pour pas avoir de bug visuel (fenêtre vide)
+
 	}
 	
 	public void ajouteDansLaConsole(String s){
