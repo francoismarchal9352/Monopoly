@@ -8,11 +8,9 @@ public class ApplicationClient{
 	private GuiClient guiClient;
 	private ClientSocket socket;
 	private int num;
-	private String nom;
 	private static int nbClients = 0;
 	public ApplicationClient(){
-		this.nom = JOptionPane.showInputDialog("Merci de saisir ton nom");	
-		guiClient = new GuiClient(nom,this);
+		guiClient = new GuiClient(this);
 		nbClients++;
 	}
 

@@ -7,8 +7,10 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.ImageIcon;
@@ -21,9 +23,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import be.ephec.network.ApplicationClient;
-import be.ephec.network.Param;
+import be.ephec.network.ClientSocket;
+import be.ephec.network.*;
 
 public class GuiClient extends JFrame implements ActionListener {
+	private ApplicationClient applicationClient;
 	private JPanel contentPane;
 	private JButton buttonLancerDes;
 	private JButton buttonAcheter;
@@ -55,6 +59,7 @@ public class GuiClient extends JFrame implements ActionListener {
 	private JTextField jTextFieldIP;
 	private JLabel jLabelAdrIP;
 	
+	
 
 	
 	/**
@@ -80,7 +85,8 @@ public class GuiClient extends JFrame implements ActionListener {
 	 * Create the frame.
 	 * @param applicationClient 
 	 */
-	public GuiClient(String nom, ApplicationClient applicationClient) {
+	public GuiClient(ApplicationClient applicationClient) {
+		this.applicationClient = applicationClient;
 		setResizable(true);
 		setTitle("Monopoly");
 		setSize(1500,900);
@@ -116,10 +122,10 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_textAreaConsole.gridy = 1;
 		getContentPane().add(textAreaConsole, gbc_textAreaConsole);
 		
-		buttonLancerDes = new JButton("Lancer les D�s");
+		buttonLancerDes = new JButton("Lancer les Dés");
 		buttonLancerDes.addActionListener(this);
 		
-		labelJoueur = new JLabel(nom);
+		labelJoueur = new JLabel("");
 		GridBagConstraints gbc_labelJoueur = new GridBagConstraints();
 		gbc_labelJoueur.gridwidth = 2;
 		gbc_labelJoueur.insets = new Insets(0, 0, 5, 5);
@@ -195,7 +201,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_labelValD1.gridy = 9;
 		getContentPane().add(labelValD1, gbc_labelValD1);
 		
-		JLabel jLabelPortTCP = new JLabel("Num�ro de port TCP :");
+		JLabel jLabelPortTCP = new JLabel("Numéro de port TCP :");
 		GridBagConstraints gbc_jLabelPortTCP = new GridBagConstraints();
 		gbc_jLabelPortTCP.anchor = GridBagConstraints.EAST;
 		gbc_jLabelPortTCP.insets = new Insets(0, 0, 5, 5);
@@ -369,7 +375,30 @@ public class GuiClient extends JFrame implements ActionListener {
 		textAreaConsole.append(s);
 	}
 
+	public void actionPerformed(ActionEvent e) {
+		ClientSocket client;
+		try {
+			client = new ClientSocket(jTextFieldIP.getText(), Integer.parseInt(jTextFieldPort.getText()),applicationClient);
+			client.lireNonStop();
+			applicationClient.getGuiClient().setjPanelClient(new GuiClient(applicationClient));
+			applicationClient.setSocket(client);
+			applicationClient.getGuiClient().ajouteDansLaConsole(
+					Console.getInviteDeCommande()+
+					"Le client est connecté au serveur\n");
+		} catch (NumberFormatException e1) {
+			e1.printStackTrace();
+		} catch (UnknownHostException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			afficheInfo("Le serveur ne répond pas. Essayez plus tard.");
+		}
+	}
 
+	public void afficheInfo(String s){
+		JLabelInfo.setText(s);
+	}
+	
+	/*
 	@Override
 	public void actionPerformed(ActionEvent e) {
 				oos.write(e.getActionCommand());
@@ -379,6 +408,7 @@ public class GuiClient extends JFrame implements ActionListener {
 				
 				
 		}
+		*/
 
 	public void run() {
 		// TODO Auto-generated method stub
