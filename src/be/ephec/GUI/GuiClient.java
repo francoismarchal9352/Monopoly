@@ -34,6 +34,7 @@ public class GuiClient extends JFrame implements ActionListener {
 	private JButton buttonVendre;
 	private JButton buttonLoyer;
 	private JButton buttonFinirTour;
+	private JButton jButtonConnecter;
 	private JTextArea textAreaConsole;
 	private JLabel labelD1;
 	private JLabel labelD2;
@@ -60,27 +61,6 @@ public class GuiClient extends JFrame implements ActionListener {
 	private JLabel jLabelAdrIP;
 	
 	
-
-	
-	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GuiClient frame = new GuiClient("test");
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	*/
-
 	/**
 	 * Create the frame.
 	 * @param applicationClient 
@@ -122,7 +102,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_textAreaConsole.gridy = 1;
 		getContentPane().add(textAreaConsole, gbc_textAreaConsole);
 		
-		buttonLancerDes = new JButton("Lancer les DÃ©s");
+		buttonLancerDes = new JButton("Lancer les Dés");
 		buttonLancerDes.addActionListener(this);
 		
 		labelJoueur = new JLabel("");
@@ -201,7 +181,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_labelValD1.gridy = 9;
 		getContentPane().add(labelValD1, gbc_labelValD1);
 		
-		JLabel jLabelPortTCP = new JLabel("NumÃ©ro de port TCP :");
+		JLabel jLabelPortTCP = new JLabel("Numéro de port TCP :");
 		GridBagConstraints gbc_jLabelPortTCP = new GridBagConstraints();
 		gbc_jLabelPortTCP.anchor = GridBagConstraints.EAST;
 		gbc_jLabelPortTCP.insets = new Insets(0, 0, 5, 5);
@@ -235,8 +215,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_labelD2.gridy = 11;
 		getContentPane().add(labelD2, gbc_labelD2);
 		
-		JButton jButtonConnecter = new JButton("Se connecter");
-		jButtonConnecter.setEnabled(false);
+		jButtonConnecter = new JButton("Se connecter");
 		jButtonConnecter.addActionListener(this);
 		GridBagConstraints gbc_jButtonConnecter = new GridBagConstraints();
 		gbc_jButtonConnecter.insets = new Insets(0, 0, 5, 5);
@@ -376,21 +355,26 @@ public class GuiClient extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		ClientSocket client;
-		try {
-			client = new ClientSocket(jTextFieldIP.getText(), Integer.parseInt(jTextFieldPort.getText()),applicationClient);
-			client.lireNonStop();
-			applicationClient.getGuiClient().setjPanelClient(new GuiClient(applicationClient));
-			applicationClient.setSocket(client);
-			applicationClient.getGuiClient().ajouteDansLaConsole(
-					Console.getInviteDeCommande()+
-					"Le client est connectÃ© au serveur\n");
-		} catch (NumberFormatException e1) {
-			e1.printStackTrace();
-		} catch (UnknownHostException e1) {
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			afficheInfo("Le serveur ne rÃ©pond pas. Essayez plus tard.");
+		switch(e.getActionCommand()){
+		case "Se connecter":
+			ClientSocket client;
+			try {
+				client = new ClientSocket(jTextFieldIP.getText(), Integer.parseInt(jTextFieldPort.getText()),applicationClient);
+				client.lireNonStop();
+				applicationClient.setSocket(client);
+				applicationClient.getGuiClient().ajouteDansLaConsole(
+						Console.getInviteDeCommande()+
+						"Le client est connecté au serveur\n");
+				jButtonConnecter.setEnabled(false);
+			} catch (NumberFormatException e1) {
+				e1.printStackTrace();
+			} catch (UnknownHostException e1) {
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				afficheInfo("Le serveur ne répond pas. Essayez plus tard.");
+			}
+			break;
+		case "
 		}
 	}
 
@@ -409,9 +393,4 @@ public class GuiClient extends JFrame implements ActionListener {
 				
 		}
 		*/
-
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
 }
