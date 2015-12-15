@@ -23,8 +23,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import be.ephec.network.ApplicationClient;
-import be.ephec.network.ClientSocket;
+import be.ephec.application.ApplicationClient;
 import be.ephec.network.*;
 
 public class GuiClient extends JFrame implements ActionListener {

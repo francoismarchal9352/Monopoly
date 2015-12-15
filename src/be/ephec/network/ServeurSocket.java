@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
+import be.ephec.application.ApplicationServeur;
+
 
 public class ServeurSocket extends ServerSocket implements Runnable {
 	private ApplicationServeur ma;
@@ -16,7 +18,7 @@ public class ServeurSocket extends ServerSocket implements Runnable {
 	public ServeurSocket(int numPort,ApplicationServeur ma) throws IOException {
 		super(numPort);
 		this.ma = ma;
-		//System.out.println("le serveur écoute sur "+this.getLocalPort());
+		//System.out.println("le serveur ï¿½coute sur "+this.getLocalPort());
 		acceptePlusieursClients();
 	}
 	/**
@@ -27,7 +29,7 @@ public class ServeurSocket extends ServerSocket implements Runnable {
 	public ServeurSocket(ApplicationServeur ma) throws IOException {
 		super(Param.NUM_PORT_DE_BASE);
 		this.ma = ma;
-		//System.out.println("le serveur écoute sur "+this.getLocalPort());
+		//System.out.println("le serveur ï¿½coute sur "+this.getLocalPort());
 		acceptePlusieursClients();
 	}
 	/**
@@ -50,7 +52,7 @@ public class ServeurSocket extends ServerSocket implements Runnable {
 	}
 	/**
 	 * Méthode qui permet de créer un serveur TCP sur un numéro de port libre à partir du 
-	 * numéro de port reçu en paramètre
+	 * numéro de port reçu en paramétre
 	 * Tous les numéros de port sont testés à partir de Param.NUMPORTDEBASE jusqu'à 65535
 	 * @param numPortDepart un entier compris entre 1 et 65536. Ce sera le numéro de port 
 	 * à partir duquel on cherche un port libre pour notre application
@@ -73,7 +75,7 @@ public class ServeurSocket extends ServerSocket implements Runnable {
 	 * Méthode qui attend des clients pour les ajouter à la liste des clients connectés
 	 */
 	public void acceptePlusieursClients(){
-		// le code était ici
+		// le code ï¿½tait ici
 		Thread t = new Thread(this);
 		t.start();
 	}

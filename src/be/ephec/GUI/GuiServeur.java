@@ -2,6 +2,7 @@ package be.ephec.GUI;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import be.ephec.application.ApplicationServeur;
 import be.ephec.network.*;
 
 public class GuiServeur extends JFrame {

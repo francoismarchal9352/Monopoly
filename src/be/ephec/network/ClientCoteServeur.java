@@ -1,12 +1,12 @@
 package be.ephec.network;
 
+import be.ephec.application.ApplicationServeur;
 import be.ephec.modele.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import be.ephec.network.*;;
 
 public class ClientCoteServeur implements Runnable{
 	private Socket socket;
@@ -16,7 +16,7 @@ public class ClientCoteServeur implements Runnable{
 	private ApplicationServeur appliServeur;
 	
 	public String toString(){
-		return "Client numéro "+num;
+		return "Joueur numéro "+num;
 	}
 	
 	public int getNum() {
@@ -29,7 +29,7 @@ public class ClientCoteServeur implements Runnable{
 		this.num = num;
 		ois = new ObjectInputStream(socket.getInputStream());
 		oos = new ObjectOutputStream(socket.getOutputStream());
-		oos.writeObject(++num); // on envoie son numéro au client
+		oos.writeObject(num); // on envoie son numéro au client
 		new Thread(this).start();
 	}
 	

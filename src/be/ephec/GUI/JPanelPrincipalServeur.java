@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 
-
+import be.ephec.application.ApplicationServeur;
 import be.ephec.network.*;
 
 import java.awt.Insets;
@@ -52,7 +52,7 @@ public class JPanelPrincipalServeur extends JPanel implements ActionListener {
 		add(lblConsoleDuServeur, gbc_lblConsoleDuServeur);
 
 		jTextFieldMessage = new JTextField();
-		jTextFieldMessage.setText("Message à envoyer");
+		jTextFieldMessage.setText("Message Ã  envoyer");
 		GridBagConstraints gbc_jTextFieldMessage = new GridBagConstraints();
 		gbc_jTextFieldMessage.insets = new Insets(0, 0, 5, 0);
 		gbc_jTextFieldMessage.fill = GridBagConstraints.HORIZONTAL;
@@ -76,7 +76,7 @@ public class JPanelPrincipalServeur extends JPanel implements ActionListener {
 		jTextAreaConsoleServeur = new JTextArea();
 		scrollPane.setViewportView(jTextAreaConsoleServeur);
 		jTextAreaConsoleServeur.setText(Console.getInviteDeCommande()+
-				"Le serveur écoute sur le port :"+ma.getServeurSocket().getLocalPort()+"\n");
+				"Le serveur Ã©coute sur le port :"+ma.getServeurSocket().getLocalPort()+"\n");
 		GridBagConstraints gbc_btnEnvoyerAuClient = new GridBagConstraints();
 		gbc_btnEnvoyerAuClient.anchor = GridBagConstraints.NORTH;
 		gbc_btnEnvoyerAuClient.gridx = 1;
