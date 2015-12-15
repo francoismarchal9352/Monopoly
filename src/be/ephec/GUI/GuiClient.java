@@ -366,7 +366,7 @@ public class GuiClient extends JFrame implements ActionListener {
 				applicationClient.setSocket(client);
 				applicationClient.getGuiClient().ajouteDansLaConsole(
 						Console.getInviteDeCommande()+
-						"Le client est connecté au serveur\n");
+						"Le joueur est connecté au serveur\n");
 				jButtonConnecter.setEnabled(false);
 			} catch (NumberFormatException e1) {
 				e1.printStackTrace();

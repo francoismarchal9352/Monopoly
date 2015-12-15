@@ -1,6 +1,5 @@
 package be.ephec.application;
 
-import javax.swing.JOptionPane;
 import be.ephec.network.ClientSocket;
 import be.ephec.network.Console;
 import be.ephec.GUI.GuiClient;
