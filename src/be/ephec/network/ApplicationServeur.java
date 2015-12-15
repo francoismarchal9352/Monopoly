@@ -2,12 +2,16 @@ package be.ephec.network;
 
 import java.util.Calendar;
 import be.ephec.GUI.GuiServeur;
+import be.ephec.modele.Partie;
 import be.ephec.network.ClientCoteServeur;
 import be.ephec.network.ServeurSocket;
 
 public class ApplicationServeur {
 	private GuiServeur GuiServeur;
 	private ServeurSocket serveurSocket;
+	private Partie partie = new Partie();
+	
+	
 	public ApplicationServeur(){
 		GuiServeur = new GuiServeur(this);
 	}

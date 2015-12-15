@@ -68,6 +68,11 @@ public class ApplicationClient{
 	}
 	public static void setNbClients(int nbClients) {
 		ApplicationClient.nbClients = nbClients;
-	}	
+	}
+
+	public void envoiCommande(String actionCommand) {
+		socket.ecrire(actionCommand);
+		
+	}
 }
 

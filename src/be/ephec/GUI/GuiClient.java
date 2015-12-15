@@ -358,8 +358,7 @@ public class GuiClient extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		switch(e.getActionCommand()){
-		case "Se connecter":
+		if((e.getActionCommand().equals("Se connecter"))){
 			ClientSocket client;
 			try {
 				client = new ClientSocket(jTextFieldIP.getText(), Integer.parseInt(jTextFieldPort.getText()),applicationClient);
@@ -376,8 +375,9 @@ public class GuiClient extends JFrame implements ActionListener {
 			} catch (IOException e1) {
 				afficheInfo("Le serveur ne répond pas. Essayez plus tard.");
 			}
-			break;
-//		case "
+		}
+		else{
+			applicationClient.envoiCommande(e.getActionCommand());
 		}
 	}
 

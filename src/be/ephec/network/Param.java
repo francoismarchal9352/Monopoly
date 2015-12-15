@@ -4,7 +4,7 @@ public class Param {
 	/**
 	 * C'est le numéro de port par défaut que l'on essaie d'ouvrir
 	 */
-	public static final int NUM_PORT_DE_BASE = 62900;
+	public static final int NUM_PORT_DE_BASE = 42000;
 	public static final String IP_SERVEUR = "127.0.0.1";
 	
 	public static final int HAUTEUR_JFRAME_ACCUEIL_CLIENT = 201;
