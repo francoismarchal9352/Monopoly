@@ -29,7 +29,7 @@ public class ApplicationClient{
 	}
 	
 	public void traiteObjetRecu(Object object){
-//		if(object.getClass().equals(partie.getClass())){ //à vérifier
+		if(object instanceof Partie){ //à vérifier
 			partie = (Partie) object;
 			guiClient.setLabelValD1(Integer.toString(partie.getPlateau().getDe1().getValeur()));
 			guiClient.setLabelValD2(Integer.toString(partie.getPlateau().getDe2().getValeur()));
@@ -47,12 +47,11 @@ public class ApplicationClient{
 			else
 				guiClient.setButtonLancerDes(false);
 		}
-/*		else if(object.getClass().equals(messageConsole.getClass())){
-			messageConsole = (String)object;
-			guiClient.ajouteDansLaConsole(messageConsole);
+		else if(object instanceof String){
+			guiClient.ajouteDansLaConsole((String) object);
 		}
 	}
-*/
+	
 	public void setTitle(String s){
 		guiClient.setTitle(s);
 	}

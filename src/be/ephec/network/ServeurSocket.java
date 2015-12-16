@@ -19,7 +19,7 @@ public class ServeurSocket extends ServerSocket implements Runnable{
 	public ServeurSocket(int numPort,ApplicationServeur ma) throws IOException {
 		super(numPort);
 		this.ma = ma;
-		//System.out.println("le serveur ï¿½coute sur "+this.getLocalPort());
+		//System.out.println("le serveur écoute sur "+this.getLocalPort());
 		acceptePlusieursClients();
 	}
 	/**
@@ -30,7 +30,7 @@ public class ServeurSocket extends ServerSocket implements Runnable{
 	public ServeurSocket(ApplicationServeur ma) throws IOException {
 		super(Param.NUM_PORT_DE_BASE);
 		this.ma = ma;
-		//System.out.println("le serveur ï¿½coute sur "+this.getLocalPort());
+		//System.out.println("le serveur écoute sur "+this.getLocalPort());
 		acceptePlusieursClients();
 	}
 	/**
@@ -76,7 +76,7 @@ public class ServeurSocket extends ServerSocket implements Runnable{
 	 * Méthode qui attend des clients pour les ajouter à la liste des clients connectés
 	 */
 	public void acceptePlusieursClients(){
-		// le code ï¿½tait ici
+		// le code était ici
 		Thread t = new Thread(this);
 		t.start();
 	}

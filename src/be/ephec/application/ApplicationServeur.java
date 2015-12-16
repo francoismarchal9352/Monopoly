@@ -46,7 +46,7 @@ public class ApplicationServeur {
 				partie.finTour();
 				break;
 		}
-		ccs.ecrire(partie);
+		serveurSocket.ecrirSurTousLesClients(partie);
 	}
 
 	public void traiteObjetAEnvoyer(ClientCoteServeur ccs,Object o){

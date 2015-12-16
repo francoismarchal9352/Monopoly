@@ -47,7 +47,7 @@ public class Partie implements Serializable{
 		//	}
 		/*Le joueur vient de lancer les dés*/
 		this.plateau.lancerDes();
-/*TEST*///appliServeur.getServeurSocket().ecrirSurTousLesClients(((getJoueurCourant().getNom()+": Les dés ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur())+".\n"));
+/*TEST*/appliServeur.getServeurSocket().ecrirSurTousLesClients(((getJoueurCourant().getNom()+": Les dés ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur())+".\n"));
 		if(plateau.getDe1().getValeur()==plateau.getDe2().getValeur())
 			flagDesDouble=true;
 		if(getJoueurCourant().getNbTourPrison()>0){
