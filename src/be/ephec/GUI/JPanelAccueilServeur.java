@@ -20,7 +20,7 @@ public class JPanelAccueilServeur extends JPanel implements ActionListener {
 	private JTextField jTextFieldNumPort;
 	/**
 	 * Create the panel.
-	 * @param applicationServeur une rÃ©fÃ©rence vers l'application
+	 * @param applicationServeur une référence vers l'application
 	 */
 	public JPanelAccueilServeur(ApplicationServeur applicationServeur) {
 		this.applicationServeur = applicationServeur;
@@ -31,7 +31,7 @@ public class JPanelAccueilServeur extends JPanel implements ActionListener {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel jLabelNumPort = new JLabel("NumÃ©ro du port : ");
+		JLabel jLabelNumPort = new JLabel("Numéro du port : ");
 		GridBagConstraints gbc_jLabelNumPort = new GridBagConstraints();
 		gbc_jLabelNumPort.insets = new Insets(0, 0, 5, 5);
 		gbc_jLabelNumPort.anchor = GridBagConstraints.EAST;
@@ -48,7 +48,7 @@ public class JPanelAccueilServeur extends JPanel implements ActionListener {
 		add(jTextFieldNumPort, gbc_jTextFieldNumPort);
 		jTextFieldNumPort.setColumns(10);
 		
-		JButton jButtonDemarrer = new JButton("DÃ©marrer le serveur");
+		JButton jButtonDemarrer = new JButton("Démarrer le serveur");
 		jButtonDemarrer.addActionListener(this);
 		GridBagConstraints gbc_jButtonDemarrer = new GridBagConstraints();
 		gbc_jButtonDemarrer.gridx = 1;

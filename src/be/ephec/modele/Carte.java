@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public abstract class Carte {
+import java.io.Serializable;
+
+public abstract class Carte implements Serializable{
 	protected Partie partie;
 	protected String texte;
 	protected int numMethode;

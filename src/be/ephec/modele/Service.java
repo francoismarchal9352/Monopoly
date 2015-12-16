@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public class Service extends Case {
+import java.io.Serializable;
+
+public class Service extends Case implements Serializable{
 	private String proprietaire;
 	private int prixService;
 	

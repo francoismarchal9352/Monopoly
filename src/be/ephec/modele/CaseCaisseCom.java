@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public class CaseCaisseCom extends Case{
+import java.io.Serializable;
+
+public class CaseCaisseCom extends Case implements Serializable{
 	
 	public CaseCaisseCom(Partie partie){
 		super(partie,"CaisseCom", "Case Caisse de Communeauté");
@@ -9,7 +11,7 @@ public class CaseCaisseCom extends Case{
 	public void action(){
 		partie.setNbCarteCaisseComPioche(partie.getNbCarteCaisseComPioche()+1);
 		/*Affiche le texte de la carte au joueur*/
-/*TEST*/System.out.println(partie.getJoueurCourant().getNom()+" pioche carte CAISSE COM n°"+partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).numMethode);
+/*TEST*/partie.getAppliServeur().getGuiServeur().ajouteDansLaConsole(partie.getJoueurCourant().getNom()+" pioche carte CAISSE COM n°"+partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).numMethode);
 		partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).action(partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).getNumMethode());
 	}
 

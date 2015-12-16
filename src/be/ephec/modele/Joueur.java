@@ -1,33 +1,38 @@
 package be.ephec.modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Joueur{
+
+public class Joueur implements Serializable{
 	private Partie partie;
 	private String nom;
 	private int position;
 	private int solde;
-	private int nbTourPrison;
 	private int nbCarteSortezPrison;
+	private int nbTourPrison;
+	private int nbTourSuite;
 	private ArrayList<Case> tabPossessions;
 	
 	public ArrayList<Case> getTabPossessions() {
 		return tabPossessions;
 	}
 
-	public Joueur(Partie partie, String nom){
+	public Joueur(Partie partie, String nb){
 		this.partie = partie;
-		this.nom = nom;
-		this.position = 0;
-		this.solde = 15000;
-		this.nbTourPrison = 0;
-		this.tabPossessions = new ArrayList<Case>(); // défault size d'un ArrayList est 10. Autant laisser cette valeur pour gagner un peu en perf lors de l'exec.	
+		this.nom = "Joueur "+nb;
+		position = 0;
+		solde = 15000;
+		nbCarteSortezPrison = 0;
+		nbTourPrison = 0;
+		nbTourSuite = 0;
+		tabPossessions = new ArrayList<Case>(); // défault size d'un ArrayList est 10. Autant laisser cette valeur pour gagner un peu en perf lors de l'exec.	
 	}
 	
 	public void entreEnPrison() {	//Désactiver les boutons pour acheter et vendre des propriétés
-		System.out.println(partie.getJoueurCourant().getNom()+" PRISOOOOOOOOOOOOOOOOOOOOOOOOOOOOOON !");
+		partie.getAppliServeur().getGuiServeur().ajouteDansLaConsole(partie.getJoueurCourant().getNom()+" PRISOOOOOOOOOOOOOOOOOOOOOOOOOOOOOON !");
 		position=10;
-		partie.setNbTourSuite(0);
+		this.setNbTourSuite(0);
 		nbTourPrison=1;
 		if(nbCarteSortezPrison>0){
 			nbCarteSortezPrison--;
@@ -87,6 +92,14 @@ public class Joueur{
 
 	public void setNbTourPrison(int nbTourPrison) {
 		this.nbTourPrison = nbTourPrison;
+	}
+	
+	public int getNbTourSuite(){
+		return nbTourSuite;
+	}
+	
+	public void setNbTourSuite(int nb) {
+		nbTourSuite=nb;
 	}
 
 	public String getNom(){

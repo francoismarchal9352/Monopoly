@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public class CaseChance extends Case {
+import java.io.Serializable;
+
+public class CaseChance extends Case implements Serializable{
 	
 	public CaseChance(Partie partie){
 		super(partie, "Chance", "Case Chance");
@@ -9,7 +11,7 @@ public class CaseChance extends Case {
 	public void action(){
 		partie.setNbCarteChancePioche(partie.getNbCarteChancePioche()+1);
 		/*Affiche le texte de la carte au joueur*/
-/*TEST*/System.out.println(partie.getJoueurCourant().getNom()+" pioche carte CHANCE n°"+partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()%16).numMethode);
+/*TEST*/partie.getAppliServeur().getGuiServeur().ajouteDansLaConsole(partie.getJoueurCourant().getNom()+" pioche carte CHANCE n°"+partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()%16).numMethode);
 		partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()%16).action(partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()%16).getNumMethode());
 	}
 

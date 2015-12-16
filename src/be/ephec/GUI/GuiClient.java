@@ -1,6 +1,5 @@
 package be.ephec.GUI;
 
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,16 +7,12 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.UnknownHostException;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -28,7 +23,6 @@ import be.ephec.network.*;
 
 public class GuiClient extends JFrame implements ActionListener {
 	private ApplicationClient applicationClient;
-	private JPanel contentPane;
 	private JButton buttonLancerDes;
 	private JButton buttonAcheter;
 	private JButton buttonVendre;
@@ -38,8 +32,8 @@ public class GuiClient extends JFrame implements ActionListener {
 	private JTextArea textAreaConsole;
 	private JLabel labelD1;
 	private JLabel labelD2;
-	private JLabel labelValD2;
 	private JLabel labelValD1;
+	private JLabel labelValD2;
 	private JLabel labelSoldeJ1;
 	private JLabel labelSoldeJ2;
 	private JLabel labelValSoldeJ1;
@@ -67,7 +61,7 @@ public class GuiClient extends JFrame implements ActionListener {
 	 */
 	public GuiClient(ApplicationClient applicationClient) {
 		this.applicationClient = applicationClient;
-		setResizable(true);
+		setResizable(false);
 		setTitle("Monopoly");
 		setSize(1500,900);
 		setLocationRelativeTo(null);
@@ -102,7 +96,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		gbc_textAreaConsole.gridy = 1;
 		getContentPane().add(scroll, gbc_textAreaConsole);
 		
-		buttonLancerDes = new JButton("Lancer les Dés");
+		buttonLancerDes = new JButton("Lancer les dés");
 		buttonLancerDes.addActionListener(this);
 		
 		labelJoueur = new JLabel("");
@@ -384,15 +378,39 @@ public class GuiClient extends JFrame implements ActionListener {
 		JLabelInfo.setText(s);
 	}
 	
-	/*
-	@Override
-	public void actionPerformed(ActionEvent e) {
-				oos.write(e.getActionCommand());
-				if(this.get)
-				TimeUnit.MILLISECONDS.sleep(250);
-				ois.readObject(partie);
-				
-				
+	public void setLabelValD1(String s){
+		labelValD1.setText(s);
 		}
-		*/
+	
+	public void setLabelValD2(String s){
+		labelValD2.setText(s);
+		}
+
+	public void setLabelSoldeJ1(String s){
+		labelSoldeJ1.setText(s);
+		}
+
+	public void setLabelSoldeJ2(String s){
+		labelSoldeJ2.setText(s);
+		}
+
+	public void setLabelPositionJ1(String s){
+		labelPositionJ1.setText(s);
+		}
+
+	public void setLabelPositionJ2(String s){
+		labelPositionJ2.setText(s);
+		}
+
+	public void setLabelNbCartePrison(String s){
+		labelNbCartePrison.setText(s);
+		}
+
+	public void setLabelNbTourPrison(String s){
+		labelNbTourPrison.setText(s);
+		}
+
+	public void setLabelNbTourSuite(String s){
+		labelNbTourSuite.setText(s);
+		}
 }

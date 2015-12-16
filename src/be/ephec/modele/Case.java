@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public abstract class Case {
+import java.io.Serializable;
+
+public abstract class Case implements Serializable{
 	protected Partie partie;
 	private String type;
 	private String nom;

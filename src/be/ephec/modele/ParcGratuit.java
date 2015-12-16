@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public class ParcGratuit extends Case {
+import java.io.Serializable;
+
+public class ParcGratuit extends Case implements Serializable{
 
 	public ParcGratuit(Partie partie){
 		super(partie,"ParcGratuit","Parc Gratuit");

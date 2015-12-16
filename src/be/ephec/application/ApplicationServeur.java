@@ -1,14 +1,18 @@
 package be.ephec.application;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import be.ephec.GUI.GuiServeur;
+import be.ephec.modele.Partie;
 import be.ephec.network.ClientCoteServeur;
 import be.ephec.network.Console;
 import be.ephec.network.ServeurSocket;
 
-public class ApplicationServeur {
+public class ApplicationServeur implements Serializable{
 	private GuiServeur GuiServeur;
 	private ServeurSocket serveurSocket;
+	private Partie partie = new Partie(this);
+	
 	public ApplicationServeur(){
 		GuiServeur = new GuiServeur(this);
 	}
@@ -26,8 +30,24 @@ public class ApplicationServeur {
 	public void traiteObjetRecu(ClientCoteServeur ccs,Object object){
 		Calendar cal = Calendar.getInstance();
 		getGuiServeur().ajouteDansLaConsole(
-				Console.getInviteDeCommande()+"> Reçu du joueur "+ 
+				Console.getInviteDeCommande()+"> Joueur "+ 
 				ccs.getNum()+" : "+object.toString()+"\n");
+		switch((String)object){
+			case "Lancer les dés":
+				partie.debutTour();
+				break;
+			case "Acheter":
+				partie.acheter();
+				break;
+			case "Vendre": // à implémenter
+				break;
+			case "Demander Loyer":
+				break;
+			case "Finir Tour":
+				partie.finTour();
+				break;
+		}
+		ccs.ecrire(partie);
 	}
 
 	public void traiteObjetAEnvoyer(ClientCoteServeur ccs,Object o){
@@ -42,7 +62,7 @@ public class ApplicationServeur {
 		getGuiServeur().supprimeClientJComboBox(ccs);
 	}
 
-	// Les getteurs et les setteurs
+	// Les getters et les setters
 	public GuiServeur getGuiServeur() {
 		return GuiServeur;
 	}

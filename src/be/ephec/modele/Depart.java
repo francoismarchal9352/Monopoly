@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public class Depart extends Case{
+import java.io.Serializable;
+
+public class Depart extends Case implements Serializable{
 	
 	public Depart(Partie partie){
 		super(partie,"Depart","Case Depart");

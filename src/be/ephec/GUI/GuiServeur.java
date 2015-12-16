@@ -1,11 +1,13 @@
 package be.ephec.GUI;
+import java.io.Serializable;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import be.ephec.application.ApplicationServeur;
 import be.ephec.network.*;
 
-public class GuiServeur extends JFrame {
+public class GuiServeur extends JFrame implements Serializable{
 	private JPanel jpanelServer;
 	private ApplicationServeur ma;
 	public GuiServeur(ApplicationServeur ma) {

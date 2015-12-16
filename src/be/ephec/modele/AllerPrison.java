@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public class AllerPrison extends Case {
+import java.io.Serializable;
+
+public class AllerPrison extends Case implements Serializable{
 	
 	public AllerPrison(Partie partie){
 		super(partie, "AllerPrison","Aller en prison");

@@ -5,10 +5,11 @@ import be.ephec.modele.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.Socket;
 
 
-public class ClientCoteServeur implements Runnable{
+public class ClientCoteServeur implements Runnable, Serializable{
 	private Socket socket;
 	private ObjectInputStream ois;
 	private ObjectOutputStream oos;

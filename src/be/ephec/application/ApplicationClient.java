@@ -3,12 +3,14 @@ package be.ephec.application;
 import be.ephec.network.ClientSocket;
 import be.ephec.network.Console;
 import be.ephec.GUI.GuiClient;
+import be.ephec.modele.Partie;
 
 public class ApplicationClient{
 	private GuiClient guiClient;
 	private ClientSocket socket;
 	private int num;
 	private static int nbClients = 0;
+	
 	public ApplicationClient(){
 		guiClient = new GuiClient(this);
 		nbClients++;
@@ -28,8 +30,17 @@ public class ApplicationClient{
 				"Le joueur est connecté au serveur\n");
 	}
 	
-	public void traiteObjetRecu(Object o){
-		guiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+o.toString()+"\n");
+	public void traiteObjetRecu(Object partieMonopoly){
+		Partie partie = (Partie) partieMonopoly;
+		guiClient.setLabelValD1(Integer.toString(partie.getPlateau().getDe1().getValeur()));
+		guiClient.setLabelValD2(Integer.toString(partie.getPlateau().getDe2().getValeur()));
+		guiClient.setLabelSoldeJ1(Integer.toString(partie.getTabJoueurs().get(0).getSolde()));
+		guiClient.setLabelSoldeJ2(Integer.toString(partie.getTabJoueurs().get(1).getSolde()));
+		guiClient.setLabelPositionJ1(Integer.toString(partie.getTabJoueurs().get(0).getPosition()));
+		guiClient.setLabelPositionJ2(Integer.toString(partie.getTabJoueurs().get(1).getPosition()));
+		guiClient.setLabelNbCartePrison(Integer.toString(partie.getTabJoueurs().get(num-1).getNbCarteSortezPrison()));
+		guiClient.setLabelNbTourPrison(Integer.toString(partie.getTabJoueurs().get(num-1).getNbTourPrison()));
+		guiClient.setLabelNbTourSuite(Integer.toString(partie.getTabJoueurs().get(num-1).getNbTourSuite()));
 	}
 
 	public void setTitle(String s){

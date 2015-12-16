@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public class De {
+import java.io.Serializable;
+
+public class De implements Serializable{
 	private int valeur;
 //	private int cpt;
 	

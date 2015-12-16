@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public class Taxe extends Case {
+import java.io.Serializable;
+
+public class Taxe extends Case implements Serializable{
 	private int prixTaxe;
 	
 	public Taxe(Partie partie, String nom){

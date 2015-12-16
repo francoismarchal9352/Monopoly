@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public class CarteCaisseCom extends Carte {
+import java.io.Serializable;
+
+public class CarteCaisseCom extends Carte implements Serializable{
 	
 	public CarteCaisseCom(Partie partie, String texte, int methodeNum){
 		super(partie, texte, methodeNum);

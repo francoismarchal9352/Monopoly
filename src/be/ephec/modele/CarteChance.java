@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public class CarteChance extends Carte {
+import java.io.Serializable;
+
+public class CarteChance extends Carte implements Serializable{
 	
 	public CarteChance(Partie partie, String texte, int methodeNum){
 		super(partie, texte, methodeNum);

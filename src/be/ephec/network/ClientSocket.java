@@ -2,12 +2,13 @@ package be.ephec.network;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 import be.ephec.application.ApplicationClient;
 
-public class ClientSocket extends Socket implements Runnable {
+public class ClientSocket extends Socket implements Runnable, Serializable{
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;
 	private ApplicationClient appliClient;

@@ -1,6 +1,8 @@
 package be.ephec.modele;
 
-public class Gare extends Case{
+import java.io.Serializable;
+
+public class Gare extends Case implements Serializable{
 	private String proprietaire;
 	private int prixGare;
 	private int tabLoyers[];
