@@ -32,7 +32,7 @@ public class Joueur implements Serializable{
 	}
 	
 	public void entreEnPrison() {	//Désactiver les boutons pour acheter et vendre des propriétés
-		partie.getAppliServeur().getGuiServeur().ajouteDansLaConsole(partie.getJoueurCourant().getNom()+" PRISOOOOOOOOOOOOOOOOOOOOOOOOOOOOOON !");
+		partie.AfficherDansLogClient(partie.getJoueurCourant().getNom()+"entre en PRISOOOOOOOON !\n");
 		position=10;
 		this.setNbTourSuite(0);
 		nbTourPrison=1;

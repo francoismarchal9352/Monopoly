@@ -95,7 +95,7 @@ public class GuiClient extends JFrame implements ActionListener{
 		getContentPane().add(scroll, gbc_textAreaConsole);
 		
 		buttonLancerDes = new JButton("Lancer les dés");
-		buttonLancerDes.setEnabled(false);
+		buttonLancerDes.setEnabled(true);
 		buttonLancerDes.addActionListener(this);
 		
 		labelJoueur = new JLabel("");
@@ -336,7 +336,7 @@ public class GuiClient extends JFrame implements ActionListener{
 		getContentPane().add(labelNbTourSuite, gbc_labelNbTourSuite);
 		
 		buttonFinirTour = new JButton("Finir Tour");
-		buttonFinirTour.setEnabled(false);
+		buttonFinirTour.setEnabled(true);
 		buttonFinirTour.addActionListener(this);
 		GridBagConstraints gbc_buttonFinirTour = new GridBagConstraints();
 		gbc_buttonFinirTour.insets = new Insets(0, 0, 5, 5);
@@ -350,6 +350,7 @@ public class GuiClient extends JFrame implements ActionListener{
 	
 	public void ajouteDansLaConsole(String s){ //Ajouter l'heure comme sur le serveur
 		textAreaConsole.append(s);
+		textAreaConsole.setCaretPosition(textAreaConsole.getDocument().getLength());
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -364,9 +365,9 @@ public class GuiClient extends JFrame implements ActionListener{
 						Console.getInviteDeCommande()+
 						"Le joueur est connecté au serveur\n");
 				jButtonConnecter.setEnabled(false);
-				buttonLancerDes.setEnabled(false);
-				if(applicationClient.getNum()==1)
-					buttonLancerDes.setEnabled(true);
+//				buttonLancerDes.setEnabled(false);
+//				if(applicationClient.getNum()==1)
+//					buttonLancerDes.setEnabled(true);
 				buttonAcheter.setEnabled(true);
 				buttonVendre.setEnabled(true);
 				buttonLoyer.setEnabled(true);
@@ -380,15 +381,22 @@ public class GuiClient extends JFrame implements ActionListener{
 			break;	
 		case "Lancer les dés":
 			applicationClient.envoiCommande(e.getActionCommand());
-			buttonLancerDes.setEnabled(false);
-			buttonFinirTour.setEnabled(true);
+//			buttonLancerDes.setEnabled(false);
+//			buttonFinirTour.setEnabled(true);
 			break;
 		case "Finir Tour":
 			applicationClient.envoiCommande(e.getActionCommand());
-			buttonFinirTour.setEnabled(false);
-			buttonAcheter.setEnabled(false);
-			buttonVendre.setEnabled(false);
-			buttonLoyer.setEnabled(false);
+//			buttonFinirTour.setEnabled(false);
+//			buttonAcheter.setEnabled(false);
+//			buttonVendre.setEnabled(false);
+//			buttonLoyer.setEnabled(false);
+			break;
+		case "Acheter":
+			applicationClient.envoiCommande(e.getActionCommand());
+			break;
+		case "Demander Loyer":
+			//Reste à faire
+			break;
 		}
 	}
 

@@ -28,10 +28,10 @@ public class ApplicationClient{
 				"Le joueur est connecté au serveur\n");
 	}
 	
-	public void traiteObjetRecu(Object object){
-		if(object instanceof Partie){ //à vérifier
-			partie = (Partie) object;
-			guiClient.setLabelValD1(Integer.toString(partie.getPlateau().getDe1().getValeur()));
+	public void traiteObjetRecu(Object object){ // Reçoit soit la Partie soit un String à afficher dans la console.
+		if(object instanceof Partie){ // Si l'objet est une Partie...
+			partie = (Partie) object; // Stockage de l'objet pour faire des appels plus simples.
+			guiClient.setLabelValD1(Integer.toString(partie.getPlateau().getDe1().getValeur())); // Actualisation des infos relatives à la partie dans la GUI Client...
 			guiClient.setLabelValD2(Integer.toString(partie.getPlateau().getDe2().getValeur()));
 			guiClient.setLabelValSoldeJ1(Integer.toString(partie.getTabJoueurs().get(0).getSolde()));
 			guiClient.setLabelValSoldeJ2(Integer.toString(partie.getTabJoueurs().get(1).getSolde()));
@@ -41,14 +41,14 @@ public class ApplicationClient{
 			guiClient.setLabelNbTourPrison(Integer.toString(partie.getTabJoueurs().get(num-1).getNbTourPrison()));
 			guiClient.setLabelNbTourSuite(Integer.toString(partie.getTabJoueurs().get(num-1).getNbTourSuite()));
 			System.out.println("C'est le tour de "+partie.getJoueurCourant().getNum());
-			System.out.println("Tour numéro "+partie.getNbTour());
-			if(partie.getJoueurCourant().getNum()==num)
-				guiClient.setButtonLancerDes(true);
+			System.out.println("Tour numéro "+partie.getNbTour()); // Renvoie toujours 0. La partie semble figée pourtant le serveur indique qu'elle continue bien.
+/*			if(partie.getJoueurCourant().getNum()==num) //Si c'est le tour du joueur...
+				guiClient.setButtonLancerDes(true);	// ...le bouton devient cliquable.
 			else
-				guiClient.setButtonLancerDes(false);
-		}
-		else if(object instanceof String){
-			guiClient.ajouteDansLaConsole((String) object);
+				guiClient.setButtonLancerDes(false); // Sinon, ce n'est pas son tour, il ne peut donc pas lancer les dés et attend son tour, grâce à l'actualisation de la GUI.
+*/		}
+		else if(object instanceof String){ //Sinon, l'objet est forcément un String à afficher dans la console.
+			guiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+(String) object);
 		}
 	}
 	

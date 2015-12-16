@@ -47,7 +47,7 @@ public class Partie implements Serializable{
 		//	}
 		/*Le joueur vient de lancer les dés*/
 		this.plateau.lancerDes();
-/*TEST*/appliServeur.getServeurSocket().ecrirSurTousLesClients(((getJoueurCourant().getNom()+": Les dés ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur())+".\n"));
+/*TEST*/AfficherDansLogClient(((getJoueurCourant().getNom()+": Les dés ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur())+".\n"));
 		if(plateau.getDe1().getValeur()==plateau.getDe2().getValeur())
 			flagDesDouble=true;
 		if(getJoueurCourant().getNbTourPrison()>0){
@@ -92,11 +92,10 @@ public class Partie implements Serializable{
 				retraitSolde(terrain.getPrixTerrain(),getJoueurCourant());
 				getJoueurCourant().getTabPossessions().add(terrain);
 				terrain.setProprietaire(getJoueurCourant().getNom());
-/*TEST*/		appliServeur.getGuiServeur().ajouteDansLaConsole(getJoueurCourant().getNom()+" achète sa case.\n");
 			}
 		}
 		else { // si c'est pas le bon type ou déjà acheté => envoie msg au joueur 
-			appliServeur.getGuiServeur().ajouteDansLaConsole("achat impossible !\n");
+			AfficherDansLogClient("achat impossible !\n");
 		}
 	}
 	
@@ -112,7 +111,7 @@ public class Partie implements Serializable{
 		int anciennePosition = getJoueurCourant().getPosition();
 		getJoueurCourant().setPosition((getJoueurCourant().getPosition() + x)%40);
 		checkPasseCaseDepart(anciennePosition);
-		appliServeur.getGuiServeur().ajouteDansLaConsole(getJoueurCourant().getNom()+" arrive sur la case "+plateau.getTabCases()[getJoueurCourant().getPosition()].getNom()+".\n");
+		AfficherDansLogClient(getJoueurCourant().getNom()+" arrive sur la case "+plateau.getTabCases()[getJoueurCourant().getPosition()].getNom()+".\n");
 		plateau.getTabCases()[getJoueurCourant().getPosition()].action();
 	}
 	
@@ -121,7 +120,7 @@ public class Partie implements Serializable{
 		getJoueurCourant().setPosition(x);
 		checkPasseCaseDepart(anciennePosition);
 		plateau.getTabCases()[getJoueurCourant().getPosition()].action();
-		appliServeur.getGuiServeur().ajouteDansLaConsole(getJoueurCourant().getNom()+"Le joueur arrive sur la case "+plateau.getTabCases()[getJoueurCourant().getPosition()].getNom()+".\n");
+		AfficherDansLogClient(getJoueurCourant().getNom()+"Le joueur arrive sur la case "+plateau.getTabCases()[getJoueurCourant().getPosition()].getNom()+".\n");
 	}
 	
 	public void checkPasseCaseDepart(int anciennePosition){
@@ -130,12 +129,12 @@ public class Partie implements Serializable{
 	}
 	
 	public void ajoutSolde(int montant, Joueur joueur){
-/*TEST*/appliServeur.getGuiServeur().ajouteDansLaConsole(getJoueurCourant().getNom()+" reçoit "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()+montant)+".\n");
+/*TEST*/AfficherDansLogClient(getJoueurCourant().getNom()+" reçoit "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()+montant)+".\n");
 		joueur.setSolde(joueur.getSolde()+montant);
 	}
 	
 	public void retraitSolde(int montant, Joueur joueur){
-/*TEST*/appliServeur.getGuiServeur().ajouteDansLaConsole(getJoueurCourant().getNom()+" paye "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()-montant)+".\n");
+/*TEST*/AfficherDansLogClient(getJoueurCourant().getNom()+" paye "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()-montant)+".\n");
 		joueur.setSolde(joueur.getSolde()-montant);
 		if (joueur.getSolde()<0)
 			Perdu(joueur);
@@ -144,14 +143,14 @@ public class Partie implements Serializable{
 	public void Perdu(Joueur joueur) {
 		// envoyer un msg au joueur 
 		//supprimer le joueur perdant
-/*TEST*/appliServeur.getGuiServeur().ajouteDansLaConsole("Le joueur "+getJoueurCourant().getNom()+" a perdu.\n");
+/*TEST*/AfficherDansLogClient("Le joueur "+getJoueurCourant().getNom()+" a perdu.\n");
 		//On set à null le propriétaire de ses possession.
 		for(Case possession : joueur.getTabPossessions()){
-/*TEST*/	appliServeur.getGuiServeur().ajouteDansLaConsole(possession.getNom()+" n'appartient plus à "+joueur.getNom()+".\n");
+/*TEST*/	AfficherDansLogClient(possession.getNom()+" n'appartient plus à "+joueur.getNom()+".\n");
 			possession.setProprietaire(null);
 		}
 		tabJoueurs.remove(joueur);
-		appliServeur.getGuiServeur().ajouteDansLaConsole("La partie a duré "+nbTour+" tours.\n");
+		AfficherDansLogClient("La partie a duré "+nbTour+" tours.\n");
 		if(tabJoueurs.size()==1)
 			Gagne(tabJoueurs.get(0));
 	}
@@ -159,7 +158,11 @@ public class Partie implements Serializable{
 	public void Gagne(Joueur joueur) {
 		//envoyer un msg au joueur 
 		// terminer la partie
-		appliServeur.getGuiServeur().ajouteDansLaConsole("Le joueur "+tabJoueurs.get(0).getNom()+" a gagné !");
+		AfficherDansLogClient("Le joueur "+tabJoueurs.get(0).getNom()+" a gagné !");
+	}
+	
+	public void AfficherDansLogClient(String s){
+		appliServeur.getServeurSocket().ecrirSurTousLesClients(s);
 	}
 	
 	public ArrayList<Joueur> getTabJoueurs() {

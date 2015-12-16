@@ -29,7 +29,7 @@ public class CarteCaisseCom extends Carte implements Serializable{
 		}
 	}
 	
-	private void anniversaire(){ //Méthode bug si un joueur à 0€.
+	private void anniversaire(){ //Méthode bug si un joueur à 0€ euro.
 		int somme = 0;
 		for(Joueur J : partie.getTabJoueurs()){
 			if(!(J.equals(partie.getJoueurCourant()))){
