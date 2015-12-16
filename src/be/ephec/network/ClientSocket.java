@@ -1,14 +1,14 @@
 package be.ephec.network;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 import be.ephec.application.ApplicationClient;
 
-public class ClientSocket extends Socket implements Runnable, Serializable{
+public class ClientSocket extends Socket implements Runnable{
 	private ObjectOutputStream oos;
 	private ObjectInputStream ois;
 	private ApplicationClient appliClient;
@@ -29,6 +29,7 @@ public class ClientSocket extends Socket implements Runnable, Serializable{
 			ois = new ObjectInputStream(this.getInputStream());
 			appliClient.setNum((int)ois.readObject());
 			appliClient.setTitle("Joueur "+appliClient.getNum());
+			appliClient.getGuiClient().setLabelJoueur("Joueur "+appliClient.getNum());
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (NumberFormatException e) {
@@ -65,7 +66,7 @@ public class ClientSocket extends Socket implements Runnable, Serializable{
 		} catch (IOException e) {
 			try {
 				this.close(); 
-				// si on ne sait pas lire c'est que le serveur est fermï¿½
+				// si on ne sait pas lire c'est que le serveur est fermé
 				//TODO Trouver une solution moins radicale
 			} catch (IOException e1) {
 				e1.printStackTrace();

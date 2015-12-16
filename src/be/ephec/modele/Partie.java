@@ -2,12 +2,11 @@ package be.ephec.modele;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 import be.ephec.application.ApplicationServeur;
 
 public class Partie implements Serializable{
-	private ApplicationServeur appliServeur;
+	private transient ApplicationServeur appliServeur;
 	private ArrayList<Joueur> tabJoueurs = new ArrayList<Joueur>(2);
 	private Plateau plateau = new Plateau(this);
 	private int nbTour = 0;
@@ -48,7 +47,7 @@ public class Partie implements Serializable{
 		//	}
 		/*Le joueur vient de lancer les dés*/
 		this.plateau.lancerDes();
-/*TEST*/appliServeur.getGuiServeur().ajouteDansLaConsole((getJoueurCourant().getNom()+": Les dés ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur())+".\n");
+/*TEST*///appliServeur.getServeurSocket().ecrirSurTousLesClients(((getJoueurCourant().getNom()+": Les dés ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur())+".\n"));
 		if(plateau.getDe1().getValeur()==plateau.getDe2().getValeur())
 			flagDesDouble=true;
 		if(getJoueurCourant().getNbTourPrison()>0){
@@ -82,8 +81,8 @@ public class Partie implements Serializable{
 	}
 	
 	private void initJoueur() {
-		tabJoueurs.add(new Joueur(this, "1"));
-		tabJoueurs.add(new Joueur(this, "2"));
+		tabJoueurs.add(new Joueur(this, 1));
+		tabJoueurs.add(new Joueur(this, 2));
 	}
 
 	public void acheter(){ // Tente d'acheter la case sur laquelle le joueur courant se trouve.

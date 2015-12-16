@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.UnknownHostException;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,11 +16,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
 import be.ephec.application.ApplicationClient;
 import be.ephec.network.*;
 
-public class GuiClient extends JFrame implements ActionListener {
+public class GuiClient extends JFrame implements ActionListener{
 	private ApplicationClient applicationClient;
 	private JButton buttonLancerDes;
 	private JButton buttonAcheter;
@@ -97,6 +95,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		getContentPane().add(scroll, gbc_textAreaConsole);
 		
 		buttonLancerDes = new JButton("Lancer les dés");
+		buttonLancerDes.setEnabled(false);
 		buttonLancerDes.addActionListener(this);
 		
 		labelJoueur = new JLabel("");
@@ -114,6 +113,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		getContentPane().add(buttonLancerDes, gbc_buttonLancerDes);
 		
 		buttonAcheter = new JButton("Acheter");
+		buttonAcheter.setEnabled(false);
 		buttonAcheter.addActionListener(this);
 		buttonAcheter.setHorizontalAlignment(SwingConstants.LEADING);
 		GridBagConstraints gbc_buttonAcheter = new GridBagConstraints();
@@ -124,6 +124,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		getContentPane().add(buttonAcheter, gbc_buttonAcheter);
 		
 		buttonVendre = new JButton("Vendre");
+		buttonVendre.setEnabled(false);
 		buttonVendre.addActionListener(this);
 		GridBagConstraints gbc_buttonVendre = new GridBagConstraints();
 		gbc_buttonVendre.anchor = GridBagConstraints.NORTH;
@@ -133,6 +134,7 @@ public class GuiClient extends JFrame implements ActionListener {
 		getContentPane().add(buttonVendre, gbc_buttonVendre);
 		
 		buttonLoyer = new JButton("Demander Loyer");
+		buttonLoyer.setEnabled(false);
 		buttonLoyer.addActionListener(this);
 		GridBagConstraints gbc_buttonLoyer = new GridBagConstraints();
 		gbc_buttonLoyer.anchor = GridBagConstraints.NORTHWEST;
@@ -346,12 +348,13 @@ public class GuiClient extends JFrame implements ActionListener {
 
 	}
 	
-	public void ajouteDansLaConsole(String s){
+	public void ajouteDansLaConsole(String s){ //Ajouter l'heure comme sur le serveur
 		textAreaConsole.append(s);
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if((e.getActionCommand().equals("Se connecter"))){
+		switch(e.getActionCommand()){
+		case "Se connecter":
 			ClientSocket client;
 			try {
 				client = new ClientSocket(jTextFieldIP.getText(), Integer.parseInt(jTextFieldPort.getText()),applicationClient);
@@ -361,6 +364,12 @@ public class GuiClient extends JFrame implements ActionListener {
 						Console.getInviteDeCommande()+
 						"Le joueur est connecté au serveur\n");
 				jButtonConnecter.setEnabled(false);
+				buttonLancerDes.setEnabled(false);
+				if(applicationClient.getNum()==1)
+					buttonLancerDes.setEnabled(true);
+				buttonAcheter.setEnabled(true);
+				buttonVendre.setEnabled(true);
+				buttonLoyer.setEnabled(true);
 			} catch (NumberFormatException e1) {
 				e1.printStackTrace();
 			} catch (UnknownHostException e1) {
@@ -368,14 +377,27 @@ public class GuiClient extends JFrame implements ActionListener {
 			} catch (IOException e1) {
 				afficheInfo("Le serveur ne répond pas. Essayez plus tard.");
 			}
-		}
-		else{
+			break;	
+		case "Lancer les dés":
 			applicationClient.envoiCommande(e.getActionCommand());
+			buttonLancerDes.setEnabled(false);
+			buttonFinirTour.setEnabled(true);
+			break;
+		case "Finir Tour":
+			applicationClient.envoiCommande(e.getActionCommand());
+			buttonFinirTour.setEnabled(false);
+			buttonAcheter.setEnabled(false);
+			buttonVendre.setEnabled(false);
+			buttonLoyer.setEnabled(false);
 		}
 	}
 
 	public void afficheInfo(String s){
 		JLabelInfo.setText(s);
+	}
+	
+	public void setLabelJoueur(String s){
+		labelJoueur.setText(s);
 	}
 	
 	public void setLabelValD1(String s){
@@ -386,20 +408,20 @@ public class GuiClient extends JFrame implements ActionListener {
 		labelValD2.setText(s);
 		}
 
-	public void setLabelSoldeJ1(String s){
-		labelSoldeJ1.setText(s);
+	public void setLabelValSoldeJ1(String s){
+		labelValSoldeJ1.setText(s);
 		}
 
-	public void setLabelSoldeJ2(String s){
-		labelSoldeJ2.setText(s);
+	public void setLabelValSoldeJ2(String s){
+		labelValSoldeJ2.setText(s);
 		}
 
-	public void setLabelPositionJ1(String s){
-		labelPositionJ1.setText(s);
+	public void setLabelValPositionJ1(String s){
+		labelValPositionJ1.setText(s);
 		}
 
-	public void setLabelPositionJ2(String s){
-		labelPositionJ2.setText(s);
+	public void setLabelValPositionJ2(String s){
+		labelValPositionJ2.setText(s);
 		}
 
 	public void setLabelNbCartePrison(String s){
@@ -413,4 +435,8 @@ public class GuiClient extends JFrame implements ActionListener {
 	public void setLabelNbTourSuite(String s){
 		labelNbTourSuite.setText(s);
 		}
+
+	public void setButtonLancerDes(boolean b) {
+		buttonLancerDes.setEnabled(b);
+	}
 }

@@ -1,13 +1,13 @@
 package be.ephec.network;
+
 import java.io.IOException;
-import java.io.Serializable;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
 import be.ephec.application.ApplicationServeur;
 
 
-public class ServeurSocket extends ServerSocket implements Runnable, Serializable{
+public class ServeurSocket extends ServerSocket implements Runnable{
 	private ApplicationServeur ma;
 	private ArrayList<ClientCoteServeur> listeClients = new ArrayList<ClientCoteServeur>();
 	private int nbClients = 0;
@@ -95,8 +95,9 @@ public class ServeurSocket extends ServerSocket implements Runnable, Serializabl
 	public void ecrirSurTousLesClients(Object o){
 		for (ClientCoteServeur clientCoteServeur : listeClients) {
 			clientCoteServeur.ecrire(o);
-		}
+			}
 	}
+	
 	public Object lireSurUnClient(int num){
 		return listeClients.get(num).lire();
 	}

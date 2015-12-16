@@ -1,15 +1,13 @@
 package be.ephec.network;
 
 import be.ephec.application.ApplicationServeur;
-import be.ephec.modele.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.net.Socket;
 
 
-public class ClientCoteServeur implements Runnable, Serializable{
+public class ClientCoteServeur implements Runnable{
 	private Socket socket;
 	private ObjectInputStream ois;
 	private ObjectOutputStream oos;

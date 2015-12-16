@@ -1,13 +1,12 @@
 package be.ephec.GUI;
+
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
-
 import be.ephec.application.ApplicationServeur;
 import be.ephec.network.*;
-
 import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -16,7 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
-public class JPanelPrincipalServeur extends JPanel implements ActionListener {
+public class JPanelPrincipalServeur extends JPanel implements ActionListener{
 	private JTextField jTextFieldMessage;
 	private ApplicationServeur ma;
 	private JTextArea jTextAreaConsoleServeur;

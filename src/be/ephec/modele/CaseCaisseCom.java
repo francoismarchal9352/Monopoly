@@ -10,8 +10,8 @@ public class CaseCaisseCom extends Case implements Serializable{
 	
 	public void action(){
 		partie.setNbCarteCaisseComPioche(partie.getNbCarteCaisseComPioche()+1);
+/*TEST*/partie.getAppliServeur().getGuiServeur().ajouteDansLaConsole(partie.getJoueurCourant().getNom()+" pioche carte CAISSE COM n°"+partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).numMethode+".\n");
 		/*Affiche le texte de la carte au joueur*/
-/*TEST*/partie.getAppliServeur().getGuiServeur().ajouteDansLaConsole(partie.getJoueurCourant().getNom()+" pioche carte CAISSE COM n°"+partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).numMethode);
 		partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).action(partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).getNumMethode());
 	}
 

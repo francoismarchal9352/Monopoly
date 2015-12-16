@@ -1,12 +1,11 @@
 package be.ephec.GUI;
+
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
-
 import be.ephec.network.ServeurSocket;
-
 import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Joueur implements Serializable{
 	private Partie partie;
 	private String nom;
+	private int num;
 	private int position;
 	private int solde;
 	private int nbCarteSortezPrison;
@@ -18,9 +19,10 @@ public class Joueur implements Serializable{
 		return tabPossessions;
 	}
 
-	public Joueur(Partie partie, String nb){
+	public Joueur(Partie partie, int nb){
 		this.partie = partie;
 		this.nom = "Joueur "+nb;
+		this.num = nb;
 		position = 0;
 		solde = 15000;
 		nbCarteSortezPrison = 0;
@@ -106,4 +108,8 @@ public class Joueur implements Serializable{
 		return nom;
 	}
 	
+	public int getNum(){
+		return num;
+	}
+
 }

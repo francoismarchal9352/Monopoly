@@ -1,6 +1,5 @@
 package be.ephec.application;
 
-import java.io.Serializable;
 import java.util.Calendar;
 import be.ephec.GUI.GuiServeur;
 import be.ephec.modele.Partie;
@@ -8,7 +7,7 @@ import be.ephec.network.ClientCoteServeur;
 import be.ephec.network.Console;
 import be.ephec.network.ServeurSocket;
 
-public class ApplicationServeur implements Serializable{
+public class ApplicationServeur {
 	private GuiServeur GuiServeur;
 	private ServeurSocket serveurSocket;
 	private Partie partie = new Partie(this);
@@ -41,7 +40,7 @@ public class ApplicationServeur implements Serializable{
 				break;
 			case "Vendre": // à implémenter
 				break;
-			case "Demander Loyer":
+			case "Demander Loyer": //à implémenter
 				break;
 			case "Finir Tour":
 				partie.finTour();
