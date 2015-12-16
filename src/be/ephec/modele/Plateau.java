@@ -65,40 +65,39 @@ public class Plateau implements Serializable{
 		tabCases[39] = new Propriete(partie,"Rue de la Paix", "Bleu foncé", 400, 200, 50, 200, 600, 1400, 1700, 2000);
 	}
 	public void initCartes(){
-		tabCartesChance.add(new CarteChance(partie,"Amende pour excès de vitesse: 10 euros€.",1));
-		tabCartesChance.add(new CarteChance(partie,"La banque vous verse un dividende de 50 euros€.",2));
-		tabCartesChance.add(new CarteChance(partie,"Vous êtes imposé pour les restaurations de voirie.\n40€ euros par maison et 115€ euros par hôtel.",3));
-		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'à la case départ.",4));
-		tabCartesChance.add(new CarteChance(partie,"Payez pour les frais de scolarité 150 euros€.",5));
-		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'à la Rue de la Paix.",6)); //Ne passe forcément pas par la case Départ.
-		tabCartesChance.add(new CarteChance(partie,"Sortez de prison.\nVous gardez cette carte jusqu'à ce qu'elle vous serve ou que vous la vendiez.",7));
-		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'à l'Avenue Henri-Martin.\nSi vous passez par la case Départ, touchez 200 euros€.",8));
-		tabCartesChance.add(new CarteChance(partie,"Faites des réparations dans toutes vos propriétés.\n25€ euros par maison et 100 euros€ par hôtel.",9));
-		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'au Boulevard de la Vilette.\nSi vous passez par la case Départ, touchez 200 euros€.",10));
-		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'à la Garde de Lyon.\nSi vous passez par la case Départ, touchez 200 euros€.",11));
-		tabCartesChance.add(new CarteChance(partie,"Votre immeuble et votre prêt rapportent 150€ euros.",12));
-		tabCartesChance.add(new CarteChance(partie,"Allez en Prison. Ne franchissez pas la case Départ, ne touchez pas 200€ euros.",13));
-		tabCartesChance.add(new CarteChance(partie,"Reculez de 3 cases.",14));
-		tabCartesChance.add(new CarteChance(partie,"Amende pour ivresse: 20€ euros.",15));
-		tabCartesChance.add(new CarteChance(partie,"Vous avez gagné le prix de mots croisés: 100€.",16));
+		tabCartesChance.add(new CarteChance(partie,"Amende pour excès de vitesse: 10 euros.\n",1));
+		tabCartesChance.add(new CarteChance(partie,"La banque vous verse un dividende de 50 euros.\n",2));
+		tabCartesChance.add(new CarteChance(partie,"Vous êtes imposé pour les restaurations de voirie.\n40 euros par maison et 115 euros par hôtel.\n",3));
+		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'à la case départ.\n",4));
+		tabCartesChance.add(new CarteChance(partie,"Payez pour les frais de scolarité 150 euros.\n",5));
+		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'à la Rue de la Paix.\n",6)); //Ne passe forcément pas par la case Départ.
+		tabCartesChance.add(new CarteChance(partie,"Sortez de prison.\nVous gardez cette carte jusqu'à ce qu'elle vous serve ou que vous la vendiez.\n",7));
+		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'à l'Avenue Henri-Martin.\nSi vous passez par la case Départ, touchez 200 euros.\n",8));
+		tabCartesChance.add(new CarteChance(partie,"Faites des réparations dans toutes vos propriétés.\n25 euros par maison et 100 euros par hôtel.\n",9));
+		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'au Boulevard de la Vilette.\nSi vous passez par la case Départ, touchez 200 euros.\n",10));
+		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'à la Garde de Lyon.\nSi vous passez par la case Départ, touchez 200 euros.\n",11));
+		tabCartesChance.add(new CarteChance(partie,"Votre immeuble et votre prêt rapportent 150 euros.\n",12));
+		tabCartesChance.add(new CarteChance(partie,"Allez en Prison. Ne franchissez pas la case Départ, ne touchez pas 200 euros.\n",13));
+		tabCartesChance.add(new CarteChance(partie,"Reculez de 3 cases.\n",14));
+		tabCartesChance.add(new CarteChance(partie,"Amende pour ivresse: 20 euros.\n",15));
+		tabCartesChance.add(new CarteChance(partie,"Vous avez gagné le prix de mots croisés: 100.\n",16));
 		
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez votre police d'assurance s'élevant à 50€ euros.",1));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez la note du médecin: 50 euros€.",2));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Erreur de la banque en votre faveur. Recevez 200€ euros.",3));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Allez en prison. Ne passez pas par la case Départ et ne touchez pas 200 euros€.",4));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Avancez jusqu'au Boulevard de Belleville.",5)); // Passe forcément par la case Départ.
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Recevez votre intérêt sur l'emprunt à 7%: 250 euros.",6));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez à l'hôtpital 100€ euros.",7));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"C'est votre anniversaire, chaque joueur doit vous donner 10 euros€.",8));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous recevez votre revenu annuel: 100€ euros.",9));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous héritez 100€ euros.",10));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"La vente de votre stock vous rapporte 50€ euros.",11));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez une amende de 10€ euros pour stationnement interdit.",12));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Sortez de prison.\nVous gardez cette carte jusqu'à ce qu'elle vous serve ou que vous la vendiez.",13));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Les contributions vous remboursent la somme de 20€ euros.",14));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous avez gagné le deuxième prix de beauté, vous touchez 10 euros€.",15));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Avancez jusqu'à la case départ.",16));
-	}
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez votre police d'assurance s'élevant à 50 euros.\n",1));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez la note du médecin: 50 euros.\n",2));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Erreur de la banque en votre faveur. Recevez 200 euros.\n",3));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Allez en prison. Ne passez pas par la case Départ et ne touchez pas 200 euros.\n",4));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Avancez jusqu'au Boulevard de Belleville.\n",5)); // Passe forcément par la case Départ.
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Recevez votre intérêt sur l'emprunt à 7%: 250 euros.\n",6));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez à l'hôtpital 100 euros.\n",7));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"C'est votre anniversaire, chaque joueur doit vous donner 10 euros.\n",8));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous recevez votre revenu annuel: 100 euros.\n",9));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous héritez 100 euros.\n",10));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"La vente de votre stock vous rapporte 50 euros.\n",11));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez une amende de 10 euros pour stationnement interdit.\n",12));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Sortez de prison.\nVous gardez cette carte jusqu'à ce qu'elle vous serve ou que vous la vendiez.\n",13));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Les contributions vous remboursent la somme de 20 euros.\n",14));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous avez gagné le deuxième prix de beauté, vous touchez 10 euros.\n",15));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Avancez jusqu'à la case départ.\n",16));	}
 	
 	private void initDes() {
 		de1 = new De();
