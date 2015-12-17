@@ -5,9 +5,7 @@
 
 package be.ephec.modele;
 
-import java.io.Serializable;
-
-public class De implements Serializable{
+public class De {
 	private int valeur;
 	
 	/**
@@ -27,6 +25,10 @@ public class De implements Serializable{
 	
 	public int getValeur(){
 		return valeur;
-	}	
+	}
+	
+	public void setZero(){
+		valeur=0;
+	}
 }
 

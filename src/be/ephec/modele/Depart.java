@@ -5,9 +5,7 @@
 
 package be.ephec.modele;
 
-import java.io.Serializable;
-
-public class Depart extends Case implements Serializable{
+public class Depart extends Case {
 	
 	/**
 	 * Constructeeur de case départ

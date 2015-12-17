@@ -52,7 +52,7 @@ public class ApplicationClient{
 				guiClient.setLabelNbTourPrison(etatPartie.getNbTourPrisonJ2());
 				guiClient.setLabelNbTourSuite(etatPartie.getNbTourSuiteJ2());
 			}
-			if(((Integer.parseInt(etatPartie.getNbTour()))+1) %2 == num%2) //Si c'est le tour du joueur...
+			if((((Integer.parseInt(etatPartie.getNbTour()))+1) %2 == num%2) && etatPartie.getValeurDe1().equals("0")) //Si c'est le tour du joueur et qu'il n'a pas encore joué...
 				guiClient.setButtonLancerDes(true);	// ...le bouton devient cliquable.
 			else
 				guiClient.setButtonLancerDes(false); // Sinon, ce n'est pas son tour, il ne peut donc pas lancer les dés et attend son tour, grâce à l'actualisation de la GUI.				

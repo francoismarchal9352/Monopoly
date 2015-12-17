@@ -5,9 +5,7 @@
 
 package be.ephec.modele;
 
-import java.io.Serializable;
-
-public class CaseCaisseCom extends Case implements Serializable{
+public class CaseCaisseCom extends Case {
 
 	/**
 	 * Constructeur de case caisse de communautée

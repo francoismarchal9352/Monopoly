@@ -5,11 +5,10 @@
 
 package be.ephec.modele;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Plateau implements Serializable{
+public class Plateau {
 	private Partie partie;
 	private Case[] tabCases = new Case[40];
 	private ArrayList<Carte> tabCartesChance = new ArrayList<>(16);

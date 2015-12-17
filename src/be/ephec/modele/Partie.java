@@ -5,12 +5,11 @@
 
 package be.ephec.modele;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import be.ephec.application.ApplicationServeur;
 
-public class Partie implements Serializable{
+public class Partie {
 	private int nbTour = 0;
 	private transient ApplicationServeur appliServeur;
 	private ArrayList<Joueur> tabJoueurs = new ArrayList<Joueur>(2);
@@ -74,6 +73,7 @@ public class Partie implements Serializable{
 		else{
 			if((getJoueurCourant().getNbTourSuite()==2) && (flagDesDouble))
 					getJoueurCourant().entreEnPrison();
+			getJoueurCourant().setNbTourSuite(0);
 			avancer(plateau.getSommeDes());
 		}
 			/*le programme attend que le joueur clique sur le bouton "Fin de tour".
@@ -88,6 +88,8 @@ public class Partie implements Serializable{
 			nbTour++; //nbTour++ que si le joueur n'a pas fait un double OU si le joueur est en prison en fin de tour.
 		else //Sinon, ça veut dire que le joueur a fait un double et n'a pas fini son tour en prison.
 			getJoueurCourant().setNbTourSuite(getJoueurCourant().getNbTourSuite()+1);
+		plateau.getDe1().setZero();
+		plateau.getDe2().setZero();
 		flagDesDouble=false;
 	}
 	

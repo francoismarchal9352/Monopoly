@@ -5,9 +5,7 @@
 
 package be.ephec.modele;
 
-import java.io.Serializable;
-
-public class Propriete extends Case implements Serializable{
+public class Propriete extends Case {
 	private String proprietaire;
 	private String couleur;
 	private int prixTerrain;

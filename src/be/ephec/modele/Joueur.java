@@ -5,11 +5,9 @@
 
 package be.ephec.modele;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-
-public class Joueur implements Serializable{
+public class Joueur {
 	private Partie partie;
 	private String nom;
 	private int num;

@@ -7,7 +7,7 @@ package be.ephec.modele;
 
 import java.io.Serializable;
 
-public class EtatPartie implements Serializable {
+public class EtatPartie implements Serializable{
 	private String valeurDe1;
 	private String valeurDe2;
 	private String soldeJ1;

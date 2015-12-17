@@ -5,9 +5,7 @@
 
 package be.ephec.modele;
 
-import java.io.Serializable;
-
-public class ParcGratuit extends Case implements Serializable{
+public class ParcGratuit extends Case {
 
 	/**
 	 * constructeur de case parc gratuit

@@ -5,10 +5,7 @@
 
 package be.ephec.modele;
 
-import java.io.Serializable;
-
-
-public class CarteCaisseCom extends Carte implements Serializable{
+public class CarteCaisseCom extends Carte {
 	
 	/**
 	 * Constructeur de carte caisse de communautée

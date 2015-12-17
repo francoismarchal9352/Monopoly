@@ -400,6 +400,9 @@ public class GuiClient extends JFrame implements ActionListener{
 		case "Acheter":
 			applicationClient.envoiCommande(e.getActionCommand());
 			break;
+		case "Vendre":
+			//Reste à faire
+			break;
 		case "Demander Loyer":
 			//Reste à faire
 			break;

@@ -5,9 +5,7 @@
 
 package be.ephec.modele;
 
-import java.io.Serializable;
-
-public class CaseChance extends Case implements Serializable{
+public class CaseChance extends Case {
 	
 	/**
 	 * Constructeeur de case chance

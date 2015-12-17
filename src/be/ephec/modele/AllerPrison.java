@@ -5,9 +5,7 @@
 
 package be.ephec.modele;
 
-import java.io.Serializable;
-
-public class AllerPrison extends Case implements Serializable{
+public class AllerPrison extends Case {
 	
 	/**
 	 * Constructeur de case Aller en prison

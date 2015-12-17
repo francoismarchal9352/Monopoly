@@ -5,10 +5,7 @@
 
 package be.ephec.modele;
 
-import java.io.Serializable;
-
-
-public class CarteChance extends Carte implements Serializable{
+public class CarteChance extends Carte {
 	
 	/**
 	 * Constructeur de carte chance
