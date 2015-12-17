@@ -1,7 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/be/ephec/GUI/GuiClient.java=ISO-8859-1
 encoding//src/be/ephec/GUI/JPanelAccueilServeur.java=ISO-8859-1
-encoding//src/be/ephec/application/ApplicationClient.java=ISO-8859-1
 encoding//src/be/ephec/application/ApplicationServeur.java=UTF-8
 encoding//src/be/ephec/modele/AllerPrison.java=UTF-8
 encoding//src/be/ephec/modele/Carte.java=UTF-8

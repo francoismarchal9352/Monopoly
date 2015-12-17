@@ -373,6 +373,7 @@ public class GuiClient extends JFrame implements ActionListener{
 				buttonLancerDes.setEnabled(false);
 				if(applicationClient.getNum()==1)
 					buttonLancerDes.setEnabled(true);
+				buttonFinirTour.setEnabled(false);
 				buttonAcheter.setEnabled(false);
 				buttonVendre.setEnabled(false);
 				buttonLoyer.setEnabled(false);
@@ -383,7 +384,7 @@ public class GuiClient extends JFrame implements ActionListener{
 			} catch (IOException e1) {
 				afficheInfo("Le serveur ne répond pas. Essayez plus tard.");
 			}
-			break;	
+			break;
 		case "Lancer les dés":
 			applicationClient.envoiCommande(e.getActionCommand());
 			buttonLancerDes.setEnabled(false);

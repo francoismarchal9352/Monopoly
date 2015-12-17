@@ -53,7 +53,6 @@ public class Joueur implements Serializable{
 			nbCarteSortezPrison--;
 			nbTourPrison=0;
 		}
-		partie.finTour();
 	}
 	
 	public int getSolde(){

@@ -88,8 +88,6 @@ public class Partie implements Serializable{
 			nbTour++; //nbTour++ que si le joueur n'a pas fait un double OU si le joueur est en prison en fin de tour.
 		else //Sinon, ça veut dire que le joueur a fait un double et n'a pas fini son tour en prison.
 			getJoueurCourant().setNbTourSuite(getJoueurCourant().getNbTourSuite()+1);
-		plateau.getDe1().setZero();
-		plateau.getDe2().setZero();
 		flagDesDouble=false;
 	}
 	

@@ -1,5 +1,5 @@
 /**
- * @author Marchal François & Massart Florian
+ * @author Marchal FranÃ§ois & Massart Florian
  * @version 1.0
  */
 
@@ -27,38 +27,37 @@ public class ApplicationClient{
 		ApplicationClient appliClient = new ApplicationClient();
 	}
 	
-	// Les méthodes utiles
-	public void traiteConnexionRéussieAuServeur(){
+	// Les mÃ©thodes utiles
+	public void traiteConnexionRÃ©ussieAuServeur(){
 		guiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+
-				"Le joueur est connecté au serveur\n");
+				"Le joueur est connectÃ© au serveur\n");
 	}
 	
-	public void traiteObjetRecu(Object object){ // Reçoit soit la Partie soit un String à afficher dans la console.
+	public void traiteObjetRecu(Object object){ // ReÃ§oit soit la Partie soit un String Ã  afficher dans la console.
 		if(object instanceof EtatPartie){ // Si l'objet est un EtatPartie...
 			etatPartie = (EtatPartie) object; // Stockage de l'objet pour faire des appels plus simples.
-			guiClient.setLabelValD1(etatPartie.getValeurDe1()); // Actualisation des infos relatives à la partie dans la GUI Client...
+			guiClient.setLabelValD1(etatPartie.getValeurDe1()); // Actualisation des infos relatives Ã  la partie dans la GUI Client...
 			guiClient.setLabelValD2(etatPartie.getValeurDe2());
 			guiClient.setLabelValSoldeJ1(etatPartie.getSoldeJ1());
 			guiClient.setLabelValSoldeJ2(etatPartie.getSoldeJ2());
 			guiClient.setLabelValPositionJ1(etatPartie.getPositionJ1());
 			guiClient.setLabelValPositionJ2(etatPartie.getPositionJ2());
-			if(num==1){
-				guiClient.setLabelNbCartePrison(etatPartie.getNbCarteSortezPrisonJ1());
+			if(num==1){ //Si cette appli Client est la nÂ°1...
+				guiClient.setLabelNbCartePrison(etatPartie.getNbCarteSortezPrisonJ1()); //... affiche les infos relatives au joueur 1.
 				guiClient.setLabelNbTourPrison(etatPartie.getNbTourPrisonJ1());
 				guiClient.setLabelNbTourSuite(etatPartie.getNbTourSuiteJ1());
 			}
-			else{
-				guiClient.setLabelNbCartePrison(etatPartie.getNbCarteSortezPrisonJ2());
+			else{ // Sinon, c'est la nÂ°2...
+				guiClient.setLabelNbCartePrison(etatPartie.getNbCarteSortezPrisonJ2()); // affiche les infos relatives au joueur 2.
 				guiClient.setLabelNbTourPrison(etatPartie.getNbTourPrisonJ2());
 				guiClient.setLabelNbTourSuite(etatPartie.getNbTourSuiteJ2());
 			}
-
-			if((Integer.parseInt(etatPartie.getNbTour()+1) %2 )==num%2) //Si c'est le tour du joueur...
+			if(((Integer.parseInt(etatPartie.getNbTour()))+1) %2 == num%2) //Si c'est le tour du joueur...
 				guiClient.setButtonLancerDes(true);	// ...le bouton devient cliquable.
 			else
-				guiClient.setButtonLancerDes(false); // Sinon, ce n'est pas son tour, il ne peut donc pas lancer les dés et attend son tour, grâce à l'actualisation de la GUI.
+				guiClient.setButtonLancerDes(false); // Sinon, ce n'est pas son tour, il ne peut donc pas lancer les dÃ©s et attend son tour, grÃ¢ce Ã  l'actualisation de la GUI.				
 		}
-		else if(object instanceof String){ //Sinon, l'objet est forcément un String à afficher dans la console.
+		else if(object instanceof String){ //Sinon, l'objet est forcÃ©ment un String Ã  afficher dans la console.
 			guiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+(String) object);
 		}
 	}

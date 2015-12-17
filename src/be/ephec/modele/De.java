@@ -27,11 +27,6 @@ public class De implements Serializable{
 	
 	public int getValeur(){
 		return valeur;
-	}
-	
-	public void setZero(){
-		valeur=0;
-	}
-	
+	}	
 }
 
