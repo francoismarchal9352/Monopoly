@@ -1,5 +1,5 @@
 /**
- * @author Marchal François & Massart Florian
+ * @author Marchal FranÃ§ois et Massart Florian
  * @version 1.0
  */
 
@@ -99,7 +99,7 @@ public class GuiClient extends JFrame implements ActionListener{
 		gbc_textAreaConsole.gridy = 1;
 		getContentPane().add(scroll, gbc_textAreaConsole);
 		
-		buttonLancerDes = new JButton("Lancer les dés");
+		buttonLancerDes = new JButton("Lancer les dÃ©s");
 		buttonLancerDes.setEnabled(true);
 		buttonLancerDes.addActionListener(this);
 		
@@ -182,7 +182,7 @@ public class GuiClient extends JFrame implements ActionListener{
 		gbc_labelValD1.gridy = 9;
 		getContentPane().add(labelValD1, gbc_labelValD1);
 		
-		JLabel jLabelPortTCP = new JLabel("Numéro de port TCP :");
+		JLabel jLabelPortTCP = new JLabel("NumÃ©ro de port TCP :");
 		GridBagConstraints gbc_jLabelPortTCP = new GridBagConstraints();
 		gbc_jLabelPortTCP.anchor = GridBagConstraints.EAST;
 		gbc_jLabelPortTCP.insets = new Insets(0, 0, 5, 5);
@@ -349,7 +349,7 @@ public class GuiClient extends JFrame implements ActionListener{
 		gbc_buttonFinirTour.gridy = 21;
 		getContentPane().add(buttonFinirTour, gbc_buttonFinirTour);
 		
-		setVisible(true); // Mettre ça en fin de déclaration pour pas avoir de bug visuel (fenêtre vide)
+		setVisible(true); // Mettre Ã§a en fin de dÃ©claration pour pas avoir de bug visuel (fenÃªtre vide)
 
 	}
 	
@@ -368,7 +368,7 @@ public class GuiClient extends JFrame implements ActionListener{
 				applicationClient.setSocket(client);
 				applicationClient.getGuiClient().ajouteDansLaConsole(
 						Console.getInviteDeCommande()+
-						"Le joueur est connecté au serveur\n");
+						"Le joueur est connectÃ© au serveur\n");
 				jButtonConnecter.setEnabled(false);
 				buttonLancerDes.setEnabled(false);
 				if(applicationClient.getNum()==1)
@@ -381,10 +381,10 @@ public class GuiClient extends JFrame implements ActionListener{
 			} catch (UnknownHostException e1) {
 				e1.printStackTrace();
 			} catch (IOException e1) {
-				afficheInfo("Le serveur ne répond pas. Essayez plus tard.");
+				afficheInfo("Le serveur ne rÃ©pond pas. Essayez plus tard.");
 			}
 			break;	
-		case "Lancer les dés":
+		case "Lancer les dÃ©s":
 			applicationClient.envoiCommande(e.getActionCommand());
 			buttonLancerDes.setEnabled(false);
 			buttonFinirTour.setEnabled(true);
@@ -400,7 +400,7 @@ public class GuiClient extends JFrame implements ActionListener{
 			applicationClient.envoiCommande(e.getActionCommand());
 			break;
 		case "Demander Loyer":
-			//Reste à faire
+			//Reste Ã  faire
 			break;
 		}
 	}
