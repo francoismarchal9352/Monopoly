@@ -1,5 +1,5 @@
 /**
- * @author Marchal François et Massart Florian
+ * @author Marchal François & Massart Florian
  * @version 1.0
  */
 
@@ -19,8 +19,7 @@ public class ServeurSocket extends ServerSocket implements Runnable{
 	/**
 	 * Constructeur qui permet de démarrer un serveur TCP sur un numéro de port donné
 	 * @param numPort le numéro de port sur lequel le serveur va écouter
-	 * @param ma : l'application serveur
-	 * @throws IOException : masque les erreurs
+	 * @throws IOException
 	 */
 	public ServeurSocket(int numPort,ApplicationServeur ma) throws IOException {
 		super(numPort);
@@ -31,8 +30,7 @@ public class ServeurSocket extends ServerSocket implements Runnable{
 	/**
 	 * Constructeur qui permet de démarrer un serveur TCP sur le numéro de port se trouvant 
 	 * dans la classe Param
-	 * @param ma : l'application serveur
-	 * @throws IOException : masque les erreurs
+	 * @throws IOException
 	 */
 	public ServeurSocket(ApplicationServeur ma) throws IOException {
 		super(Param.NUM_PORT_DE_BASE);
@@ -44,7 +42,6 @@ public class ServeurSocket extends ServerSocket implements Runnable{
 	 * Méthode qui permet de créer un serveur TCP sur un numéro de port libre à partir du 
 	 * numéro de port indiqué dans la classe Param
 	 * Tous les numéros de port sont testés à partir de Param.NUMPORTDEBASE jusqu'à 65535
-	 * @param ma : l'application serveur
 	 * @return le serveur TCP
 	 */
 	public static ServeurSocket getServeurPortLibre(ApplicationServeur ma){
@@ -65,7 +62,6 @@ public class ServeurSocket extends ServerSocket implements Runnable{
 	 * Tous les numéros de port sont testés à partir de Param.NUMPORTDEBASE jusqu'à 65535
 	 * @param numPortDepart un entier compris entre 1 et 65536. Ce sera le numéro de port 
 	 * à partir duquel on cherche un port libre pour notre application
-	 * @param ma : l'application serveur
 	 * @return le serveur TCP
 	 * 
 	 */

@@ -1,5 +1,5 @@
 /**
- * @author Marchal FranÃ§ois et Massart Florian
+ * @author Marchal François & Massart Florian
  * @version 1.0
  */
 

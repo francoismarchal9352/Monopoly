@@ -1,5 +1,5 @@
 /**
- * @author Marchal FranÃ§ois et Massart Florian
+ * @author Marchal François & Massart Florian
  * @version 1.0
  */
 
@@ -56,7 +56,7 @@ public class JPanelPrincipalServeur extends JPanel implements ActionListener{
 		add(lblConsoleDuServeur, gbc_lblConsoleDuServeur);
 
 		jTextFieldMessage = new JTextField();
-		jTextFieldMessage.setText("Message Ã  envoyer");
+		jTextFieldMessage.setText("Message à  envoyer");
 		GridBagConstraints gbc_jTextFieldMessage = new GridBagConstraints();
 		gbc_jTextFieldMessage.insets = new Insets(0, 0, 5, 0);
 		gbc_jTextFieldMessage.fill = GridBagConstraints.HORIZONTAL;
@@ -80,7 +80,7 @@ public class JPanelPrincipalServeur extends JPanel implements ActionListener{
 		jTextAreaConsoleServeur = new JTextArea();
 		scrollPane.setViewportView(jTextAreaConsoleServeur);
 		jTextAreaConsoleServeur.setText(Console.getInviteDeCommande()+
-				"Le serveur Ã©coute sur le port :"+ma.getServeurSocket().getLocalPort()+"\n");
+				"Le serveur écoute sur le port :"+ma.getServeurSocket().getLocalPort()+"\n");
 		GridBagConstraints gbc_btnEnvoyerAuClient = new GridBagConstraints();
 		gbc_btnEnvoyerAuClient.anchor = GridBagConstraints.NORTH;
 		gbc_btnEnvoyerAuClient.gridx = 1;
