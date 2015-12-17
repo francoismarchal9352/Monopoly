@@ -79,7 +79,6 @@ public class ClientSocket extends Socket implements Runnable{
 			}
 			e.printStackTrace();
 		}
-//		return null;
 	}
 	@Override
 	public void run() {

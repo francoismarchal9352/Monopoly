@@ -9,7 +9,6 @@ import be.ephec.network.ClientSocket;
 import be.ephec.network.Console;
 import be.ephec.GUI.GuiClient;
 import be.ephec.modele.EtatPartie;
-import be.ephec.modele.Partie;
 
 public class ApplicationClient{
 	private GuiClient guiClient;

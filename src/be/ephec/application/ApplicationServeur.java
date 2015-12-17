@@ -38,11 +38,11 @@ public class ApplicationServeur {
 				ccs.getNum()+" : "+object.toString()+"\n");
 		switch((String)object){
 			case "Lancer les dés":
-				serveurSocket.ecrirSurTousLesClients("Joueur "+ccs.getNum()+" lance les dés.\n");
+				serveurSocket.ecrireSurTousLesClients("Joueur "+ccs.getNum()+" lance les dés.\n");
 				partie.debutTour();
 				break;
 			case "Acheter":
-				serveurSocket.ecrirSurTousLesClients("Joueur "+ccs.getNum()+" achète la case sur laquelle il se trouve.\n");
+				serveurSocket.ecrireSurTousLesClients("Joueur "+ccs.getNum()+" achète la case sur laquelle il se trouve.\n");
 				partie.acheter();
 				break;
 			case "Vendre": // à implémenter

@@ -45,7 +45,7 @@ public class Joueur implements Serializable{
 	 * Methode pour envoyer un joueur en prison
 	 */
 	public void entreEnPrison() {	//Désactiver les boutons pour acheter et vendre des propriétés
-		partie.AfficherDansLogClient(partie.getJoueurCourant().getNom()+"entre en PRISOOOOOOOON !\n");
+		partie.AfficherDansLogClient(partie.getJoueurCourant().getNom()+" entre en PRISOOOOOOOON !\n");
 		position=10;
 		this.setNbTourSuite(0);
 		nbTourPrison=1;

@@ -53,12 +53,7 @@ public class Partie implements Serializable{
 	 * Methode pour commencer son tour
 	 */
 	public void debutTour(){
-		//while(plateau.getSommeDes() == 0){
-			/*le programme attend que le joueur lance les dés.
-			 * Pendant ce temps, le joueur peut acheter des maisons/hotels, demander des loyers et vendre des biens.*/
-			// La méthode LancerDes() est liée au bouton dans la GUI.
-		//	}
-		/*Le joueur vient de lancer les dés*/
+		/*Le joueur vient de lancer les dés dans la GUI*/
 		this.plateau.lancerDes();
 /*TEST*/AfficherDansLogClient(((getJoueurCourant().getNom()+": Les dés ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur())+".\n"));
 		if(plateau.getDe1().getValeur()==plateau.getDe2().getValeur())
@@ -66,19 +61,21 @@ public class Partie implements Serializable{
 		if(getJoueurCourant().getNbTourPrison()>0){
 			getJoueurCourant().setNbTourPrison(getJoueurCourant().getNbTourPrison()+1);
 			if(getJoueurCourant().getNbTourPrison()>3){
-				if(plateau.getDe1().getValeur()!=plateau.getDe2().getValeur())
+				if(!flagDesDouble)
 					retraitSolde(50, getJoueurCourant());
+				getJoueurCourant().setNbTourPrison(0);
 				avancer(plateau.getSommeDes());
 			}
-			if(plateau.getDe1().getValeur() == plateau.getDe2().getValeur())
+			if(plateau.getDe1().getValeur() == plateau.getDe2().getValeur()){
+				getJoueurCourant().setNbTourPrison(0);				
 				avancer(plateau.getSommeDes());
+			}
 		}
 		else{
-			if((getJoueurCourant().getNbTourSuite()==2) && (flagDesDouble==true))
+			if((getJoueurCourant().getNbTourSuite()==2) && (flagDesDouble))
 					getJoueurCourant().entreEnPrison();
 			avancer(plateau.getSommeDes());
 		}
-		//while(/*quelque chose*/){
 			/*le programme attend que le joueur clique sur le bouton "Fin de tour".
 			 * Pendant ce temps, le joueur peut acheter des maisons/hotels, demander des loyers et vendre des biens.*/
 	}
@@ -109,7 +106,7 @@ public class Partie implements Serializable{
 	 */
 	public void acheter(){ // Tente d'acheter la case sur laquelle le joueur courant se trouve.
 		Case terrain = plateau.getTabCases()[getJoueurCourant().getPosition()];
-		if((terrain.getType()=="Propriété"  || terrain.getType().compareToIgnoreCase("Gare")==0 || terrain.getType().compareToIgnoreCase("Service")==0) && terrain.getProprietaire() == null){
+		if((terrain.getType().equals("Propriété") || terrain.getType().equals("Gare") || terrain.getType().equals("Service")) && terrain.getProprietaire() == null){
 			if(getJoueurCourant().getSolde() - terrain.getPrixTerrain() >= 0){
 				retraitSolde(terrain.getPrixTerrain(),getJoueurCourant());
 				getJoueurCourant().getTabPossessions().add(terrain);
