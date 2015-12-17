@@ -1,3 +1,8 @@
+/**
+ * @author Marchal FranÃ§ois & Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.network;
 
 import java.io.IOException;
@@ -66,7 +71,7 @@ public class ClientSocket extends Socket implements Runnable{
 		} catch (IOException e) {
 			try {
 				this.close(); 
-				// si on ne sait pas lire c'est que le serveur est fermé
+				// si on ne sait pas lire c'est que le serveur est fermï¿½
 				//TODO Trouver une solution moins radicale
 			} catch (IOException e1) {
 				e1.printStackTrace();
