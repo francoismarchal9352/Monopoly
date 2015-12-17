@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Depart extends Case implements Serializable{
 	
 	/**
-	 * Constructeeur de case départ
+	 * Constructeeur de case dÃ©part
 	 * @param partie : la partie en cours
 	 */
 	public Depart(Partie partie){
@@ -13,10 +13,10 @@ public class Depart extends Case implements Serializable{
 	}
 	
 	/**
-	 * Methode pour l'action de la case départ
+	 * Methode pour l'action de la case dÃ©part
 	 */
 	public void action(){
-		//Rien à mettre dans cette méthode.
+		//Rien Ã  mettre dans cette mÃ©thode.
 	}
 
 	@Override

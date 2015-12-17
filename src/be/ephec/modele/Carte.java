@@ -10,8 +10,8 @@ public abstract class Carte implements Serializable{
 	/**
 	 * Constructeur de carte
 	 * @param partie : la partie en cours
-	 * @param texte : le texte à afficher sur la carte
-	 * @param methodeNum : le numéro de la méthode à executer
+	 * @param texte : le texte Ã  afficher sur la carte
+	 * @param methodeNum : le numÃ©ro de la mÃ©thode Ã  executer
 	 */
 	public Carte(Partie partie, String texte, int methodeNum) {
 		this.partie = partie;
@@ -20,8 +20,8 @@ public abstract class Carte implements Serializable{
 	}
 
 	/**
-	 * Methode abstraite pour l'action des cartes (à implementer dans les classes qui héritent)
-	 * @param methodeNum : le numéro de la méthode à executer
+	 * Methode abstraite pour l'action des cartes (Ã  implementer dans les classes qui hÃ©ritent)
+	 * @param methodeNum : le numÃ©ro de la mÃ©thode Ã  executer
 	 */
 	public abstract void action(int methodeNum);
 	

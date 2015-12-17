@@ -25,13 +25,13 @@ public class Partie implements Serializable{
 	}
 	
 	/*
-	public static void main(String[] args) { //Méthode de test.
+	public static void main(String[] args) { //MÃ©thode de test.
 		Partie truc = new Partie();
 		while(truc.getTabJoueurs().size()>1){
 			truc.debutTour();
 			System.out.println("");
 			truc.finTour();
-			System.out.println("Tour n°"+truc.nbTour);
+			System.out.println("Tour nÂ° "+truc.nbTour);
 			try {
 				TimeUnit.MILLISECONDS.sleep(0);
 			} catch (InterruptedException e) {
@@ -39,7 +39,7 @@ public class Partie implements Serializable{
 				e.printStackTrace();
 			}
 		}
-		System.out.println("La partie a duré "+truc.nbTour+" tours.");
+		System.out.println("La partie a durÃ© "+truc.nbTour+" tours.");
 	}
 	*/
 	
@@ -48,13 +48,13 @@ public class Partie implements Serializable{
 	 */
 	public void debutTour(){
 		//while(plateau.getSommeDes() == 0){
-			/*le programme attend que le joueur lance les dés.
+			/*le programme attend que le joueur lance les dÃ©s.
 			 * Pendant ce temps, le joueur peut acheter des maisons/hotels, demander des loyers et vendre des biens.*/
-			// La méthode LancerDes() est liée au bouton dans la GUI.
+			// La mÃ©thode LancerDes() est liÃ©e au bouton dans la GUI.
 		//	}
-		/*Le joueur vient de lancer les dés*/
+		/*Le joueur vient de lancer les dÃ©s*/
 		this.plateau.lancerDes();
-/*TEST*/AfficherDansLogClient(((getJoueurCourant().getNom()+": Les dés ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur())+".\n"));
+/*TEST*/AfficherDansLogClient(((getJoueurCourant().getNom()+": Les dÃ©s ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur())+".\n"));
 		if(plateau.getDe1().getValeur()==plateau.getDe2().getValeur())
 			flagDesDouble=true;
 		if(getJoueurCourant().getNbTourPrison()>0){
@@ -80,10 +80,10 @@ public class Partie implements Serializable{
 	/**
 	 * Methode pour finir son tour
 	 */
-	public void finTour(){	//Note: Bouton "fin de tour" uniquement cliquable après avoir lancé les dés.
+	public void finTour(){	//Note: Bouton "fin de tour" uniquement cliquable aprÃ©s avoir lancÃ© les dÃ©s.
 		if( (!flagDesDouble) || (getJoueurCourant().getNbTourPrison()>0))
 			nbTour++; //nbTour++ que si le joueur n'a pas fait un double OU si le joueur est en prison en fin de tour.
-		else //Sinon, ça veut dire que le joueur a fait un double et n'a pas fini son tour en prison.
+		else //Sinon, Ã§a veut dire que le joueur a fait un double et n'a pas fini son tour en prison.
 			getJoueurCourant().setNbTourSuite(getJoueurCourant().getNbTourSuite()+1);
 		plateau.getDe1().setZero();
 		plateau.getDe2().setZero();
@@ -99,26 +99,29 @@ public class Partie implements Serializable{
 	}
 
 	/**
-	 * Methode permettant au joueur d'acheter des biens (si le bien peut étre acheté)
+	 * Methode permettant au joueur d'acheter des biens (si le bien peut Ã©tre achetÃ©)
 	 */
 	public void acheter(){ // Tente d'acheter la case sur laquelle le joueur courant se trouve.
 		Case terrain = plateau.getTabCases()[getJoueurCourant().getPosition()];
-		if((terrain.getType()=="Propriété"  || terrain.getType().compareToIgnoreCase("Gare")==0 || terrain.getType().compareToIgnoreCase("Service")==0) && terrain.getProprietaire() == null){
+		if((terrain.getType()=="PropriÃ©tÃ©"  || terrain.getType().compareToIgnoreCase("Gare")==0 || terrain.getType().compareToIgnoreCase("Service")==0) && terrain.getProprietaire() == null){
 			if(getJoueurCourant().getSolde() - terrain.getPrixTerrain() >= 0){
 				retraitSolde(terrain.getPrixTerrain(),getJoueurCourant());
 				getJoueurCourant().getTabPossessions().add(terrain);
 				terrain.setProprietaire(getJoueurCourant().getNom());
 			}
 		}
-		else { // si c'est pas le bon type ou déjà acheté => envoie msg au joueur 
+		else { // si c'est pas le bon type ou dÃ©jÃ  achetÃ© => envoie msg au joueur 
 			AfficherDansLogClient("achat impossible !\n");
 		}
 	}
 	
 	/**
-	 * Methode permettant au joueur de vendre des biens achetés auparavant
+	 * Methode permettant au joueur de vendre des biens achetÃ©s auparavant
+	 * @param x  : la case Ã  acheter
+	 * @param valeur : la valeur de la case
+	 * @param acheteur : le joueur qui achÃªte la case
 	 */
-	public void vendre(Case x, int valeur, Joueur acheteur){ // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! à check pour la décision.
+	public void vendre(Case x, int valeur, Joueur acheteur){ // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Ã  check pour la dÃ©cision.
 			// verif solde autre joueur + decision 
 			if(/*decision &&*/ acheteur.getSolde() >= valeur ){
 				ajoutSolde(valeur,getJoueurCourant());
@@ -130,7 +133,7 @@ public class Partie implements Serializable{
 	 * Methode permettant au joueur d'avancer de X cases
 	 * @param x : un nombre entier positif
 	 */
-	public void avancer(int x){ //Sert à avancer de X cases.
+	public void avancer(int x){ //Sert Ã  avancer de X cases.
 		int anciennePosition = getJoueurCourant().getPosition();
 		getJoueurCourant().setPosition((getJoueurCourant().getPosition() + x)%40);
 		checkPasseCaseDepart(anciennePosition);
@@ -142,7 +145,7 @@ public class Partie implements Serializable{
 	 * Methode permettant au joueur d'avancer jusqu'a la case X
 	 * @param x : un nombre entier positif (indice de la case)
 	 */
-	public void allerA(int x){ //Sert à placer le joueurCourant à l'indice X du plateau.
+	public void allerA(int x){ //Sert Ã  placer le joueurCourant Ã  l'indice X du plateau.
 		int anciennePosition = getJoueurCourant().getPosition();
 		getJoueurCourant().setPosition(x);
 		checkPasseCaseDepart(anciennePosition);
@@ -151,8 +154,8 @@ public class Partie implements Serializable{
 	}
 	
 	/**
-	 * Methode permettant de vérifier si le joueur passe par la case départ
-	 * @param anciennePosition : le numéro de la case où le joueur se trouvait avant
+	 * Methode permettant de vÃ©rifier si le joueur passe par la case dÃ©part
+	 * @param anciennePosition : le numÃ©ro de la case oÃ¹ le joueur se trouvait avant
 	 */
 	public void checkPasseCaseDepart(int anciennePosition){
 		if((getJoueurCourant().getPosition() < anciennePosition) && getJoueurCourant().getNbTourPrison() == 0)
@@ -165,7 +168,7 @@ public class Partie implements Serializable{
 	 * @param joueur : le joueur duquel on doit augmenter le solde
 	 */
 	public void ajoutSolde(int montant, Joueur joueur){
-/*TEST*/AfficherDansLogClient(getJoueurCourant().getNom()+" reçoit "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()+montant)+".\n");
+/*TEST*/AfficherDansLogClient(getJoueurCourant().getNom()+" reÃ§oit "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()+montant)+".\n");
 		joueur.setSolde(joueur.getSolde()+montant);
 	}
 	
@@ -183,36 +186,36 @@ public class Partie implements Serializable{
 	
 	/**
 	 * Methode permettant de faire perdre un joueur
-	 * @param joueur : le joueur à faire perdre
+	 * @param joueur : le joueur a faire perdre
 	 */
 	public void Perdu(Joueur joueur) {
 		// envoyer un msg au joueur 
 		//supprimer le joueur perdant
 /*TEST*/AfficherDansLogClient("Le joueur "+getJoueurCourant().getNom()+" a perdu.\n");
-		//On set à null le propriétaire de ses possession.
+		//On set Ã  null le propriÃ©taire de ses possession.
 		for(Case possession : joueur.getTabPossessions()){
-/*TEST*/	AfficherDansLogClient(possession.getNom()+" n'appartient plus à "+joueur.getNom()+".\n");
+/*TEST*/	AfficherDansLogClient(possession.getNom()+" n'appartient plus Ã  "+joueur.getNom()+".\n");
 			possession.setProprietaire(null);
 		}
 		tabJoueurs.remove(joueur);
-		AfficherDansLogClient("La partie a duré "+nbTour+" tours.\n");
+		AfficherDansLogClient("La partie a durÃ© "+nbTour+" tours.\n");
 		if(tabJoueurs.size()==1)
 			Gagne(tabJoueurs.get(0));
 	}
 	
 	/**
 	 * Methode permettant de faire gagner un joueur
-	 * @param joueur : le joueur à faire gagner
+	 * @param joueur : le joueur Ã  faire gagner
 	 */
 	public void Gagne(Joueur joueur) {
 		//envoyer un msg au joueur 
 		// terminer la partie
-		AfficherDansLogClient("Le joueur "+tabJoueurs.get(0).getNom()+" a gagné !");
+		AfficherDansLogClient("Le joueur "+tabJoueurs.get(0).getNom()+" a gagnÃ© !");
 	}
 	
 	/**
 	 * Methode permettant des informations dans la console des joueurs
-	 * @param s : Le message à afficher
+	 * @param s : Le message Ã  afficher
 	 */
 	public void AfficherDansLogClient(String s){
 		appliServeur.getServeurSocket().ecrirSurTousLesClients(s);

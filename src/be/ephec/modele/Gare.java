@@ -19,7 +19,7 @@ public class Gare extends Case implements Serializable{
 	}
 	
 	public void action(){
-		//Rien à mettre dans cette méthode.
+		//Rien Ã  mettre dans cette mÃ©thode.
 	}
 	
 	@Override

@@ -2,6 +2,7 @@ package be.ephec.modele;
 
 import java.io.Serializable;
 
+
 public class Taxe extends Case implements Serializable{
 	private int prixTaxe;
 	

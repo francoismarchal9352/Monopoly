@@ -17,7 +17,7 @@ public class CaseChance extends Case implements Serializable{
 	 */
 	public void action(){
 		partie.setNbCarteChancePioche(partie.getNbCarteChancePioche()+1);
-/*TEST*/partie.AfficherDansLogClient(partie.getJoueurCourant().getNom()+" pioche carte CHANCE n°"+partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()%16).numMethode+".\n");
+/*TEST*/partie.AfficherDansLogClient(partie.getJoueurCourant().getNom()+" pioche carte CHANCE nÂ° "+partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()%16).numMethode+".\n");
 		partie.AfficherDansLogClient(partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()%16).texte+".");
 		partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()%16).action(partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()%16).getNumMethode());
 	}

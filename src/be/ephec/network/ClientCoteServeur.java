@@ -15,7 +15,7 @@ public class ClientCoteServeur implements Runnable{
 	private ApplicationServeur appliServeur;
 	
 	public String toString(){
-		return "Joueur numéro "+num;
+		return "Joueur numÃ©ro "+num;
 	}
 	
 	public int getNum() {
@@ -28,7 +28,7 @@ public class ClientCoteServeur implements Runnable{
 		this.num = num;
 		ois = new ObjectInputStream(socket.getInputStream());
 		oos = new ObjectOutputStream(socket.getOutputStream());
-		oos.writeObject(num); // on envoie son numéro au client
+		oos.writeObject(num); // on envoie son numÃ©ro au client
 		new Thread(this).start();
 	}
 	

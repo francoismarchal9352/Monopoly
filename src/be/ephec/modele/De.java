@@ -12,8 +12,8 @@ public class De implements Serializable{
 	}
 	
 	/**
-	 * methode pour lancer les dés
-	 * @return valeur : la valeur du dé
+	 * methode pour lancer les dÃ©s
+	 * @return valeur : la valeur du dÃ©
 	 */
 	public int lancerDe(){
 		valeur = (int)(Math.random()*6) + 1;

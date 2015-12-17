@@ -6,18 +6,18 @@ import java.io.Serializable;
 public class CarteCaisseCom extends Carte implements Serializable{
 	
 	/**
-	 * Constructeur de carte caisse de communautée
+	 * Constructeur de carte caisse de communautÃ©e
 	 * @param partie : la partie en cours
-	 * @param texte : le texte à afficher sur la carte
-	 * @param methodeNum : le numéro de la méthode à executer
+	 * @param texte : le texte Ã  afficher sur la carte
+	 * @param methodeNum : le numÃ©ro de la mÃ©thode Ã  executer
 	 */
 	public CarteCaisseCom(Partie partie, String texte, int methodeNum){
 		super(partie, texte, methodeNum);
 	}
 	
 	/**
-	 * Methode pour l'action des cartes caisse de communautée
-	 * @param methodeNum : le numéro de la méthode à executer
+	 * Methode pour l'action des cartes caisse de communautÃ©e
+	 * @param methodeNum : le numÃ©ro de la mÃ©thode Ã  executer
 	 */
 	public void action(int methodeNum){
 		switch (methodeNum) { //peut mieux faire en stackant les fonctions similaires mais pas urgent.
@@ -41,9 +41,9 @@ public class CarteCaisseCom extends Carte implements Serializable{
 	}
 	
 	/**
-	 * Methode permettant de gérer la carte anniversaire
+	 * Methode permettant de gÃ©rer la carte anniversaire
 	 */
-	private void anniversaire(){ //Méthode bug si un joueur à 0€ euro.
+	private void anniversaire(){ //MÃ©thode bug si un joueur Ã  0 euro.
 		int somme = 0;
 		for(Joueur J : partie.getTabJoueurs()){
 			if(!(J.equals(partie.getJoueurCourant()))){

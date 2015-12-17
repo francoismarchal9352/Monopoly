@@ -5,19 +5,19 @@ import java.io.Serializable;
 public class CaseCaisseCom extends Case implements Serializable{
 
 	/**
-	 * Constructeur de case caisse de communautée
+	 * Constructeur de case caisse de communautÃ©e
 	 * @param partie : la partie en cours
 	 */
 	public CaseCaisseCom(Partie partie){
-		super(partie,"CaisseCom", "Case Caisse de Communeauté");
+		super(partie,"CaisseCom", "Case Caisse de CommuneautÃ©");
 	}
 	
 	/**
-	 * Methode pour l'action des cases caisse de communautée
+	 * Methode pour l'action des cases caisse de communautÃ©e
 	 */
 	public void action(){
 		partie.setNbCarteCaisseComPioche(partie.getNbCarteCaisseComPioche()+1);
-/*TEST*/partie.AfficherDansLogClient(partie.getJoueurCourant().getNom()+" pioche carte CAISSE COM n°"+partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).numMethode+".\n");
+/*TEST*/partie.AfficherDansLogClient(partie.getJoueurCourant().getNom()+" pioche carte CAISSE COM nÂ° "+partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).numMethode+".\n");
 		partie.AfficherDansLogClient(partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).texte+".");
 		partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).action(partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).getNumMethode());
 	}

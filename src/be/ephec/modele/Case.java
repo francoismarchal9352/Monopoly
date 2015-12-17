@@ -31,7 +31,7 @@ public abstract class Case implements Serializable{
 		return nom;
 	}
 	
-	//On pourrait faire mieux en créant une classe "achetable" qui serait mère de Propriété, Gare et Service mais on n'a pas le temps.
+	//On pourrait faire mieux en crÃ©ant une classe "achetable" qui serait mÃ©re de PropriÃ©tÃ©, Gare et Service mais on n'a pas le temps.
 	public abstract String getProprietaire();
 	public abstract void setProprietaire(String nom);
 	public abstract int getPrixTerrain();
@@ -39,7 +39,7 @@ public abstract class Case implements Serializable{
 	public abstract int getNbHotel();
 	
 	/**
-	 * Methode abstraite pour l'action quand on arrive sur les cases (à implementer dans les classes qui héritent)
+	 * Methode abstraite pour l'action quand on arrive sur les cases (Ã  implementer dans les classes qui hÃ©ritent)
 	 */
 	public abstract void action();
 }

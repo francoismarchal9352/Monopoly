@@ -16,7 +16,7 @@ public class Prison extends Case implements Serializable{
 	 * Methode pour l'action de la case prison
 	 */
 	public void action(){
-		//Rien à mettre dans cette méthode.
+		//Rien Ã  mettre dans cette mÃ©thode.
 	}
 
 	@Override

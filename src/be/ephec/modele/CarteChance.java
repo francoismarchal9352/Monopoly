@@ -8,8 +8,8 @@ public class CarteChance extends Carte implements Serializable{
 	/**
 	 * Constructeur de carte chance
 	 * @param partie : la partie en cours
-	 * @param texte : le texte à afficher sur la carte
-	 * @param methodeNum : le numéro de la méthode à executer
+	 * @param texte : le texte Ã  afficher sur la carte
+	 * @param methodeNum : le numÃ©ro de la mÃ©thode Ã  executer
 	 */
 	public CarteChance(Partie partie, String texte, int methodeNum){
 		super(partie, texte, methodeNum);
@@ -17,7 +17,7 @@ public class CarteChance extends Carte implements Serializable{
 	
 	/**
 	 * Methode pour l'action des cartes chance
-	 * @param methodeNum : le numéro de la méthode à executer
+	 * @param methodeNum : le numÃ©ro de la mÃ©thode Ã  executer
 	 */
 	public void action(int methodeNum){
 		switch (methodeNum) { //peut mieux faire en stackant les fonctions similaires mais pas urgent.
@@ -41,9 +41,9 @@ public class CarteChance extends Carte implements Serializable{
 	}
 	
 	/**
-	 * méthode permettant de gérer la carte réparation
-	 * @param prixParMaison : cout de la réparation des maisons
-	 * @param prixParHotel : cout de la réparation des hôtels
+	 * mÃ©thode permettant de gÃ©rer la carte rÃ©paration
+	 * @param prixParMaison : cout de la rÃ©paration des maisons
+	 * @param prixParHotel : cout de la rÃ©paration des hÃ´tels
 	 */
 	private void reparations(int prixParMaison, int prixParHotel) {
 		int somme = 0;
