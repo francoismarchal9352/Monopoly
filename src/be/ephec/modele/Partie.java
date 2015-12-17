@@ -1,3 +1,8 @@
+/**
+ * @author Marchal Fran√ßois & Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
 import java.io.Serializable;
@@ -16,19 +21,23 @@ public class Partie implements Serializable{
 	private boolean flagDesDouble = false;
 	private EtatPartie etatPartie;
 	
+	/**
+	 * Constructeur de partie
+	 * @param appliServer : l'application serveur
+	 */
 	public Partie(ApplicationServeur appliServer){
 		this.appliServeur = appliServer;
 		initJoueur();
 	}
 
 	/*
-	public static void main(String[] args) { //MÈthode de test.
+	public static void main(String[] args) { //M√©thode de test.
 		Partie truc = new Partie();
 		while(truc.getTabJoueurs().size()>1){
 			truc.debutTour();
 			System.out.println("");
 			truc.finTour();
-			System.out.println("Tour n∞"+truc.nbTour);
+			System.out.println("Tour n¬∞ "+truc.nbTour);
 			try {
 				TimeUnit.MILLISECONDS.sleep(0);
 			} catch (InterruptedException e) {
@@ -36,19 +45,22 @@ public class Partie implements Serializable{
 				e.printStackTrace();
 			}
 		}
-		System.out.println("La partie a durÈ "+truc.nbTour+" tours.");
+		System.out.println("La partie a dur√© "+truc.nbTour+" tours.");
 	}
 	*/
 	
+	/**
+	 * Methode pour commencer son tour
+	 */
 	public void debutTour(){
 		//while(plateau.getSommeDes() == 0){
-			/*le programme attend que le joueur lance les dÈs.
+			/*le programme attend que le joueur lance les d√©s.
 			 * Pendant ce temps, le joueur peut acheter des maisons/hotels, demander des loyers et vendre des biens.*/
-			// La mÈthode LancerDes() est liÈe au bouton dans la GUI.
+			// La m√©thode LancerDes() est li√©e au bouton dans la GUI.
 		//	}
-		/*Le joueur vient de lancer les dÈs*/
+		/*Le joueur vient de lancer les d√©s*/
 		this.plateau.lancerDes();
-/*TEST*/AfficherDansLogClient(((getJoueurCourant().getNom()+": Les dÈs ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur())+".\n"));
+/*TEST*/AfficherDansLogClient(((getJoueurCourant().getNom()+": Les d√©s ont fait "+plateau.getDe1().getValeur()+" + "+plateau.getDe2().getValeur())+".\n"));
 		if(plateau.getDe1().getValeur()==plateau.getDe2().getValeur())
 			flagDesDouble=true;
 		if(getJoueurCourant().getNbTourPrison()>0){
@@ -71,36 +83,51 @@ public class Partie implements Serializable{
 			 * Pendant ce temps, le joueur peut acheter des maisons/hotels, demander des loyers et vendre des biens.*/
 	}
 	
-	public void finTour(){	//Note: Bouton "fin de tour" uniquement cliquable aprËs avoir lancÈ les dÈs.
+	/**
+	 * Methode pour finir son tour
+	 */
+	public void finTour(){	//Note: Bouton "fin de tour" uniquement cliquable apr√©s avoir lanc√© les d√©s.
 		if( (!flagDesDouble) || (getJoueurCourant().getNbTourPrison()>0))
 			nbTour++; //nbTour++ que si le joueur n'a pas fait un double OU si le joueur est en prison en fin de tour.
-		else //Sinon, Áa veut dire que le joueur a fait un double et n'a pas fini son tour en prison.
+		else //Sinon, √ßa veut dire que le joueur a fait un double et n'a pas fini son tour en prison.
 			getJoueurCourant().setNbTourSuite(getJoueurCourant().getNbTourSuite()+1);
 		plateau.getDe1().setZero();
 		plateau.getDe2().setZero();
 		flagDesDouble=false;
 	}
 	
+	/**
+	 * Methode permettant d'initialiser les joueurs
+	 */
 	private void initJoueur() {
 		tabJoueurs.add(new Joueur(this, 1));
 		tabJoueurs.add(new Joueur(this, 2));
 	}
 
+	/**
+	 * Methode permettant au joueur d'acheter des biens (si le bien peut √©tre achet√©)
+	 */
 	public void acheter(){ // Tente d'acheter la case sur laquelle le joueur courant se trouve.
 		Case terrain = plateau.getTabCases()[getJoueurCourant().getPosition()];
-		if((terrain.getType()=="PropriÈtÈ"  || terrain.getType().compareToIgnoreCase("Gare")==0 || terrain.getType().compareToIgnoreCase("Service")==0) && terrain.getProprietaire() == null){
+		if((terrain.getType()=="Propri√©t√©"  || terrain.getType().compareToIgnoreCase("Gare")==0 || terrain.getType().compareToIgnoreCase("Service")==0) && terrain.getProprietaire() == null){
 			if(getJoueurCourant().getSolde() - terrain.getPrixTerrain() >= 0){
 				retraitSolde(terrain.getPrixTerrain(),getJoueurCourant());
 				getJoueurCourant().getTabPossessions().add(terrain);
 				terrain.setProprietaire(getJoueurCourant().getNom());
 			}
 		}
-		else { // si c'est pas le bon type ou dÈj‡ achetÈ => envoie msg au joueur 
+		else { // si c'est pas le bon type ou d√©j√† achet√© => envoie msg au joueur 
 			AfficherDansLogClient("achat impossible !\n");
 		}
 	}
 	
-	public void vendre(Case x, int valeur, Joueur acheteur){ // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ‡ check pour la dÈcision.
+	/**
+	 * Methode permettant au joueur de vendre des biens achet√©s auparavant
+	 * @param x  : la case √† acheter
+	 * @param valeur : la valeur de la case
+	 * @param acheteur : le joueur qui ach√™te la case
+	 */
+	public void vendre(Case x, int valeur, Joueur acheteur){ // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! √† check pour la d√©cision.
 			// verif solde autre joueur + decision 
 			if(/*decision &&*/ acheteur.getSolde() >= valeur ){
 				ajoutSolde(valeur,getJoueurCourant());
@@ -108,7 +135,11 @@ public class Partie implements Serializable{
 			}
 	}
 	
-	public void avancer(int x){ //Sert ‡ avancer de X cases.
+	/**
+	 * Methode permettant au joueur d'avancer de X cases
+	 * @param x : un nombre entier positif
+	 */
+	public void avancer(int x){ //Sert √† avancer de X cases.
 		int anciennePosition = getJoueurCourant().getPosition();
 		getJoueurCourant().setPosition((getJoueurCourant().getPosition() + x)%40);
 		checkPasseCaseDepart(anciennePosition);
@@ -116,7 +147,11 @@ public class Partie implements Serializable{
 		plateau.getTabCases()[getJoueurCourant().getPosition()].action();
 	}
 	
-	public void allerA(int x){ //Sert ‡ placer le joueurCourant ‡ l'indice X du plateau.
+	/**
+	 * Methode permettant au joueur d'avancer jusqu'a la case X
+	 * @param x : un nombre entier positif (indice de la case)
+	 */
+	public void allerA(int x){ //Sert √† placer le joueurCourant √† l'indice X du plateau.
 		int anciennePosition = getJoueurCourant().getPosition();
 		getJoueurCourant().setPosition(x);
 		checkPasseCaseDepart(anciennePosition);
@@ -124,16 +159,30 @@ public class Partie implements Serializable{
 		AfficherDansLogClient(getJoueurCourant().getNom()+" arrive sur la case "+plateau.getTabCases()[getJoueurCourant().getPosition()].getNom()+".\n");
 	}
 	
+	/**
+	 * Methode permettant de v√©rifier si le joueur passe par la case d√©part
+	 * @param anciennePosition : le num√©ro de la case o√π le joueur se trouvait avant
+	 */
 	public void checkPasseCaseDepart(int anciennePosition){
 		if((getJoueurCourant().getPosition() < anciennePosition) && getJoueurCourant().getNbTourPrison() == 0)
 			ajoutSolde(200,getJoueurCourant());
 	}
 	
+	/**
+	 * Methode permettant d'augmenter le solde d'un joueur
+	 * @param montant : un nombre entier positif
+	 * @param joueur : le joueur duquel on doit augmenter le solde
+	 */
 	public void ajoutSolde(int montant, Joueur joueur){
-/*TEST*/AfficherDansLogClient(getJoueurCourant().getNom()+" reÁoit "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()+montant)+".\n");
+/*TEST*/AfficherDansLogClient(getJoueurCourant().getNom()+" re√ßoit "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()+montant)+".\n");
 		joueur.setSolde(joueur.getSolde()+montant);
 	}
 	
+	/**
+	 * Methode permettant diminuer le solde d'un joueur
+	 * @param montant : un nombre entier positif
+	 * @param joueur : le joueur duquel on doit diminuer le solde
+	 */
 	public void retraitSolde(int montant, Joueur joueur){
 /*TEST*/AfficherDansLogClient(getJoueurCourant().getNom()+" paye "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()-montant)+".\n");
 		joueur.setSolde(joueur.getSolde()-montant);
@@ -141,27 +190,39 @@ public class Partie implements Serializable{
 			Perdu(joueur);
 	}
 	
+	/**
+	 * Methode permettant de faire perdre un joueur
+	 * @param joueur : le joueur a faire perdre
+	 */
 	public void Perdu(Joueur joueur) {
 		// envoyer un msg au joueur 
 		//supprimer le joueur perdant
 /*TEST*/AfficherDansLogClient("Le joueur "+getJoueurCourant().getNom()+" a perdu.\n");
-		//On set ‡ null le propriÈtaire de ses possession.
+		//On set √† null le propri√©taire de ses possession.
 		for(Case possession : joueur.getTabPossessions()){
-/*TEST*/	AfficherDansLogClient(possession.getNom()+" n'appartient plus ‡ "+joueur.getNom()+".\n");
+/*TEST*/	AfficherDansLogClient(possession.getNom()+" n'appartient plus √† "+joueur.getNom()+".\n");
 			possession.setProprietaire(null);
 		}
 		tabJoueurs.remove(joueur);
-		AfficherDansLogClient("La partie a durÈ "+nbTour+" tours.\n");
+		AfficherDansLogClient("La partie a dur√© "+nbTour+" tours.\n");
 		if(tabJoueurs.size()==1)
 			Gagne(tabJoueurs.get(0));
 	}
 	
+	/**
+	 * Methode permettant de faire gagner un joueur
+	 * @param joueur : le joueur √† faire gagner
+	 */
 	public void Gagne(Joueur joueur) {
 		//envoyer un msg au joueur 
 		// terminer la partie
-		AfficherDansLogClient("Le joueur "+tabJoueurs.get(0).getNom()+" a gagnÈ !");
+		AfficherDansLogClient("Le joueur "+tabJoueurs.get(0).getNom()+" a gagn√© !");
 	}
 	
+	/**
+	 * Methode permettant des informations dans la console des joueurs
+	 * @param s : Le message √† afficher
+	 */
 	public void AfficherDansLogClient(String s){
 		appliServeur.getServeurSocket().ecrireSurTousLesClients(s);
 	}

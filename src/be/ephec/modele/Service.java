@@ -1,3 +1,8 @@
+/**
+ * @author Marchal Fran√ßois & Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
 import java.io.Serializable;
@@ -5,14 +10,22 @@ import java.io.Serializable;
 public class Service extends Case implements Serializable{
 	private String proprietaire;
 	private int prixService;
-	
+
+	/**
+	 * Constructeur de case service
+	 * @param partie : la partie en cours
+	 * @param nom : le nom du service
+	 */
 	public Service(Partie partie, String nom){
 		super(partie,"Service", nom);
 		this.prixService = 150;
 	}
 	
+	/**
+	 * Methode pour l'action des cases service
+	 */
 	public void action(){
-		//Rien ‡ mettre dans cette mÈthode.
+		//Rien √† mettre dans cette m√©thode.
 	}
 	
 	@Override

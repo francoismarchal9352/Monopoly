@@ -1,3 +1,8 @@
+/**
+ * @author Marchal FranÃ§ois & Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.application;
 
 import java.util.Calendar;
@@ -18,10 +23,10 @@ public class ApplicationServeur {
 	public static void main(String[] args) {
 		ApplicationServeur ma = new ApplicationServeur();
 	}
-	// Les méthodes utiles
+	// Les mÃ©thodes utiles
 	public void traiteClientConnecte(ClientCoteServeur ccs){
 		getGuiServeur().ajouteDansLaConsole(
-				Console.getInviteDeCommande()+"On a reçu le joueur numéro "+
+				Console.getInviteDeCommande()+"On a reÃ§u le joueur numÃ©ro "+
 				ccs.getNum()+"\n");
 		getGuiServeur().ajouteClientJComboBox(ccs);
 	}
@@ -32,17 +37,17 @@ public class ApplicationServeur {
 				Console.getInviteDeCommande()+"> Joueur "+ 
 				ccs.getNum()+" : "+object.toString()+"\n");
 		switch((String)object){
-			case "Lancer les dés":
-				serveurSocket.ecrireSurTousLesClients("Joueur "+ccs.getNum()+" lance les dés.\n");
+			case "Lancer les dÃ©s":
+				serveurSocket.ecrirSurTousLesClients("Joueur "+ccs.getNum()+" lance les dÃ©s.\n");
 				partie.debutTour();
 				break;
 			case "Acheter":
-				serveurSocket.ecrireSurTousLesClients("Joueur "+ccs.getNum()+" achète la case sur laquelle il se trouve.\n");
+				serveurSocket.ecrirSurTousLesClients("Joueur "+ccs.getNum()+" achÃ¨te la case sur laquelle il se trouve.\n");
 				partie.acheter();
 				break;
-			case "Vendre": // à implémenter
+			case "Vendre": // Ã  implÃ©menter
 				break;
-			case "Demander Loyer": //à implémenter
+			case "Demander Loyer": //Ã  implÃ©menter
 				break;
 			case "Finir Tour":
 				serveurSocket.ecrireSurTousLesClients("Joueur "+ccs.getNum()+" fini son tour.\n");

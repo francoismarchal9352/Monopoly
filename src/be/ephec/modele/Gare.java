@@ -1,3 +1,8 @@
+/**
+ * @author Marchal Fran√ßois & Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
 import java.io.Serializable;
@@ -7,6 +12,11 @@ public class Gare extends Case implements Serializable{
 	private int prixGare;
 	private int tabLoyers[];
 	
+	/**
+	 * Constructeur pour les Gares
+	 *@param partie : la partie en cours
+	 *@param nom : le nom de la gare
+	 */
 	public Gare(Partie partie, String nom){
 		super(partie,"Gare", nom);
 		this.prixGare = 200;
@@ -14,7 +24,7 @@ public class Gare extends Case implements Serializable{
 	}
 	
 	public void action(){
-		//Rien ‡ mettre dans cette mÈthode.
+		//Rien √† mettre dans cette m√©thode.
 	}
 	
 	@Override

@@ -1,13 +1,29 @@
+/**
+ * @author Marchal François & Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
 import java.io.Serializable;
 
+
 public class CarteChance extends Carte implements Serializable{
 	
+	/**
+	 * Constructeur de carte chance
+	 * @param partie : la partie en cours
+	 * @param texte : le texte à afficher sur la carte
+	 * @param methodeNum : le numéro de la méthode à executer
+	 */
 	public CarteChance(Partie partie, String texte, int methodeNum){
 		super(partie, texte, methodeNum);
 	}
 	
+	/**
+	 * Methode pour l'action des cartes chance
+	 * @param methodeNum : le numéro de la méthode à executer
+	 */
 	public void action(int methodeNum){
 		switch (methodeNum) { //peut mieux faire en stackant les fonctions similaires mais pas urgent.
 			case 1: partie.retraitSolde(10,partie.getJoueurCourant()); break;
@@ -28,7 +44,12 @@ public class CarteChance extends Carte implements Serializable{
 			case 16: partie.ajoutSolde(100,partie.getJoueurCourant());break;
 		}
 	}
-
+	
+	/**
+	 * méthode permettant de gérer la carte réparation
+	 * @param prixParMaison : cout de la réparation des maisons
+	 * @param prixParHotel : cout de la réparation des hôtels
+	 */
 	private void reparations(int prixParMaison, int prixParHotel) {
 		int somme = 0;
 		somme += partie.getJoueurCourant().getNbMaison()*40;

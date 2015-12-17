@@ -1,3 +1,8 @@
+/**
+ * @author Marchal Fran√ßois & Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
 import java.io.Serializable;
@@ -19,6 +24,11 @@ public class Joueur implements Serializable{
 		return tabPossessions;
 	}
 
+	/**
+	 * Constructeur de joueur
+	 * @param partie : la partie en cours
+	 * @param nb : le num√©ro du joueur
+	 */
 	public Joueur(Partie partie, int nb){
 		this.partie = partie;
 		this.nom = "Joueur "+nb;
@@ -28,10 +38,13 @@ public class Joueur implements Serializable{
 		nbCarteSortezPrison = 0;
 		nbTourPrison = 0;
 		nbTourSuite = 0;
-		tabPossessions = new ArrayList<Case>(); // dÈfault size d'un ArrayList est 10. Autant laisser cette valeur pour gagner un peu en perf lors de l'exec.	
+		tabPossessions = new ArrayList<Case>(); // d√©fault size d'un ArrayList est 10. Autant laisser cette valeur pour gagner un peu en perf lors de l'exec.	
 	}
 	
-	public void entreEnPrison() {	//DÈsactiver les boutons pour acheter et vendre des propriÈtÈs
+	/**
+	 * Methode pour envoyer un joueur en prison
+	 */
+	public void entreEnPrison() {	//D√©sactiver les boutons pour acheter et vendre des propri√©t√©s
 		partie.AfficherDansLogClient(partie.getJoueurCourant().getNom()+"entre en PRISOOOOOOOON !\n");
 		position=10;
 		this.setNbTourSuite(0);
@@ -62,7 +75,7 @@ public class Joueur implements Serializable{
 	public int getNbMaison(){
 		int nbMaison = 0;
 		for(Case possession : tabPossessions){
-			if(possession.getType() == "PropriÈtÈ"){
+			if(possession.getType() == "Propri√©t√©"){
 				nbMaison += possession.getNbMaison();
 			}
 		}
@@ -72,7 +85,7 @@ public class Joueur implements Serializable{
 	public int getNbHotel(){
 		int nbHotel = 0;
 		for(Case possession : tabPossessions){
-			if(possession.getType() == "PropriÈtÈ"){
+			if(possession.getType() == "Propri√©t√©"){
 				nbHotel += possession.getNbHotel();
 			}
 		}
@@ -80,6 +93,7 @@ public class Joueur implements Serializable{
 		
 	}
 
+	
 	public int getNbCarteSortezPrison() {
 		return nbCarteSortezPrison;
 	}

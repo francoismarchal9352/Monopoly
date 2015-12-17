@@ -1,15 +1,24 @@
+/**
+ * @author Marchal Fran√ßois & Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
 import java.io.Serializable;
 
 public class ParcGratuit extends Case implements Serializable{
 
+	/**
+	 * constructeur de case parc gratuit
+	 * @param partie : la partie en cours
+	 */
 	public ParcGratuit(Partie partie){
 		super(partie,"ParcGratuit","Parc Gratuit");
 	}
 
 	public void action(){
-		//Rien ‡ mettre dans cette mÈthode.
+		//Rien √† mettre dans cette m√©thode.
 	}
 
 	@Override
