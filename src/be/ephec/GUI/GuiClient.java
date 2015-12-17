@@ -379,7 +379,8 @@ public class GuiClient extends JFrame implements ActionListener{
 					buttonLancerDes.setEnabled(true);
 					buttonAcheter.setEnabled(true);
 					buttonVendre.setEnabled(true);
-					buttonLoyer.setEnabled(true);					
+					buttonLoyer.setEnabled(true);
+					afficheInfo("");
 				}
 			} catch (NumberFormatException e1) {
 				e1.printStackTrace();

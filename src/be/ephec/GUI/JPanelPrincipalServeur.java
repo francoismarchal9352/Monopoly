@@ -100,7 +100,7 @@ public class JPanelPrincipalServeur extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String message = jTextFieldMessage.getText();
+		String message = jTextFieldMessage.getText()+"\n";
 		if (comboBox.getSelectedItem().toString().compareToIgnoreCase("Tous les joueurs") == 0){
 			ma.traiteObjetAEnvoyerATousLesClients(message);		
 		} else{
