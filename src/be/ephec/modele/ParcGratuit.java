@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class ParcGratuit extends Case implements Serializable{
 
+	/**
+	 * constructeur de case parc gratuit
+	 * @param partie : la partie en cours
+	 */
 	public ParcGratuit(Partie partie){
 		super(partie,"ParcGratuit","Parc Gratuit");
 	}

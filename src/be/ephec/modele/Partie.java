@@ -15,6 +15,10 @@ public class Partie implements Serializable{
 	private int nbCarteCaisseComPioche = 0;
 	private boolean flagDesDouble = false;
 	
+	/**
+	 * Constructeur de partie
+	 * @param appliServer : l'application serveur
+	 */
 	public Partie(ApplicationServeur appliServer){
 		this.appliServeur = appliServer;
 		initJoueur();
@@ -39,6 +43,9 @@ public class Partie implements Serializable{
 	}
 	*/
 	
+	/**
+	 * Methode pour commencer son tour
+	 */
 	public void debutTour(){
 		//while(plateau.getSommeDes() == 0){
 			/*le programme attend que le joueur lance les dés.
@@ -70,6 +77,9 @@ public class Partie implements Serializable{
 			 * Pendant ce temps, le joueur peut acheter des maisons/hotels, demander des loyers et vendre des biens.*/
 	}
 	
+	/**
+	 * Methode pour finir son tour
+	 */
 	public void finTour(){	//Note: Bouton "fin de tour" uniquement cliquable après avoir lancé les dés.
 		if( (!flagDesDouble) || (getJoueurCourant().getNbTourPrison()>0))
 			nbTour++; //nbTour++ que si le joueur n'a pas fait un double OU si le joueur est en prison en fin de tour.
@@ -80,11 +90,17 @@ public class Partie implements Serializable{
 		flagDesDouble=false;
 	}
 	
+	/**
+	 * Methode permettant d'initialiser les joueurs
+	 */
 	private void initJoueur() {
 		tabJoueurs.add(new Joueur(this, 1));
 		tabJoueurs.add(new Joueur(this, 2));
 	}
 
+	/**
+	 * Methode permettant au joueur d'acheter des biens (si le bien peut étre acheté)
+	 */
 	public void acheter(){ // Tente d'acheter la case sur laquelle le joueur courant se trouve.
 		Case terrain = plateau.getTabCases()[getJoueurCourant().getPosition()];
 		if((terrain.getType()=="Propriété"  || terrain.getType().compareToIgnoreCase("Gare")==0 || terrain.getType().compareToIgnoreCase("Service")==0) && terrain.getProprietaire() == null){
@@ -99,6 +115,9 @@ public class Partie implements Serializable{
 		}
 	}
 	
+	/**
+	 * Methode permettant au joueur de vendre des biens achetés auparavant
+	 */
 	public void vendre(Case x, int valeur, Joueur acheteur){ // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! à check pour la décision.
 			// verif solde autre joueur + decision 
 			if(/*decision &&*/ acheteur.getSolde() >= valeur ){
@@ -107,6 +126,10 @@ public class Partie implements Serializable{
 			}
 	}
 	
+	/**
+	 * Methode permettant au joueur d'avancer de X cases
+	 * @param x : un nombre entier positif
+	 */
 	public void avancer(int x){ //Sert à avancer de X cases.
 		int anciennePosition = getJoueurCourant().getPosition();
 		getJoueurCourant().setPosition((getJoueurCourant().getPosition() + x)%40);
@@ -115,6 +138,10 @@ public class Partie implements Serializable{
 		plateau.getTabCases()[getJoueurCourant().getPosition()].action();
 	}
 	
+	/**
+	 * Methode permettant au joueur d'avancer jusqu'a la case X
+	 * @param x : un nombre entier positif (indice de la case)
+	 */
 	public void allerA(int x){ //Sert à placer le joueurCourant à l'indice X du plateau.
 		int anciennePosition = getJoueurCourant().getPosition();
 		getJoueurCourant().setPosition(x);
@@ -123,16 +150,30 @@ public class Partie implements Serializable{
 		AfficherDansLogClient(getJoueurCourant().getNom()+"Le joueur arrive sur la case "+plateau.getTabCases()[getJoueurCourant().getPosition()].getNom()+".\n");
 	}
 	
+	/**
+	 * Methode permettant de vérifier si le joueur passe par la case départ
+	 * @param anciennePosition : le numéro de la case où le joueur se trouvait avant
+	 */
 	public void checkPasseCaseDepart(int anciennePosition){
 		if((getJoueurCourant().getPosition() < anciennePosition) && getJoueurCourant().getNbTourPrison() == 0)
 			ajoutSolde(200,getJoueurCourant());
 	}
 	
+	/**
+	 * Methode permettant d'augmenter le solde d'un joueur
+	 * @param montant : un nombre entier positif
+	 * @param joueur : le joueur duquel on doit augmenter le solde
+	 */
 	public void ajoutSolde(int montant, Joueur joueur){
 /*TEST*/AfficherDansLogClient(getJoueurCourant().getNom()+" reçoit "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()+montant)+".\n");
 		joueur.setSolde(joueur.getSolde()+montant);
 	}
 	
+	/**
+	 * Methode permettant diminuer le solde d'un joueur
+	 * @param montant : un nombre entier positif
+	 * @param joueur : le joueur duquel on doit diminuer le solde
+	 */
 	public void retraitSolde(int montant, Joueur joueur){
 /*TEST*/AfficherDansLogClient(getJoueurCourant().getNom()+" paye "+montant+" euros. Il lui reste "+(getJoueurCourant().getSolde()-montant)+".\n");
 		joueur.setSolde(joueur.getSolde()-montant);
@@ -140,6 +181,10 @@ public class Partie implements Serializable{
 			Perdu(joueur);
 	}
 	
+	/**
+	 * Methode permettant de faire perdre un joueur
+	 * @param joueur : le joueur à faire perdre
+	 */
 	public void Perdu(Joueur joueur) {
 		// envoyer un msg au joueur 
 		//supprimer le joueur perdant
@@ -155,12 +200,20 @@ public class Partie implements Serializable{
 			Gagne(tabJoueurs.get(0));
 	}
 	
+	/**
+	 * Methode permettant de faire gagner un joueur
+	 * @param joueur : le joueur à faire gagner
+	 */
 	public void Gagne(Joueur joueur) {
 		//envoyer un msg au joueur 
 		// terminer la partie
 		AfficherDansLogClient("Le joueur "+tabJoueurs.get(0).getNom()+" a gagné !");
 	}
 	
+	/**
+	 * Methode permettant des informations dans la console des joueurs
+	 * @param s : Le message à afficher
+	 */
 	public void AfficherDansLogClient(String s){
 		appliServeur.getServeurSocket().ecrirSurTousLesClients(s);
 	}

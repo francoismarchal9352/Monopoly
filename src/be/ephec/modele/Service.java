@@ -5,12 +5,20 @@ import java.io.Serializable;
 public class Service extends Case implements Serializable{
 	private String proprietaire;
 	private int prixService;
-	
+
+	/**
+	 * Constructeur de case service
+	 * @param partie : la partie en cours
+	 * @param nom : le nom du service
+	 */
 	public Service(Partie partie, String nom){
 		super(partie,"Service", nom);
 		this.prixService = 150;
 	}
 	
+	/**
+	 * Methode pour l'action des cases service
+	 */
 	public void action(){
 		//Rien à mettre dans cette méthode.
 	}

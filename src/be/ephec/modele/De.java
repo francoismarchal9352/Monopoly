@@ -5,9 +5,16 @@ import java.io.Serializable;
 public class De implements Serializable{
 	private int valeur;
 	
+	/**
+	 * Constructeur pour les de
+	 */
 	public De(){
 	}
 	
+	/**
+	 * methode pour lancer les dés
+	 * @return valeur : la valeur du dé
+	 */
 	public int lancerDe(){
 		valeur = (int)(Math.random()*6) + 1;
 		return valeur;
@@ -22,3 +29,4 @@ public class De implements Serializable{
 	}
 	
 }
+

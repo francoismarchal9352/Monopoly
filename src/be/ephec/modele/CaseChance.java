@@ -4,10 +4,17 @@ import java.io.Serializable;
 
 public class CaseChance extends Case implements Serializable{
 	
+	/**
+	 * Constructeeur de case chance
+	 * @param partie : la partie en cours
+	 */
 	public CaseChance(Partie partie){
 		super(partie, "Chance", "Case Chance");
 	}
 	
+	/**
+	 * Methode pour les actions des cases chance
+	 */
 	public void action(){
 		partie.setNbCarteChancePioche(partie.getNbCarteChancePioche()+1);
 /*TEST*/partie.AfficherDansLogClient(partie.getJoueurCourant().getNom()+" pioche carte CHANCE n°"+partie.getPlateau().getCarte("Chance", partie.getNbCarteChancePioche()%16).numMethode+".\n");

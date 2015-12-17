@@ -12,6 +12,10 @@ public class Plateau implements Serializable{
 	private De de1;
 	private De de2;
 	
+	/**
+	 * Construccteur de plateau
+	 * @param partie : la partie en cours
+	 */
 	public Plateau(Partie partie){
 		this.partie = partie;
 		initCases();
@@ -21,7 +25,9 @@ public class Plateau implements Serializable{
 		Collections.shuffle(tabCartesCaisseCom);
 	}
 	
-	
+	/**
+	 * Methode permettant d'initialiser les cases constituant le plateau
+	 */
 	public void initCases(){
 		tabCases[0] = new Depart(partie);
 		tabCases[1] = new Propriete(partie,"Boulevard de Belleville", "Brun", 60, 50, 2, 10, 30, 90, 160, 250);
@@ -64,6 +70,10 @@ public class Plateau implements Serializable{
 		tabCases[38] = new Taxe(partie,"Taxe de luxe");
 		tabCases[39] = new Propriete(partie,"Rue de la Paix", "Bleu foncé", 400, 200, 50, 200, 600, 1400, 1700, 2000);
 	}
+	
+	/**
+	 * Methode permettant d'initialiser les cartes chance et caisse de communautée
+	 */
 	public void initCartes(){
 		tabCartesChance.add(new CarteChance(partie,"Amende pour excès de vitesse: 10 euros.\n",1));
 		tabCartesChance.add(new CarteChance(partie,"La banque vous verse un dividende de 50 euros.\n",2));
@@ -99,6 +109,9 @@ public class Plateau implements Serializable{
 		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous avez gagné le deuxième prix de beauté, vous touchez 10 euros.\n",15));
 		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Avancez jusqu'à la case départ.\n",16));	}
 	
+	/**
+	 * Methode permettant d'initialiser les deux dés 
+	 */
 	private void initDes() {
 		de1 = new De();
 		de2 = new De();
@@ -108,6 +121,9 @@ public class Plateau implements Serializable{
 		return tabCases;
 	}
 	
+	/**
+	 * Methode permettant de lancer les dés
+	 */
 	public void lancerDes(){
 		de1.lancerDe();
 		de2.lancerDe();

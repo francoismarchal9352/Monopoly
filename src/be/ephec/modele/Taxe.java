@@ -5,11 +5,19 @@ import java.io.Serializable;
 public class Taxe extends Case implements Serializable{
 	private int prixTaxe;
 	
+	/**
+	 * Constructeur de case taxe
+	 * @param partie : la partie en cours
+	 * @param nom : le nom de la taxe
+	 */
 	public Taxe(Partie partie, String nom){
 		super(partie,"Taxe", nom);
 		this.prixTaxe = 200;
 	}
 	
+	/**
+	 * Methode pour l'action des cases taxe
+	 */
 	public void action(){
 		partie.retraitSolde(100, partie.getJoueurCourant());
 	}

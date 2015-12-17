@@ -19,6 +19,11 @@ public class Joueur implements Serializable{
 		return tabPossessions;
 	}
 
+	/**
+	 * Constructeur de joueur
+	 * @param partie : la partie en cours
+	 * @param nb : le numéro du joueur
+	 */
 	public Joueur(Partie partie, int nb){
 		this.partie = partie;
 		this.nom = "Joueur "+nb;
@@ -31,6 +36,9 @@ public class Joueur implements Serializable{
 		tabPossessions = new ArrayList<Case>(); // défault size d'un ArrayList est 10. Autant laisser cette valeur pour gagner un peu en perf lors de l'exec.	
 	}
 	
+	/**
+	 * Methode pour envoyer un joueur en prison
+	 */
 	public void entreEnPrison() {	//Désactiver les boutons pour acheter et vendre des propriétés
 		partie.AfficherDansLogClient(partie.getJoueurCourant().getNom()+"entre en PRISOOOOOOOON !\n");
 		position=10;
@@ -80,6 +88,7 @@ public class Joueur implements Serializable{
 		
 	}
 
+	
 	public int getNbCarteSortezPrison() {
 		return nbCarteSortezPrison;
 	}

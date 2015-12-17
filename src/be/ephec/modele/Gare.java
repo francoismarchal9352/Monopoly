@@ -7,6 +7,11 @@ public class Gare extends Case implements Serializable{
 	private int prixGare;
 	private int tabLoyers[];
 	
+	/**
+	 * Constructeur pour les Gares
+	 *@param partie : la partie en cours
+	 *@param nom : le nom de la gare
+	 */
 	public Gare(Partie partie, String nom){
 		super(partie,"Gare", nom);
 		this.prixGare = 200;

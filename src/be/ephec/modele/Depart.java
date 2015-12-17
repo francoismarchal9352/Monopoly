@@ -4,10 +4,17 @@ import java.io.Serializable;
 
 public class Depart extends Case implements Serializable{
 	
+	/**
+	 * Constructeeur de case départ
+	 * @param partie : la partie en cours
+	 */
 	public Depart(Partie partie){
 		super(partie,"Depart","Case Depart");
 	}
-
+	
+	/**
+	 * Methode pour l'action de la case départ
+	 */
 	public void action(){
 		//Rien à mettre dans cette méthode.
 	}

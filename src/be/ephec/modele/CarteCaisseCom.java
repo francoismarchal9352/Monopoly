@@ -2,12 +2,23 @@ package be.ephec.modele;
 
 import java.io.Serializable;
 
+
 public class CarteCaisseCom extends Carte implements Serializable{
 	
+	/**
+	 * Constructeur de carte caisse de communautée
+	 * @param partie : la partie en cours
+	 * @param texte : le texte à afficher sur la carte
+	 * @param methodeNum : le numéro de la méthode à executer
+	 */
 	public CarteCaisseCom(Partie partie, String texte, int methodeNum){
 		super(partie, texte, methodeNum);
 	}
 	
+	/**
+	 * Methode pour l'action des cartes caisse de communautée
+	 * @param methodeNum : le numéro de la méthode à executer
+	 */
 	public void action(int methodeNum){
 		switch (methodeNum) { //peut mieux faire en stackant les fonctions similaires mais pas urgent.
 			case 1: partie.retraitSolde(50,partie.getJoueurCourant()); break;
@@ -29,6 +40,9 @@ public class CarteCaisseCom extends Carte implements Serializable{
 		}
 	}
 	
+	/**
+	 * Methode permettant de gérer la carte anniversaire
+	 */
 	private void anniversaire(){ //Méthode bug si un joueur à 0€ euro.
 		int somme = 0;
 		for(Joueur J : partie.getTabJoueurs()){

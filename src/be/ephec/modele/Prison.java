@@ -4,11 +4,17 @@ import java.io.Serializable;
 
 public class Prison extends Case implements Serializable{
 	
-	
+	/**
+	 * Constructeur de la case prison
+	 * @param partie : la partie en cours
+	 */
 	public Prison(Partie partie){
 		super(partie,"Prison","Prison");
 	}
 
+	/**
+	 * Methode pour l'action de la case prison
+	 */
 	public void action(){
 		//Rien à mettre dans cette méthode.
 	}
