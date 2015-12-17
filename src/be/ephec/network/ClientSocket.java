@@ -1,5 +1,5 @@
 /**
- * @author Marchal François & Massart Florian
+ * @author Marchal François et Massart Florian
  * @version 1.0
  */
 
@@ -71,7 +71,7 @@ public class ClientSocket extends Socket implements Runnable{
 		} catch (IOException e) {
 			try {
 				this.close(); 
-				// si on ne sait pas lire c'est que le serveur est ferm�
+				// si on ne sait pas lire c'est que le serveur est fermé
 				//TODO Trouver une solution moins radicale
 			} catch (IOException e1) {
 				e1.printStackTrace();
