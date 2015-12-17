@@ -66,13 +66,14 @@ public class Partie {
 				avancer(plateau.getSommeDes());
 			}
 			if(plateau.getDe1().getValeur() == plateau.getDe2().getValeur()){
-				getJoueurCourant().setNbTourPrison(0);				
+				getJoueurCourant().setNbTourPrison(0);
 				avancer(plateau.getSommeDes());
 			}
 		}
 		else{
 			if((getJoueurCourant().getNbTourSuite()==2) && (flagDesDouble))
 					getJoueurCourant().entreEnPrison();
+			if(!flagDesDouble)
 			getJoueurCourant().setNbTourSuite(0);
 			avancer(plateau.getSommeDes());
 		}

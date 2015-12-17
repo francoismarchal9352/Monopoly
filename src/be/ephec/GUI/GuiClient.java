@@ -371,12 +371,16 @@ public class GuiClient extends JFrame implements ActionListener{
 						"Le joueur est connecté au serveur\n");
 				jButtonConnecter.setEnabled(false);
 				buttonLancerDes.setEnabled(false);
-				if(applicationClient.getNum()==1)
-					buttonLancerDes.setEnabled(true);
 				buttonFinirTour.setEnabled(false);
 				buttonAcheter.setEnabled(false);
 				buttonVendre.setEnabled(false);
 				buttonLoyer.setEnabled(false);
+				if(applicationClient.getNum()==1){
+					buttonLancerDes.setEnabled(true);
+					buttonAcheter.setEnabled(true);
+					buttonVendre.setEnabled(true);
+					buttonLoyer.setEnabled(true);					
+				}
 			} catch (NumberFormatException e1) {
 				e1.printStackTrace();
 			} catch (UnknownHostException e1) {
@@ -456,4 +460,17 @@ public class GuiClient extends JFrame implements ActionListener{
 	public void setButtonLancerDes(boolean b) {
 		buttonLancerDes.setEnabled(b);
 	}
+
+	public void setButtonAcheter(boolean b) {
+		buttonAcheter.setEnabled(b);
+	}
+	
+	public void setButtonVendre(boolean b) {
+		buttonVendre.setEnabled(b);
+	}
+
+	public void setButtonLoyer(boolean b) {
+		buttonLoyer.setEnabled(b);
+	}
+
 }
