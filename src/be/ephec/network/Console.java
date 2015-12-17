@@ -1,9 +1,15 @@
+/**
+ * @author Marchal Fran√ßois et Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.network;
+
 import java.util.Calendar;
 
 public class Console {
 	/**
-	 * @return une chaÓne de caractËres reprÈsentant l'invite de commande comprenant l'heure suivi du signe >
+	 * @return une cha√Æne de caract√©res repr√©sentant l'invite de commande comprenant l'heure suivi d'un signe 
 	 */
 	public static String getInviteDeCommande(){
 		Calendar cal = Calendar.getInstance();

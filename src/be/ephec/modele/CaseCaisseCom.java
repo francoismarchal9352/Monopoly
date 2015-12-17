@@ -1,15 +1,27 @@
+/**
+ * @author Marchal François et Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
-public class CaseCaisseCom extends Case{
-	
+public class CaseCaisseCom extends Case {
+
+	/**
+	 * Constructeur de case caisse de communautée
+	 * @param partie : la partie en cours
+	 */
 	public CaseCaisseCom(Partie partie){
-		super(partie,"CaisseCom", "Case Caisse de Communeaut�");
+		super(partie,"CaisseCom", "Case Caisse de Communeauté");
 	}
 	
+	/**
+	 * Methode pour l'action des cases caisse de communautée
+	 */
 	public void action(){
 		partie.setNbCarteCaisseComPioche(partie.getNbCarteCaisseComPioche()+1);
-		/*Affiche le texte de la carte au joueur*/
-/*TEST*/System.out.println(partie.getJoueurCourant().getNom()+" pioche carte CAISSE COM n�"+partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).numMethode);
+/*TEST*/partie.AfficherDansLogClient(partie.getJoueurCourant().getNom()+" pioche carte CAISSE COM n° "+partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).numMethode+".\n");
+		partie.AfficherDansLogClient(partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).texte+".");
 		partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).action(partie.getPlateau().getCarte("CaisseCom", partie.getNbCarteCaisseComPioche()%16).getNumMethode());
 	}
 

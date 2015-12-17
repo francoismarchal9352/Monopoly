@@ -1,13 +1,25 @@
+/**
+ * @author Marchal François et Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
-public class Depart extends Case{
+public class Depart extends Case {
 	
+	/**
+	 * Constructeeur de case départ
+	 * @param partie : la partie en cours
+	 */
 	public Depart(Partie partie){
 		super(partie,"Depart","Case Depart");
 	}
-
+	
+	/**
+	 * Methode pour l'action de la case départ
+	 */
 	public void action(){
-		//Rien � mettre dans cette m�thode.
+		//Rien à mettre dans cette méthode.
 	}
 
 	@Override

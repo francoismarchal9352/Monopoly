@@ -1,14 +1,25 @@
+/**
+ * @author Marchal Fran√ßois et Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
 public class Prison extends Case {
 	
-	
+	/**
+	 * Constructeur de la case prison
+	 * @param partie : la partie en cours
+	 */
 	public Prison(Partie partie){
 		super(partie,"Prison","Prison");
 	}
 
+	/**
+	 * Methode pour l'action de la case prison
+	 */
 	public void action(){
-		//Rien ‡ mettre dans cette mÈthode.
+		//Rien √† mettre dans cette m√©thode.
 	}
 
 	@Override

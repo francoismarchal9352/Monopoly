@@ -1,10 +1,20 @@
+/**
+ * @author Marchal Fran√ßois et Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
-public class Gare extends Case{
+public class Gare extends Case {
 	private String proprietaire;
 	private int prixGare;
 	private int tabLoyers[];
 	
+	/**
+	 * Constructeur pour les Gares
+	 *@param partie : la partie en cours
+	 *@param nom : le nom de la gare
+	 */
 	public Gare(Partie partie, String nom){
 		super(partie,"Gare", nom);
 		this.prixGare = 200;
@@ -12,7 +22,7 @@ public class Gare extends Case{
 	}
 	
 	public void action(){
-		//Rien ‡ mettre dans cette mÈthode.
+		//Rien √† mettre dans cette m√©thode.
 	}
 	
 	@Override

@@ -1,3 +1,8 @@
+/**
+ * @author Marchal Fran√ßois et Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
 import java.util.ArrayList;
@@ -11,30 +16,36 @@ public class Plateau {
 	private De de1;
 	private De de2;
 	
+	/**
+	 * Construccteur de plateau
+	 * @param partie : la partie en cours
+	 */
 	public Plateau(Partie partie){
 		this.partie = partie;
 		initCases();
 		initCartes();
 		initDes();
-		//Collections.shuffle(tabCartesChance);
-		//Collections.shuffle(tabCartesCaisseCom);
+		Collections.shuffle(tabCartesChance); //On m√©lange les cartes.
+		Collections.shuffle(tabCartesCaisseCom);
 	}
 	
-	
+	/**
+	 * Methode permettant d'initialiser les cases constituant le plateau
+	 */
 	public void initCases(){
 		tabCases[0] = new Depart(partie);
 		tabCases[1] = new Propriete(partie,"Boulevard de Belleville", "Brun", 60, 50, 2, 10, 30, 90, 160, 250);
 		tabCases[2] = new CaseCaisseCom(partie);
 		tabCases[3] = new Propriete(partie,"Rue Lecourbe", "Brun", 60, 50, 4, 20, 60, 180, 320, 450);
-		tabCases[4] = new Taxe(partie,"ImpÙts sur le revenu");
+		tabCases[4] = new Taxe(partie,"Imp√¥ts sur le revenu");
 		tabCases[5] = new Gare(partie,"Gare Montparnasse");
 		tabCases[6] = new Propriete(partie,"Rue Vaugirard", "Bleu clair", 100, 50, 6, 30, 90, 270, 400, 550);
 		tabCases[7] = new CaseChance(partie);
 		tabCases[8] = new Propriete(partie,"Rue de Courcelles", "Bleu clair", 100, 50, 6, 30, 90, 270, 400, 550);
-		tabCases[9] = new Propriete(partie,"Avenue de la RÈpublique", "Bleu clair", 120, 50, 8, 40, 100, 300, 450, 600);
+		tabCases[9] = new Propriete(partie,"Avenue de la R√©publique", "Bleu clair", 120, 50, 8, 40, 100, 300, 450, 600);
 		tabCases[10] = new Prison(partie);
 		tabCases[11] = new Propriete(partie,"Boulevard de la Vilette", "Rose", 140, 100, 10, 50, 150, 450, 625, 750);
-		tabCases[12] = new Service(partie,"Compagnie de Distribution d'…lectricitÈ");
+		tabCases[12] = new Service(partie,"Compagnie de Distribution d'√©lectricit√©");
 		tabCases[13] = new Propriete(partie,"Avenue de Neuilly", "Rose", 140, 100, 10, 50, 150, 450, 625, 750);
 		tabCases[14] = new Propriete(partie,"Rue de Paradis", "Rose", 160, 100, 12, 60, 180, 500, 700, 900);
 		tabCases[15] = new Gare(partie,"Gare de Lyon");
@@ -48,7 +59,7 @@ public class Plateau {
 		tabCases[23] = new Propriete(partie,"Boulevard Malesherbes", "Rouge", 220, 150, 18, 90, 250, 700, 875, 1050);
 		tabCases[24] = new Propriete(partie,"Avenue Henri-Martin", "Rouge", 240, 150, 20, 100, 300, 750, 925, 1100);
 		tabCases[25] = new Gare(partie,"Garde du Nord");
-		tabCases[26] = new Propriete(partie,"Faubourg Saint-HonorÈ", "Jaune", 260, 150, 22, 110, 330, 800, 750, 1150);
+		tabCases[26] = new Propriete(partie,"Faubourg Saint-Honor√©", "Jaune", 260, 150, 22, 110, 330, 800, 750, 1150);
 		tabCases[27] = new Propriete(partie,"Place de la Bourse", "Jaune", 260, 150, 22, 110, 330, 800, 750, 1150);
 		tabCases[28] = new Service(partie,"Compagnie de Distribution des Eaux");
 		tabCases[29] = new Propriete(partie,"Rue la Fayette", "Jaune", 280, 150, 24, 120, 360, 850, 1025, 1200);
@@ -59,55 +70,64 @@ public class Plateau {
 		tabCases[34] = new Propriete(partie,"Boulevard des Capucines", "Vert", 320, 200, 28, 150, 450, 1000, 1200, 1400);
 		tabCases[35] = new Gare(partie,"Gare Seint-Lazare");
 		tabCases[36] = new CaseChance(partie);
-		tabCases[37] = new Propriete(partie,"Avenue des Champs-…lysÈes", "Bleu foncÈ", 350, 200, 35, 175, 500, 1100, 1300, 1500);
+		tabCases[37] = new Propriete(partie,"Avenue des Champs-√©lys√©es", "Bleu fonc√©", 350, 200, 35, 175, 500, 1100, 1300, 1500);
 		tabCases[38] = new Taxe(partie,"Taxe de luxe");
-		tabCases[39] = new Propriete(partie,"Rue de la Paix", "Bleu foncÈ", 400, 200, 50, 200, 600, 1400, 1700, 2000);
-	}
-	public void initCartes(){
-		tabCartesChance.add(new CarteChance(partie,"Amende pour excËs de vitesse: 10Ä.",1));
-		tabCartesChance.add(new CarteChance(partie,"La banque vous verse un dividende de 50Ä.",2));
-		tabCartesChance.add(new CarteChance(partie,"Vous Ítes imposÈ pour les restaurations de voirie.\n40Ä par maison et 115Ä par hÙtel.",3));
-		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'‡ la case dÈpart.",4));
-		tabCartesChance.add(new CarteChance(partie,"Payez pour les frais de scolaritÈ 150Ä",5));
-		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'‡ la Rue de la Paix.",6)); //Ne passe forcÈment pas par la case DÈpart.
-		tabCartesChance.add(new CarteChance(partie,"Sortez de prison. Vous gardez cette carte jusqu'‡ ce qu'elle vous serve ou que vous la vendiez.",7));
-		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'‡ l'Avenue Henri-Martin.\nSi vous passez par la case DÈpart, touchez 200Ä.",8));
-		tabCartesChance.add(new CarteChance(partie,"Faites des rÈparations dans toutes vos propriÈtÈs.\n25Ä par maison et 100Ä par hÙtel.",9));
-		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'au Boulevard de la Vilette.\nSi vous passez par la case DÈpart, touchez 200Ä.",10));
-		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'‡ la Garde de Lyon.\nSi vous passez par la case DÈpart, touchez 200Ä.",11));
-		tabCartesChance.add(new CarteChance(partie,"Votre immeuble et votre prÍt rapportent 150Ä.",12));
-		tabCartesChance.add(new CarteChance(partie,"Allez en Prison. Ne franchissez pas la case DÈpart, ne touchez pas 200Ä.",13));
-		tabCartesChance.add(new CarteChance(partie,"Reculez de 3 cases.",14));
-		tabCartesChance.add(new CarteChance(partie,"Amende pour ivresse: 20Ä.",15));
-		tabCartesChance.add(new CarteChance(partie,"Vous avez gagnÈ le prix de mots croisÈs: 100Ä.",16));
-		
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez votre police d'assurance s'Èlevant ‡ 50Ä.",1));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez la note du mÈdecin.\n50Ä",2));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Erreur de la banque en votre faveur.\nRecevez 200Ä.",3));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Allez en prison. Ne passez pas par la case DÈpart et ne touchez pas 200Ä.",4));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Avancez jusqu'au Boulevard de Belleville.",5)); // Passe forcÈment par la case DÈpart.
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Recevez votre intÈrÍt sur l'emprunt ‡ 7%.\n250Ä",6));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez ‡ l'hÙtpital 100Ä.",7));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"C'est votre anniversaire.\nChaque joueur doit vous donner 10Ä.",8));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous recevez votre revenu annuel: 100Ä.",9));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous hÈritez 100Ä.",10));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"La vente de votre stock vous rapporte 50Ä.",11));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez une amende de 10Ä pour stationnement interdit.",12));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Sortez de prison. Vous gardez cette carte jusqu'‡ ce qu'elle vous serve ou que vous la vendiez.",13));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Les contributions vous remboursent la somme de 20Ä.",14));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous avez gagnÈ le deuxiËme prix de beautÈ, vous touchez 10Ä.",15));
-		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Avancez jusqu'‡ la case dÈpart.",16));
+		tabCases[39] = new Propriete(partie,"Rue de la Paix", "Bleu fonc√©", 400, 200, 50, 200, 600, 1400, 1700, 2000);
 	}
 	
+	/**
+	 * Methode permettant d'initialiser les cartes chance et caisse de communaut√©e
+	 */
+	public void initCartes(){
+		tabCartesChance.add(new CarteChance(partie,"Amende pour exc√©s de vitesse: 10 euros.\n",1));
+		tabCartesChance.add(new CarteChance(partie,"La banque vous verse un dividende de 50 euros.\n",2));
+		tabCartesChance.add(new CarteChance(partie,"Vous √©tes impos√© pour les restaurations de voirie.\n40 euros par maison et 115 euros par h√¥tel.\n",3));
+		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'√† la case d√©part.\n",4));
+		tabCartesChance.add(new CarteChance(partie,"Payez pour les frais de scolarit√© 150 euros.\n",5));
+		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'√† la Rue de la Paix.\n",6)); //Ne passe forc√©ment pas par la case D√©part.
+		tabCartesChance.add(new CarteChance(partie,"Sortez de prison.\nVous gardez cette carte jusqu'√© ce qu'elle vous serve ou que vous la vendiez.\n",7));
+		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'√† l'Avenue Henri-Martin.\nSi vous passez par la case D√©part, touchez 200 euros.\n",8));
+		tabCartesChance.add(new CarteChance(partie,"Faites des r√©parations dans toutes vos propri√©t√©s.\n25 euros par maison et 100 euros par h√¥tel.\n",9));
+		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'au Boulevard de la Vilette.\nSi vous passez par la case D√©part, touchez 200 euros.\n",10));
+		tabCartesChance.add(new CarteChance(partie,"Avancez jusqu'√† la Garde de Lyon.\nSi vous passez par la case D√©part, touchez 200 euros.\n",11));
+		tabCartesChance.add(new CarteChance(partie,"Votre immeuble et votre pr√™t rapportent 150 euros.\n",12));
+		tabCartesChance.add(new CarteChance(partie,"Allez en Prison. Ne franchissez pas la case D√©part, ne touchez pas 200 euros.\n",13));
+		tabCartesChance.add(new CarteChance(partie,"Reculez de 3 cases.\n",14));
+		tabCartesChance.add(new CarteChance(partie,"Amende pour ivresse: 20 euros.\n",15));
+		tabCartesChance.add(new CarteChance(partie,"Vous avez gagn√© le prix de mots crois√©s: 100.\n",16));
+		
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez votre police d'assurance s'√©levant √† 50 euros.\n",1));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez la note du m√©decin: 50 euros.\n",2));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Erreur de la banque en votre faveur. Recevez 200 euros.\n",3));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Allez en prison. Ne passez pas par la case D√©part et ne touchez pas 200 euros.\n",4));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Avancez jusqu'au Boulevard de Belleville.\n",5)); // Passe forc√©ment par la case D√©part.
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Recevez votre int√©r√™t sur l'emprunt √† 7%: 250 euros.\n",6));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez √† l'h√¥tpital 100 euros.\n",7));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"C'est votre anniversaire, chaque joueur doit vous donner 10 euros.\n",8));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous recevez votre revenu annuel: 100 euros.\n",9));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous h√©ritez 100 euros.\n",10));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"La vente de votre stock vous rapporte 50 euros.\n",11));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Payez une amende de 10 euros pour stationnement interdit.\n",12));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Sortez de prison.\nVous gardez cette carte jusqu'√† ce qu'elle vous serve ou que vous la vendiez.\n",13));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Les contributions vous remboursent la somme de 20 euros.\n",14));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Vous avez gagn√© le deuxi√®me prix de beaut√©, vous touchez 10 euros.\n",15));
+		tabCartesCaisseCom.add(new CarteCaisseCom(partie,"Avancez jusqu'√† la case d√©part.\n",16));	}
+	
+	/**
+	 * Methode permettant d'initialiser les deux d√©s 
+	 */
 	private void initDes() {
-		de1 = new De(/*1*/);
-		de2 = new De(/*2*/);
+		de1 = new De();
+		de2 = new De();
 	}
 
 	public Case[] getTabCases() {
 		return tabCases;
 	}
 	
+	/**
+	 * Methode permettant de lancer les d√©s
+	 */
 	public void lancerDes(){
 		de1.lancerDe();
 		de2.lancerDe();

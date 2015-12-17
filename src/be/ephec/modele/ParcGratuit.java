@@ -1,13 +1,22 @@
+/**
+ * @author Marchal FranÃ§ois et Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
 public class ParcGratuit extends Case {
 
+	/**
+	 * constructeur de case parc gratuit
+	 * @param partie : la partie en cours
+	 */
 	public ParcGratuit(Partie partie){
 		super(partie,"ParcGratuit","Parc Gratuit");
 	}
 
 	public void action(){
-		//Rien à mettre dans cette méthode.
+		//Rien Ã  mettre dans cette mÃ©thode.
 	}
 
 	@Override

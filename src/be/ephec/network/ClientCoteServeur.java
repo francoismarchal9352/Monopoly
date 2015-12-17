@@ -1,22 +1,27 @@
+/**
+ * @author Marchal FranÃ§ois et Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.network;
 
-import be.ephec.modele.*;
+import be.ephec.application.ApplicationServeur;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import be.ephec.network.*;;
 
 public class ClientCoteServeur implements Runnable{
 	private Socket socket;
 	private ObjectInputStream ois;
 	private ObjectOutputStream oos;
-	private int num;
+	private int num =0;
 	private ApplicationServeur appliServeur;
 	
 	public String toString(){
-		return "Client numéro "+num;
+		return "Joueur numÃ©ro "+num;
 	}
 	
 	public int getNum() {
@@ -29,13 +34,14 @@ public class ClientCoteServeur implements Runnable{
 		this.num = num;
 		ois = new ObjectInputStream(socket.getInputStream());
 		oos = new ObjectOutputStream(socket.getOutputStream());
-		oos.writeObject(num); // on envoie son numéro au client
+		oos.writeObject(num); // on envoie son numÃ©ro au client
 		new Thread(this).start();
 	}
 	
 	public void ecrire(Object o){
 		try {
 			oos.writeObject(o);
+			oos.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -62,11 +68,8 @@ public class ClientCoteServeur implements Runnable{
 				e.printStackTrace();
 			} catch (IOException e) {
 				try {
-					//TODO à améliorer
 					socket.close();
-					//TODO
 					appliServeur.traiteClientDeconnecte(this);
-					e.printStackTrace();
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}

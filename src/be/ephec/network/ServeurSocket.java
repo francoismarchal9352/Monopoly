@@ -1,39 +1,50 @@
+/**
+ * @author Marchal FranÃ§ois et Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.network;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
+import be.ephec.application.ApplicationServeur;
 
-public class ServeurSocket extends ServerSocket implements Runnable {
+
+public class ServeurSocket extends ServerSocket implements Runnable{
 	private ApplicationServeur ma;
 	private ArrayList<ClientCoteServeur> listeClients = new ArrayList<ClientCoteServeur>();
 	private int nbClients = 0;
 	/**
-	 * Constructeur qui permet de démarrer un serveur TCP sur un numéro de port donné
-	 * @param numPort le numéro de port sur lequel le serveur va écouter
-	 * @throws IOException
+	 * Constructeur qui permet de dÃ©marrer un serveur TCP sur un numÃ©ro de port donnÃ©
+	 * @param numPort le numÃ©ro de port sur lequel le serveur va Ã©couter
+	 * @param ma : l'application serveur
+	 * @throws IOException : masque les erreurs
 	 */
 	public ServeurSocket(int numPort,ApplicationServeur ma) throws IOException {
 		super(numPort);
 		this.ma = ma;
-		//System.out.println("le serveur écoute sur "+this.getLocalPort());
+		//System.out.println("le serveur Ã©coute sur "+this.getLocalPort());
 		acceptePlusieursClients();
 	}
 	/**
-	 * Constructeur qui permet de démarrer un serveur TCP sur le numéro de port se trouvant 
+	 * Constructeur qui permet de dÃ©marrer un serveur TCP sur le numÃ©ro de port se trouvant 
 	 * dans la classe Param
-	 * @throws IOException
+	 * @param ma : l'application serveur
+	 * @throws IOException : masque les erreurs
 	 */
 	public ServeurSocket(ApplicationServeur ma) throws IOException {
 		super(Param.NUM_PORT_DE_BASE);
 		this.ma = ma;
-		//System.out.println("le serveur écoute sur "+this.getLocalPort());
+		//System.out.println("le serveur Ã©coute sur "+this.getLocalPort());
 		acceptePlusieursClients();
 	}
 	/**
-	 * Méthode qui permet de créer un serveur TCP sur un numéro de port libre à partir du 
-	 * numéro de port indiqué dans la classe Param
-	 * Tous les numéros de port sont testés à partir de Param.NUMPORTDEBASE jusqu'à 65535
+	 * MÃ©thode qui permet de crÃ©er un serveur TCP sur un numÃ©ro de port libre Ã  partir du 
+	 * numÃ©ro de port indiquÃ© dans la classe Param
+	 * Tous les numÃ©ros de port sont testÃ©s Ã  partir de Param.NUMPORTDEBASE jusqu'Ã  65535
+	 * @param ma : l'application serveur
 	 * @return le serveur TCP
 	 */
 	public static ServeurSocket getServeurPortLibre(ApplicationServeur ma){
@@ -49,11 +60,12 @@ public class ServeurSocket extends ServerSocket implements Runnable {
 		return ms;
 	}
 	/**
-	 * Méthode qui permet de créer un serveur TCP sur un numéro de port libre à partir du 
-	 * numéro de port reçu en paramètre
-	 * Tous les numéros de port sont testés à partir de Param.NUMPORTDEBASE jusqu'à 65535
-	 * @param numPortDepart un entier compris entre 1 et 65536. Ce sera le numéro de port 
-	 * à partir duquel on cherche un port libre pour notre application
+	 * MÃ©thode qui permet de crÃ©er un serveur TCP sur un numÃ©ro de port libre Ã  partir du 
+	 * numÃ©ro de port indiquÃ© dans la classe Param
+	 * Tous les numÃ©ros de port sont testÃ©s Ã  partir de Param.NUMPORTDEBASE jusqu'Ã  65535
+	 * @param numPortDepart un entier compris entre 1 et 65536. Ce sera le numÃ©ro de port 
+	 * Ã  partir duquel on cherche un port libre pour notre application
+	 * @param ma : l'application serveur
 	 * @return le serveur TCP
 	 * 
 	 */
@@ -70,17 +82,17 @@ public class ServeurSocket extends ServerSocket implements Runnable {
 		return ms;
 	}
 	/**
-	 * Méthode qui attend des clients pour les ajouter à la liste des clients connectés
+	 * MÃ©thode qui attend des clients pour les ajouter Ã  la liste des clients connectÃ©s
 	 */
 	public void acceptePlusieursClients(){
-		// le code était ici
+		// le code Ã©tait ici
 		Thread t = new Thread(this);
 		t.start();
 	}
 	/**
-	 * Juste pour tester en console que ça fonctionne
-	 * Normalement on exécute la méthode main de la classe MonApplication
-	 * @param args pas utilisé
+	 * Juste pour tester en console que Ã§a fonctionne
+	 * Normalement on exÃ©cute la mÃ©thode main de la classe MonApplication
+	 * @param args pas utilisÃ©
 	 */
 	public static void main(String[] args) {
 		ServeurSocket ms = ServeurSocket.getServeurPortLibre(null);
@@ -89,11 +101,12 @@ public class ServeurSocket extends ServerSocket implements Runnable {
 	public void ecrireSurUnClient(ClientCoteServeur ccs, Object o){
 		ccs.ecrire(o);
 	}
-	public void ecrirSurTousLesClients(Object o){
+	public void ecrireSurTousLesClients(Object o){
 		for (ClientCoteServeur clientCoteServeur : listeClients) {
 			clientCoteServeur.ecrire(o);
-		}
+			}
 	}
+	
 	public Object lireSurUnClient(int num){
 		return listeClients.get(num).lire();
 	}

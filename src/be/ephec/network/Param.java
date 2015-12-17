@@ -1,10 +1,15 @@
+/**
+ * @author Marchal Fran√ßois et Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.network;
 
 public class Param {
 	/**
-	 * C'est le numÈro de port par dÈfaut que l'on essaie d'ouvrir
+	 * C'est le num√©ro de port par d√©faut que l'on essaie d'ouvrir
 	 */
-	public static final int NUM_PORT_DE_BASE = 62900;
+	public static final int NUM_PORT_DE_BASE = 42000;
 	public static final String IP_SERVEUR = "127.0.0.1";
 	
 	public static final int HAUTEUR_JFRAME_ACCUEIL_CLIENT = 201;
@@ -24,7 +29,7 @@ public class Param {
 	
 	public static final int NB_CLIENTS = 2;
 	
-	public static final int NB_COLONNES_AFFICHAGE = 4;
+	public static final int NB_COLONNES_AFFICHAGE = 6;
 }
 
 

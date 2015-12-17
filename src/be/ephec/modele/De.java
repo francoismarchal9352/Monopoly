@@ -1,16 +1,25 @@
+/**
+ * @author Marchal François et Massart Florian
+ * @version 1.0
+ */
+
 package be.ephec.modele;
 
 public class De {
 	private int valeur;
-//	private int cpt;
 	
-	public De(/*int cpt*/){
-//		this.cpt = cpt;
+	/**
+	 * Constructeur pour les de
+	 */
+	public De(){
 	}
 	
+	/**
+	 * methode pour lancer les dés
+	 * @return valeur : la valeur du dé
+	 */
 	public int lancerDe(){
 		valeur = (int)(Math.random()*6) + 1;
-//		valeur = cpt++%6+1; //Sert � faire un roll fixe pour les tests.
 		return valeur;
 	}
 	
@@ -21,5 +30,5 @@ public class De {
 	public void setZero(){
 		valeur=0;
 	}
-	
 }
+
