@@ -6,7 +6,6 @@
 package be.ephec.modele;
 
 import java.util.ArrayList;
-
 import be.ephec.application.ApplicationServeur;
 
 public class Partie {
