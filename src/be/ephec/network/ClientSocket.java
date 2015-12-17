@@ -12,6 +12,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import be.ephec.application.ApplicationClient;
+import be.ephec.modele.EtatPartie;
+import be.ephec.modele.Partie;
 
 public class ClientSocket extends Socket implements Runnable{
 	private ObjectOutputStream oos;
@@ -61,11 +63,10 @@ public class ClientSocket extends Socket implements Runnable{
 		}
 	}
 	
-	public Object lire(){
+	public void lire(){
 		try {
 			Object o = ois.readObject();
 			appliClient.traiteObjetRecu(o);
-			return o;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -78,12 +79,12 @@ public class ClientSocket extends Socket implements Runnable{
 			}
 			e.printStackTrace();
 		}
-		return null;
+//		return null;
 	}
 	@Override
 	public void run() {
 		while (!this.isClosed()){
-			Object o = this.lire();
+			lire();
 		}
 		
 	}

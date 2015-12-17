@@ -101,7 +101,7 @@ public class ServeurSocket extends ServerSocket implements Runnable{
 	public void ecrireSurUnClient(ClientCoteServeur ccs, Object o){
 		ccs.ecrire(o);
 	}
-	public void ecrirSurTousLesClients(Object o){
+	public void ecrireSurTousLesClients(Object o){
 		for (ClientCoteServeur clientCoteServeur : listeClients) {
 			clientCoteServeur.ecrire(o);
 			}

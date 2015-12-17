@@ -6,6 +6,7 @@
 package be.ephec.network;
 
 import be.ephec.application.ApplicationServeur;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -40,6 +41,7 @@ public class ClientCoteServeur implements Runnable{
 	public void ecrire(Object o){
 		try {
 			oos.writeObject(o);
+			oos.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
