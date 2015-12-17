@@ -1,5 +1,5 @@
 /**
- * @author Marchal FranÁois & Massart Florian
+ * @author Marchal Fran√ßois et Massart Florian
  * @version 1.0
  */
 
@@ -27,16 +27,16 @@ public class ApplicationClient{
 		ApplicationClient appliClient = new ApplicationClient();
 	}
 	
-	// Les mÈthodes utiles
-	public void traiteConnexionRÈussieAuServeur(){
+	// Les m√©thodes utiles
+	public void traiteConnexionR√©ussieAuServeur(){
 		guiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+
-				"Le joueur est connectÈ au serveur\n");
+				"Le joueur est connect√© au serveur\n");
 	}
 	
-	public void traiteObjetRecu(Object object){ // ReÁoit soit la Partie soit un String ‡ afficher dans la console.
+	public void traiteObjetRecu(Object object){ // Re√ßoit soit la Partie soit un String √† afficher dans la console.
 		if(object instanceof EtatPartie){ // Si l'objet est un EtatPartie...
 			etatPartie = (EtatPartie) object; // Stockage de l'objet pour faire des appels plus simples.
-			guiClient.setLabelValD1(etatPartie.getValeurDe1()); // Actualisation des infos relatives ‡ la partie dans la GUI Client...
+			guiClient.setLabelValD1(etatPartie.getValeurDe1()); // Actualisation des infos relatives √† la partie dans la GUI Client...
 			guiClient.setLabelValD2(etatPartie.getValeurDe2());
 			guiClient.setLabelValSoldeJ1(etatPartie.getSoldeJ1());
 			guiClient.setLabelValSoldeJ2(etatPartie.getSoldeJ2());
@@ -56,9 +56,9 @@ public class ApplicationClient{
 			if((Integer.parseInt(etatPartie.getNbTour()+1) %2 )==num%2) //Si c'est le tour du joueur...
 				guiClient.setButtonLancerDes(true);	// ...le bouton devient cliquable.
 			else
-				guiClient.setButtonLancerDes(false); // Sinon, ce n'est pas son tour, il ne peut donc pas lancer les dÈs et attend son tour, gr‚ce ‡ l'actualisation de la GUI.
+				guiClient.setButtonLancerDes(false); // Sinon, ce n'est pas son tour, il ne peut donc pas lancer les d√©s et attend son tour, gr√¢ce √† l'actualisation de la GUI.
 		}
-		else if(object instanceof String){ //Sinon, l'objet est forcÈment un String ‡ afficher dans la console.
+		else if(object instanceof String){ //Sinon, l'objet est forc√©ment un String √† afficher dans la console.
 			guiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+(String) object);
 		}
 	}
