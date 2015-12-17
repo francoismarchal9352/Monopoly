@@ -3,6 +3,7 @@ package be.ephec.application;
 import be.ephec.network.ClientSocket;
 import be.ephec.network.Console;
 import be.ephec.GUI.GuiClient;
+import be.ephec.modele.EtatPartie;
 import be.ephec.modele.Partie;
 
 public class ApplicationClient{
@@ -10,7 +11,7 @@ public class ApplicationClient{
 	private ClientSocket socket;
 	private int num;
 	private static int nbClients = 0;
-	private Partie partie;
+	private EtatPartie etatPartie;
 	private String messageConsole;
 	
 	public ApplicationClient(){
@@ -29,24 +30,30 @@ public class ApplicationClient{
 	}
 	
 	public void traiteObjetRecu(Object object){ // Reçoit soit la Partie soit un String à afficher dans la console.
-		if(object instanceof Partie){ // Si l'objet est une Partie...
-			partie = (Partie) object; // Stockage de l'objet pour faire des appels plus simples.
-			guiClient.setLabelValD1(Integer.toString(partie.getPlateau().getDe1().getValeur())); // Actualisation des infos relatives à la partie dans la GUI Client...
-			guiClient.setLabelValD2(Integer.toString(partie.getPlateau().getDe2().getValeur()));
-			guiClient.setLabelValSoldeJ1(Integer.toString(partie.getTabJoueurs().get(0).getSolde()));
-			guiClient.setLabelValSoldeJ2(Integer.toString(partie.getTabJoueurs().get(1).getSolde()));
-			guiClient.setLabelValPositionJ1(Integer.toString(partie.getTabJoueurs().get(0).getPosition()));
-			guiClient.setLabelValPositionJ2(Integer.toString(partie.getTabJoueurs().get(1).getPosition()));
-			guiClient.setLabelNbCartePrison(Integer.toString(partie.getTabJoueurs().get(num-1).getNbCarteSortezPrison()));
-			guiClient.setLabelNbTourPrison(Integer.toString(partie.getTabJoueurs().get(num-1).getNbTourPrison()));
-			guiClient.setLabelNbTourSuite(Integer.toString(partie.getTabJoueurs().get(num-1).getNbTourSuite()));
-			System.out.println("C'est le tour de "+partie.getJoueurCourant().getNum());
-			System.out.println("Tour numéro "+partie.getNbTour()); // Renvoie toujours 0. La partie semble figée pourtant le serveur indique qu'elle continue bien.
-/*			if(partie.getJoueurCourant().getNum()==num) //Si c'est le tour du joueur...
+		if(object instanceof EtatPartie){ // Si l'objet est un EtatPartie...
+			etatPartie = (EtatPartie) object; // Stockage de l'objet pour faire des appels plus simples.
+			guiClient.setLabelValD1(etatPartie.getValeurDe1()); // Actualisation des infos relatives à la partie dans la GUI Client...
+			guiClient.setLabelValD2(etatPartie.getValeurDe2());
+			guiClient.setLabelValSoldeJ1(etatPartie.getSoldeJ1());
+			guiClient.setLabelValSoldeJ2(etatPartie.getSoldeJ2());
+			guiClient.setLabelValPositionJ1(etatPartie.getPositionJ1());
+			guiClient.setLabelValPositionJ2(etatPartie.getPositionJ2());
+			if(num==1){
+				guiClient.setLabelNbCartePrison(etatPartie.getNbCarteSortezPrisonJ1());
+				guiClient.setLabelNbTourPrison(etatPartie.getNbTourPrisonJ1());
+				guiClient.setLabelNbTourSuite(etatPartie.getNbTourSuiteJ1());
+			}
+			else{
+				guiClient.setLabelNbCartePrison(etatPartie.getNbCarteSortezPrisonJ2());
+				guiClient.setLabelNbTourPrison(etatPartie.getNbTourPrisonJ2());
+				guiClient.setLabelNbTourSuite(etatPartie.getNbTourSuiteJ2());
+			}
+
+			if((Integer.parseInt(etatPartie.getNbTour()+1) %2 )==num%2) //Si c'est le tour du joueur...
 				guiClient.setButtonLancerDes(true);	// ...le bouton devient cliquable.
 			else
 				guiClient.setButtonLancerDes(false); // Sinon, ce n'est pas son tour, il ne peut donc pas lancer les dés et attend son tour, grâce à l'actualisation de la GUI.
-*/		}
+		}
 		else if(object instanceof String){ //Sinon, l'objet est forcément un String à afficher dans la console.
 			guiClient.ajouteDansLaConsole(Console.getInviteDeCommande()+(String) object);
 		}

@@ -6,20 +6,21 @@ import java.util.ArrayList;
 import be.ephec.application.ApplicationServeur;
 
 public class Partie implements Serializable{
+	private int nbTour = 0;
 	private transient ApplicationServeur appliServeur;
 	private ArrayList<Joueur> tabJoueurs = new ArrayList<Joueur>(2);
 	private Plateau plateau = new Plateau(this);
-	private int nbTour = 0;
 	private Joueur[] tabMonopoles = new Joueur[8];
 	private int nbCarteChancePioche = 0;
 	private int nbCarteCaisseComPioche = 0;
 	private boolean flagDesDouble = false;
+	private EtatPartie etatPartie;
 	
 	public Partie(ApplicationServeur appliServer){
 		this.appliServeur = appliServer;
 		initJoueur();
 	}
-	
+
 	/*
 	public static void main(String[] args) { //Méthode de test.
 		Partie truc = new Partie();
@@ -120,7 +121,7 @@ public class Partie implements Serializable{
 		getJoueurCourant().setPosition(x);
 		checkPasseCaseDepart(anciennePosition);
 		plateau.getTabCases()[getJoueurCourant().getPosition()].action();
-		AfficherDansLogClient(getJoueurCourant().getNom()+"Le joueur arrive sur la case "+plateau.getTabCases()[getJoueurCourant().getPosition()].getNom()+".\n");
+		AfficherDansLogClient(getJoueurCourant().getNom()+" arrive sur la case "+plateau.getTabCases()[getJoueurCourant().getPosition()].getNom()+".\n");
 	}
 	
 	public void checkPasseCaseDepart(int anciennePosition){
@@ -162,7 +163,7 @@ public class Partie implements Serializable{
 	}
 	
 	public void AfficherDansLogClient(String s){
-		appliServeur.getServeurSocket().ecrirSurTousLesClients(s);
+		appliServeur.getServeurSocket().ecrireSurTousLesClients(s);
 	}
 	
 	public ArrayList<Joueur> getTabJoueurs() {
@@ -203,4 +204,19 @@ public class Partie implements Serializable{
 	public ApplicationServeur getAppliServeur() {
 		return appliServeur;
 	}
+	
+	public EtatPartie getEtatPartie(){
+		return etatPartie;
+	}
+	public EtatPartie genereEtatPartie() {
+		etatPartie = new EtatPartie(Integer.toString(getPlateau().getDe1().getValeur()), Integer.toString(getPlateau().getDe2().getValeur()),
+				Integer.toString(getTabJoueurs().get(0).getSolde()), Integer.toString(getTabJoueurs().get(1).getSolde()),
+				Integer.toString(getTabJoueurs().get(0).getPosition()), Integer.toString(getTabJoueurs().get(1).getPosition()),
+				Integer.toString(getTabJoueurs().get(0).getNbCarteSortezPrison()), Integer.toString(getTabJoueurs().get(1).getNbCarteSortezPrison()),
+				Integer.toString(getTabJoueurs().get(0).getNbTourPrison()), Integer.toString(getTabJoueurs().get(1).getNbTourPrison()),
+				Integer.toString(getTabJoueurs().get(0).getNbTourSuite()), Integer.toString(getTabJoueurs().get(1).getNbTourSuite()),
+				Integer.toString(nbTour));
+		return etatPartie;
+	}
+
 }

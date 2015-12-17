@@ -26,18 +26,18 @@ public class ApplicationServeur {
 		getGuiServeur().ajouteClientJComboBox(ccs);
 	}
 
-	public void traiteObjetRecu(ClientCoteServeur ccs,Object object){
+	public void traiteObjetRecu(ClientCoteServeur ccs, Object object){
 		Calendar cal = Calendar.getInstance();
 		getGuiServeur().ajouteDansLaConsole(
 				Console.getInviteDeCommande()+"> Joueur "+ 
 				ccs.getNum()+" : "+object.toString()+"\n");
 		switch((String)object){
 			case "Lancer les dés":
-				serveurSocket.ecrirSurTousLesClients("Joueur "+ccs.getNum()+" lance les dés.\n");
+				serveurSocket.ecrireSurTousLesClients("Joueur "+ccs.getNum()+" lance les dés.\n");
 				partie.debutTour();
 				break;
 			case "Acheter":
-				serveurSocket.ecrirSurTousLesClients("Joueur "+ccs.getNum()+" achète la case sur laquelle il se trouve.\n");
+				serveurSocket.ecrireSurTousLesClients("Joueur "+ccs.getNum()+" achète la case sur laquelle il se trouve.\n");
 				partie.acheter();
 				break;
 			case "Vendre": // à implémenter
@@ -45,11 +45,12 @@ public class ApplicationServeur {
 			case "Demander Loyer": //à implémenter
 				break;
 			case "Finir Tour":
-				serveurSocket.ecrirSurTousLesClients("Joueur "+ccs.getNum()+" fini son tour.\n");
+				serveurSocket.ecrireSurTousLesClients("Joueur "+ccs.getNum()+" fini son tour.\n");
 				partie.finTour();
 				break;
 		}
-		serveurSocket.ecrirSurTousLesClients(partie);
+		partie.genereEtatPartie();
+		serveurSocket.ecrireSurTousLesClients(partie.getEtatPartie());
 	}
 
 	public void traiteObjetAEnvoyer(ClientCoteServeur ccs,Object o){
@@ -57,7 +58,7 @@ public class ApplicationServeur {
 	}
 
 	public void traiteObjetAEnvoyerATousLesClients(Object o){
-		getServeurSocket().ecrirSurTousLesClients(o);
+		getServeurSocket().ecrireSurTousLesClients(o);
 	}
 
 	public void traiteClientDeconnecte(ClientCoteServeur ccs){
